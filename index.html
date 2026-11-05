@@ -1,165 +1,201 @@
 <!DOCTYPE html>
 <html lang="vi" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMAA-OS Enterprise Architect — Hệ Thống Kiến Trúc Tổ Chức & Doanh Nghiệp Thực Chiến</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMAA-OS Enterprise Architect v5.0 — Hệ Thống Kiến Trúc Tổ Chức & Vận Hành Doanh Nghiệp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    :root {
+    /* HIGH-CONTRAST PALETTE & DESIGN SYSTEM */
+    :root, [data-theme="light"] {
+      --bg-page: #f1f5f9;
+      --bg-surface: #ffffff;
+      --bg-elevated: #f8fafc;
+      --bg-subtle: #e2e8f0;
+      --bg-accent-soft: #eff6ff;
+
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #475569;
+
+      --border-color: #cbd5e1;
+      --border-strong: #94a3b8;
+      --border-focus: #2563eb;
+
+      --brand-primary: #1d4ed8;
+      --brand-primary-hover: #1e40af;
+      --brand-secondary: #0284c7;
+
+      --emerald: #047857;
+      --emerald-bg: #ecfdf5;
+      --emerald-border: #6ee7b7;
+
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --amber-border: #fcd34d;
+
+      --rose: #be123c;
+      --rose-bg: #fff1f2;
+      --rose-border: #fda4af;
+
+      --purple: #6d28d9;
+      --purple-bg: #f5f3ff;
+      --purple-border: #c4b5fd;
+
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.09);
+      --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
+
       --font-display: 'Be Vietnam Pro', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'Plus Jakarta Sans', 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-serif: 'Lora', Georgia, serif;
       --font-mono: 'JetBrains Mono', monospace;
-
-      --primary: #1D4ED8;
-      --primary-light: #3B82F6;
-      --primary-soft: #EFF6FF;
-      --emerald: #059669;
-      --emerald-soft: #ECFDF5;
-      --amber: #D97706;
-      --amber-soft: #FFFBEB;
-      --purple: #6D28D9;
-      --purple-soft: #F5F3FF;
-      --cyan: #0E7490;
-      --rose: #BE123C;
-
-      --bg-main: #F8FAFC;
-      --bg-card: #FFFFFF;
-      --bg-subtle: #F1F5F9;
-      --border-color: #E2E8F0;
-      --border-focus: #3B82F6;
-
-      --text-title: #0F172A;
-      --text-primary: #1E293B;
-      --text-secondary: #475569;
-      --text-muted: #64748B;
-
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
     }
 
     [data-theme="dark"] {
-      --bg-main: #0B0F19;
-      --bg-card: #111827;
-      --bg-subtle: #1F2937;
-      --border-color: #374151;
-      --border-focus: #60A5FA;
+      --bg-page: #0b1120;
+      --bg-surface: #111827;
+      --bg-elevated: #1e293b;
+      --bg-subtle: #1e293b;
+      --bg-accent-soft: rgba(59, 130, 246, 0.16);
 
-      --text-title: #F8FAFC;
-      --text-primary: #E2E8F0;
-      --text-secondary: #94A3B8;
-      --text-muted: #64748B;
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --text-muted: #94a3b8;
 
-      --primary-soft: rgba(29, 78, 216, 0.2);
-      --emerald-soft: rgba(5, 150, 105, 0.2);
-      --amber-soft: rgba(217, 119, 6, 0.2);
-      --purple-soft: rgba(109, 40, 217, 0.2);
+      --border-color: #334155;
+      --border-strong: #475569;
+      --border-focus: #60a5fa;
+
+      --brand-primary: #3b82f6;
+      --brand-primary-hover: #60a5fa;
+      --brand-secondary: #38bdf8;
+
+      --emerald: #34d399;
+      --emerald-bg: rgba(16, 185, 129, 0.15);
+      --emerald-border: rgba(52, 211, 153, 0.45);
+
+      --amber: #fbbf24;
+      --amber-bg: rgba(245, 158, 11, 0.15);
+      --amber-border: rgba(251, 191, 36, 0.45);
+
+      --rose: #fb7185;
+      --rose-bg: rgba(244, 63, 94, 0.15);
+      --rose-border: rgba(251, 113, 133, 0.45);
+
+      --purple: #a78bfa;
+      --purple-bg: rgba(139, 92, 246, 0.15);
+      --purple-border: rgba(167, 139, 250, 0.45);
+
+      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.65);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: var(--font-body);
-      background-color: var(--bg-main);
+    html, body {
+      background-color: var(--bg-page);
       color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16.5px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      font-size: 16px;
+      text-rendering: optimizeLegibility;
     }
 
-    /* TOPBAR */
-    .topbar {
-      background: var(--bg-card);
-      border-bottom: 1.5px solid var(--border-color);
+    /* TOP BAR */
+    .top-bar {
       position: sticky;
       top: 0;
       z-index: 100;
+      background: var(--bg-surface);
+      border-bottom: 2px solid var(--border-color);
       box-shadow: var(--shadow-sm);
+      padding: 14px 28px;
     }
 
-    .topbar-inner {
-      max-width: 1440px;
+    .top-bar-inner {
+      max-width: 1480px;
       margin: 0 auto;
-      padding: 16px 24px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .brand {
+    .brand-wrap {
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    .brand-logo {
+    .brand-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--primary), #4338CA);
-      color: #fff;
       border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand-primary), #4338ca);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
       font-weight: 900;
       font-size: 20px;
-      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.35);
     }
 
-    .brand-text h1 {
+    /* Clean H1 with NO icon */
+    .brand-wrap h1 {
       font-family: var(--font-display);
       font-size: 20px;
       font-weight: 800;
-      color: var(--text-title);
-      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
       line-height: 1.25;
     }
 
-    .brand-text p {
+    .brand-sub {
       font-size: 13.5px;
       color: var(--text-muted);
+      font-weight: 600;
       margin-top: 2px;
     }
 
-    .topbar-actions {
+    .top-actions {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
     .btn-theme {
-      background: var(--bg-subtle);
+      background: var(--bg-elevated);
       border: 1.5px solid var(--border-color);
       color: var(--text-primary);
-      padding: 8px 14px;
+      padding: 8px 16px;
       border-radius: 999px;
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
       transition: all 0.2s;
     }
 
-    .btn-theme:hover {
-      border-color: var(--primary);
-    }
+    .btn-theme:hover { border-color: var(--brand-primary); }
 
-    .main-container {
-      max-width: 1440px;
+    /* SHELL */
+    .shell {
+      max-width: 1480px;
       margin: 0 auto;
       padding: 24px;
     }
 
-    /* WIZARD STEP BAR */
+    /* WIZARD STEPPERS */
     .wizard-nav {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -168,33 +204,34 @@
     }
 
     .wiz-step {
-      background: var(--bg-card);
+      background: var(--bg-surface);
       border: 2px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 16px 20px;
       display: flex;
       align-items: center;
       gap: 14px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: var(--shadow-sm);
     }
 
     .wiz-step:hover {
-      border-color: var(--primary-light);
-      transform: translateY(-1px);
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .wiz-step.active {
-      border-color: var(--primary);
-      background: var(--bg-card);
-      box-shadow: 0 4px 16px rgba(29, 78, 216, 0.12);
+      border-color: var(--brand-primary);
+      background: var(--bg-accent-soft);
+      box-shadow: 0 4px 18px rgba(29, 78, 216, 0.18);
     }
 
     .wiz-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
       background: var(--bg-subtle);
       color: var(--text-muted);
       display: flex;
@@ -202,39 +239,35 @@
       justify-content: center;
       font-family: var(--font-display);
       font-size: 16px;
-      font-weight: 800;
+      font-weight: 900;
       flex-shrink: 0;
     }
 
     .wiz-step.active .wiz-num {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .wiz-info {
-      display: flex;
-      flex-direction: column;
+      background: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.35);
     }
 
     .wiz-title {
       font-family: var(--font-display);
-      font-size: 15.5px;
+      font-size: 16px;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--text-primary);
     }
 
     .wiz-desc {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
     /* PANELS */
     .panel {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 20px;
-      padding: 28px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 22px;
+      padding: 30px;
       margin-bottom: 24px;
       box-shadow: var(--shadow-sm);
     }
@@ -243,33 +276,33 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 22px;
-      padding-bottom: 16px;
-      border-bottom: 1.5px solid var(--border-color);
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--border-color);
       gap: 16px;
       flex-wrap: wrap;
     }
 
     .panel-title {
       font-family: var(--font-display);
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 800;
-      color: var(--text-title);
-      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
     }
 
     .panel-subtitle {
       font-size: 15px;
       color: var(--text-secondary);
       margin-top: 4px;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
-    /* INPUT GRID (STEP 1) */
+    /* INPUTS GRID (STEP 1) */
     .input-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      gap: 20px;
       margin-bottom: 24px;
     }
 
@@ -280,54 +313,55 @@
     }
 
     .field-group label {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 14.5px;
+      font-weight: 800;
       color: var(--text-primary);
     }
 
     .field-group .field-hint {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--text-muted);
       margin-top: -2px;
       margin-bottom: 4px;
     }
 
     .field-group input, .field-group select, .field-group textarea {
-      padding: 12px 14px;
+      padding: 13px 16px;
       border-radius: 12px;
-      border: 1.5px solid var(--border-color);
-      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
       color: var(--text-primary);
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 15.5px;
       outline: none;
       transition: all 0.2s;
     }
 
     .field-group input:focus, .field-group select:focus, .field-group textarea:focus {
       border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
     }
 
-    /* PULSE SUMMARY CARDS */
+    /* PULSE SUMMARY BOX */
     .pulse-summary-box {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      padding: 18px;
-      background: var(--bg-subtle);
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      margin-top: 6px;
+      gap: 16px;
+      padding: 20px;
+      background: var(--bg-elevated);
+      border-radius: 18px;
+      border: 1.5px solid var(--border-color);
+      margin-top: 8px;
     }
 
     .pulse-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 14px 16px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow-sm);
     }
 
     .pulse-label {
@@ -340,53 +374,54 @@
 
     .pulse-val {
       font-family: var(--font-display);
-      font-size: 19px;
+      font-size: 21px;
       font-weight: 900;
-      color: var(--text-title);
-      margin: 6px 0 2px;
+      color: var(--text-primary);
+      margin: 8px 0 3px;
     }
 
     .pulse-sub {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      line-height: 1.4;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
     }
 
-    /* SCALES & IDEAS GRID */
+    /* SCALE & IDEAS GRID */
     .scale-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 18px;
       margin-bottom: 24px;
     }
 
     .scale-card {
-      background: var(--bg-card);
+      background: var(--bg-surface);
       border: 2px solid var(--border-color);
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 18px;
+      padding: 22px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
     }
 
     .scale-card:hover {
-      border-color: var(--primary-light);
-      transform: translateY(-2px);
+      border-color: var(--brand-primary);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
 
     .scale-card.selected {
-      border-color: var(--primary);
-      background: var(--primary-soft);
-      box-shadow: 0 0 0 2px var(--primary);
+      border-color: var(--brand-primary);
+      background: var(--bg-accent-soft);
+      box-shadow: 0 0 0 2.5px var(--brand-primary);
     }
 
     .scale-badge {
       display: inline-block;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 800;
       padding: 4px 10px;
       border-radius: 6px;
@@ -397,14 +432,14 @@
 
     .scale-card h3 {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 18px;
       font-weight: 800;
-      color: var(--text-title);
-      margin-bottom: 6px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
     }
 
     .scale-card p {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-secondary);
       line-height: 1.5;
     }
@@ -412,9 +447,9 @@
     .scale-specs {
       margin-top: 14px;
       padding-top: 12px;
-      border-top: 1px dashed var(--border-color);
-      font-size: 12.5px;
-      color: var(--text-muted);
+      border-top: 1.5px dashed var(--border-color);
+      font-size: 13px;
+      color: var(--text-secondary);
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -423,31 +458,33 @@
     .ideas-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 22px;
     }
 
     .idea-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 14px;
-      padding: 16px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
     }
 
     .idea-card:hover {
       border-color: var(--emerald);
       transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .idea-card.active {
       border-color: var(--emerald);
-      background: var(--emerald-soft);
-      box-shadow: 0 0 0 2px var(--emerald);
+      background: var(--emerald-bg);
+      box-shadow: 0 0 0 2.5px var(--emerald);
     }
 
     .idea-card-top {
@@ -458,44 +495,45 @@
     }
 
     .idea-sector {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--text-muted);
     }
 
     .idea-card h4 {
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 15.5px;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--text-primary);
       line-height: 1.35;
       margin-bottom: 8px;
     }
 
     .idea-meta {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--text-secondary);
       line-height: 1.45;
       padding-top: 8px;
-      border-top: 1px dashed var(--border-color);
+      border-top: 1.5px dashed var(--border-color);
     }
 
     /* STEP 2: 4 BLOCKS */
     .quad-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 22px;
       margin-bottom: 24px;
     }
 
     .quad-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 16px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 18px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
+      box-shadow: var(--shadow-sm);
     }
 
     .quad-head {
@@ -503,43 +541,46 @@
       justify-content: space-between;
       align-items: center;
       padding-bottom: 12px;
-      border-bottom: 1.5px solid var(--border-color);
+      border-bottom: 2px solid var(--border-color);
     }
 
     .quad-title {
       font-family: var(--font-display);
-      font-size: 17.5px;
+      font-size: 18.5px;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--text-primary);
     }
 
-    /* STEP 3: BANNER & 7 TẦNG */
+    /* STEP 3: BANNER & 7 TẦNG KIẾN TRÚC */
     .report-banner {
-      background: linear-gradient(135deg, #0F172A, #1E293B);
-      color: #FFF;
-      border-radius: 20px;
-      padding: 28px 32px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      border-radius: 22px;
+      padding: 30px 34px;
       margin-bottom: 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 24px;
       flex-wrap: wrap;
+      box-shadow: var(--shadow-md);
+      border: 1px solid #334155;
     }
 
     .report-banner-info h2 {
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 25px;
       font-weight: 900;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       margin: 8px 0;
+      color: #ffffff;
     }
 
     .report-banner-info p {
-      font-size: 15px;
-      color: #94A3B8;
-      max-width: 780px;
-      line-height: 1.5;
+      font-size: 15.5px;
+      color: #cbd5e1;
+      max-width: 820px;
+      line-height: 1.55;
     }
 
     .report-banner-actions {
@@ -557,27 +598,26 @@
     }
 
     .tree-ceo-node {
-      background: var(--bg-card);
-      border: 2px solid var(--amber);
-      border-radius: 16px;
-      padding: 18px 28px;
+      background: var(--bg-surface);
+      border: 2.5px solid var(--amber);
+      border-radius: 18px;
+      padding: 20px 32px;
       text-align: center;
-      max-width: 440px;
+      max-width: 480px;
       box-shadow: var(--shadow-md);
-      position: relative;
     }
 
     .tree-connector-bar {
-      width: 2px;
+      width: 3px;
       height: 32px;
-      background: var(--border-color);
+      background: var(--border-strong);
       margin: 0 auto;
     }
 
     .tree-branches-bar {
-      width: 75%;
-      height: 2px;
-      background: var(--border-color);
+      width: 76%;
+      height: 3px;
+      background: var(--border-strong);
       margin: 0 auto;
     }
 
@@ -590,146 +630,159 @@
     }
 
     .tree-branch-col {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 14px;
-      padding: 18px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      border-top: 4px solid var(--primary);
+      border-top: 5px solid var(--brand-primary);
+      box-shadow: var(--shadow-sm);
     }
 
     .branch-head {
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--text-primary);
       margin-bottom: 6px;
     }
 
     .branch-explain {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-muted);
       margin-bottom: 12px;
       padding-bottom: 10px;
-      border-bottom: 1px dashed var(--border-color);
+      border-bottom: 1.5px dashed var(--border-color);
     }
 
     .sub-role-item {
-      background: var(--bg-subtle);
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      font-size: 13.5px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      font-size: 14px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
     }
 
     .sub-role-item b {
-      color: var(--text-title);
-      font-weight: 700;
+      color: var(--text-primary);
+      font-weight: 800;
     }
 
     .sub-role-item span {
       color: var(--text-secondary);
-      font-size: 12.5px;
+      font-size: 13.5px;
     }
 
     /* TẦNG 3: CONCENTRIC RINGS */
     .concentric-layout {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1.15fr 1fr;
       gap: 28px;
       align-items: center;
     }
 
     .rings-visual {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
       border-radius: 20px;
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      box-shadow: var(--shadow-sm);
     }
 
     .ring-layer {
-      border: 1.5px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 14px;
       padding: 14px 18px;
       transition: all 0.2s;
     }
 
     .ring-layer:hover {
-      transform: translateX(4px);
+      transform: translateX(5px);
     }
 
-    .ring-layer.l-core { background: #FEF2F2; border-color: #F87171; color: #991B1B; }
-    .ring-layer.l-sop { background: #FFFBEB; border-color: #FBBF24; color: #92400E; }
-    .ring-layer.l-pol { background: #ECFDF5; border-color: #34D399; color: #065F46; }
-    .ring-layer.l-org { background: #EFF6FF; border-color: #60A5FA; color: #1E40AF; }
-    .ring-layer.l-cul { background: #F5F3FF; border-color: #A78BFA; color: #5B21B6; }
-    .ring-layer.l-dig { background: #F0FDFA; border-color: #2DD4BF; color: #115E59; }
+    .ring-layer.l-core { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+    .ring-layer.l-sop { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
+    .ring-layer.l-pol { background: #d1fae5; border-color: #10b981; color: #065f46; }
+    .ring-layer.l-org { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
+    .ring-layer.l-cul { background: #ede9fe; border-color: #8b5cf6; color: #5b21b6; }
+    .ring-layer.l-dig { background: #ccfbf1; border-color: #14b8a6; color: #115e59; }
 
     .ring-title {
       font-family: var(--font-display);
-      font-size: 14.5px;
-      font-weight: 800;
+      font-size: 15px;
+      font-weight: 900;
     }
 
     .ring-sub {
-      font-size: 12.5px;
-      opacity: 0.9;
-      margin-top: 2px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0.95;
+      margin-top: 3px;
     }
 
-    /* TẦNG 4: VALUE STREAM & WORKFLOW ENGINE */
+    /* TẦNG 4: VALUE STREAM & WORKFLOW ENGINE (3 LANES) */
     .workflow-timeline {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      gap: 16px;
       margin-bottom: 24px;
     }
 
     .flow-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 16px;
-      padding: 18px;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 18px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      position: relative;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flow-card:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .flow-badge {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--primary);
+      font-size: 12.5px;
+      font-weight: 900;
+      color: var(--brand-primary);
       text-transform: uppercase;
     }
 
     .flow-title {
       font-family: var(--font-display);
-      font-size: 16px;
+      font-size: 16.5px;
       font-weight: 800;
-      color: var(--text-title);
+      color: var(--text-primary);
       line-height: 1.35;
     }
 
     .flow-lane {
-      background: var(--bg-subtle);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 13px;
+      background: var(--bg-elevated);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 13.5px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 4px;
     }
 
     .flow-lane-label {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -741,24 +794,26 @@
     .flow-lane-text {
       color: var(--text-primary);
       line-height: 1.45;
+      font-weight: 600;
     }
 
-    /* TẦNG 5: MATRIX 7 COLUMNS */
+    /* TẦNG 5: MATRIX 7 COLUMNS (HIGH CONTRAST) */
     .view-switcher-bar {
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
-      background: var(--bg-subtle);
-      padding: 5px;
-      border-radius: 12px;
+      background: var(--bg-elevated);
+      padding: 6px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
       width: fit-content;
     }
 
     .view-btn {
-      padding: 8px 16px;
-      font-size: 14.5px;
-      font-weight: 700;
-      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 10px;
       border: none;
       background: transparent;
       color: var(--text-muted);
@@ -770,17 +825,17 @@
     }
 
     .view-btn.active {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);
+      background: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(29, 78, 216, 0.3);
     }
 
     .matrix-wrapper {
       width: 100%;
       overflow-x: auto;
-      border-radius: 16px;
-      border: 1.5px solid var(--border-color);
-      background: var(--bg-card);
+      border-radius: 18px;
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
       box-shadow: var(--shadow-sm);
     }
 
@@ -789,27 +844,28 @@
       border-collapse: collapse;
       text-align: left;
       font-size: 15px;
-      min-width: 1300px;
+      min-width: 1340px;
     }
 
     .matrix-table th {
-      background: var(--bg-subtle);
-      color: var(--text-title);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 14px;
-      padding: 16px 14px;
+      padding: 18px 16px;
       border-bottom: 2px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
+      border-right: 1.5px solid var(--border-color);
       text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
 
     .matrix-table th:last-child { border-right: none; }
 
     .matrix-table td {
-      padding: 16px 14px;
-      border-bottom: 1px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
+      padding: 18px 16px;
+      border-bottom: 1.5px solid var(--border-color);
+      border-right: 1.5px solid var(--border-color);
       vertical-align: top;
       line-height: 1.55;
       font-size: 14.5px;
@@ -820,14 +876,14 @@
     .matrix-table td:last-child { border-right: none; }
 
     .matrix-table tr:hover td {
-      background: var(--primary-soft);
+      background: var(--bg-accent-soft);
     }
 
     /* BUTTONS */
     .btn {
-      padding: 10px 20px;
-      font-size: 15px;
-      font-weight: 700;
+      padding: 12px 24px;
+      font-size: 15.5px;
+      font-weight: 800;
       border-radius: 12px;
       cursor: pointer;
       border: none;
@@ -837,12 +893,30 @@
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover { transform: translateY(-2px); }
 
-    .btn-primary { background: var(--primary); color: #FFF; box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25); }
-    .btn-emerald { background: var(--emerald); color: #FFF; box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25); }
-    .btn-outline { background: var(--bg-card); border: 1.5px solid var(--border-color); color: var(--text-primary); }
-    .btn-outline:hover { border-color: var(--primary); }
+    .btn-primary {
+      background: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+    }
+
+    .btn-emerald {
+      background: var(--emerald);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(4, 120, 87, 0.3);
+    }
+
+    .btn-outline {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--brand-primary);
+      background: var(--bg-accent-soft);
+    }
 
     .step-actions {
       display: flex;
@@ -850,7 +924,7 @@
       align-items: center;
       margin-top: 24px;
       padding-top: 20px;
-      border-top: 1.5px solid var(--border-color);
+      border-top: 2px solid var(--border-color);
       flex-wrap: wrap;
       gap: 14px;
     }
@@ -859,7 +933,7 @@
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.65);
       backdrop-filter: blur(4px);
       z-index: 200;
       display: none;
@@ -871,38 +945,45 @@
     .modal-backdrop.open { display: flex; }
 
     .modal-box {
-      background: var(--bg-card);
-      border-radius: 20px;
-      max-width: 800px;
+      background: var(--bg-surface);
+      border-radius: 22px;
+      max-width: 820px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
       padding: 32px;
-      border: 1.5px solid var(--border-color);
+      border: 2px solid var(--border-color);
       box-shadow: var(--shadow-lg);
+    }
+
+    /* CARDS GRID 3 */
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     /* PRINT */
     @media print {
-      .topbar, .wizard-nav, .step-actions, .view-switcher-bar, .btn { display: none !important; }
+      .top-bar, .wizard-nav, .step-actions, .view-switcher-bar, .btn { display: none !important; }
       body { background: #fff; color: #000; }
-      .panel { border: 1px solid #ccc; box-shadow: none; break-inside: avoid; }
+      .panel { border: 1px solid #999; box-shadow: none; break-inside: avoid; }
     }
   </style>
 </head>
 <body>
 
-  <!-- STICKY TOPBAR -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="brand-logo">EA</div>
-        <div class="brand-text">
-          <h1>HỆ THỐNG KIẾN TRÚC TỔ CHỨC DOANH NGHIỆP V3.0</h1>
-          <p>Chuẩn hóa theo thực tiễn Doanh nghiệp Việt Nam • Mô hình 4 Tầng × 4 Blocks × 7 Bước</p>
+  <!-- STICKY TOP BAR (Clean H1 with NO icon) -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="brand-wrap">
+        <div class="brand-icon">EA</div>
+        <div>
+          <h1>HỆ THỐNG KIẾN TRÚC TỔ CHỨC DOANH NGHIỆP V5.0</h1>
+          <div class="brand-sub">Chuẩn Hóa Theo Thực Tiễn Doanh Nghiệp Việt Nam • Mô Hình 7 Tầng Từ Tổng Thể Đến Hệ Thống</div>
         </div>
       </div>
-      <div class="topbar-actions">
+      <div class="top-actions">
         <button class="btn-theme" onclick="toggleTheme()">
           <span id="theme-icon">🌙</span>
           <span id="theme-label">Giao diện Tối</span>
@@ -911,49 +992,49 @@
     </div>
   </header>
 
-  <main class="main-container">
+  <main class="shell">
 
-    <!-- WIZARD STEP INDICATOR -->
+    <!-- WIZARD STEPPERS (Step-by-Step Navigation) -->
     <nav class="wizard-nav">
       <div class="wiz-step active" id="wiz-1" onclick="goStep(1)">
         <div class="wiz-num">1</div>
-        <div class="wiz-info">
-          <span class="wiz-title">Bước 1: Nhập Dữ Liệu & Chọn Mẫu</span>
-          <span class="wiz-desc">Thiết lập các biến số & gợi ý mô hình</span>
+        <div>
+          <div class="wiz-title">Bước 1: Nhập Dữ Liệu &amp; Gợi Ý Mẫu</div>
+          <div class="wiz-desc">Thiết lập các biến số &amp; gợi ý mô hình ngành</div>
         </div>
       </div>
       <div class="wiz-step" id="wiz-2" onclick="goStep(2)">
         <div class="wiz-num">2</div>
-        <div class="wiz-info">
-          <span class="wiz-title">Bước 2: Hoạch Định 4 Blocks Nền Tảng</span>
-          <span class="wiz-desc">12 tham số định hình chiến lược & tài chính</span>
+        <div>
+          <div class="wiz-title">Bước 2: Hoạch Định 4 Blocks Nền Tảng</div>
+          <div class="wiz-desc">12 tham số chiến lược, nhân sự &amp; dòng tiền</div>
         </div>
       </div>
       <div class="wiz-step" id="wiz-3" onclick="goStep(3)">
         <div class="wiz-num">3</div>
-        <div class="wiz-info">
-          <span class="wiz-title">Bước 3: Bản V1 Kiến Trúc & Giải Nghĩa</span>
-          <span class="wiz-desc">7 tầng từ Tổng thể đến Hệ thống & Báo cáo</span>
+        <div>
+          <div class="wiz-title">Bước 3: Bản Kiến Trúc V1 &amp; Giải Nghĩa</div>
+          <div class="wiz-desc">Trọn vẹn 7 tầng từ Tổng thể đến Hệ thống &amp; Báo cáo</div>
         </div>
       </div>
     </nav>
 
-    <!-- ==================== STEP 1 ==================== -->
+    <!-- ==================== BƯỚC 1: NHẬP DỮ LIỆU & GỢI Ý MẪU ==================== -->
     <div id="step-1-view">
       
-      <!-- BẢNG NHẬP LIỆU DOANH NGHIỆP THỰC TẾ -->
+      <!-- BẢNG NHẬP LIỆU BIẾN SỐ DOANH NGHIỆP -->
       <section class="panel">
         <div class="panel-header">
           <div>
             <h2 class="panel-title">Thiết Lập Dữ Liệu Doanh Nghiệp &amp; Biến Số Điều Hành</h2>
-            <p class="panel-subtitle">Nhập trực tiếp các chỉ số mục tiêu của doanh nghiệp anh/chị, hoặc chọn nhanh các mô hình mẫu bên dưới để tự động điền gợi ý:</p>
+            <p class="panel-subtitle">Nhập trực tiếp các chỉ số mục tiêu của doanh nghiệp anh/chị, hoặc bấm vào các mô hình mẫu bên dưới để tự động điền gợi ý:</p>
           </div>
         </div>
 
         <div class="input-grid">
           <div class="field-group">
             <label>Tên Doanh Nghiệp / Tên Dự Án</label>
-            <input type="text" id="inProjName" value="Dự Án Khởi Nghiệp Của Anh" placeholder="Ví dụ: Công ty TNHH Giải Pháp...">
+            <input type="text" id="inProjName" value="Dự Án Khởi Nghiệp Của Anh" placeholder="Ví dụ: Công ty Cổ Phần Giải Pháp...">
           </div>
           <div class="field-group">
             <label>Doanh Thu Mục Tiêu (Triệu VNĐ / Tháng)</label>
@@ -983,23 +1064,23 @@
           </div>
         </div>
 
-        <!-- INSTANT PULSE SUMMARY -->
+        <!-- THẺ CHẨN ĐOÁN NHỊP ĐẬP TỨC THÌ -->
         <div class="pulse-summary-box" id="pulseSummaryBox"></div>
       </section>
 
-      <!-- BIẾN SỐ 1: CHỌN QUY MÔ TỔ CHỨC THỰC TẾ TẠI VIỆT NAM -->
+      <!-- BIẾN SỐ 1: CHỌN CẤP QUY MÔ THỰC TẾ TẠI VIỆT NAM -->
       <section class="panel">
         <div class="panel-header">
           <div>
             <h2 class="panel-title">Biến Số 1: Chọn Cấp Quy Mô Tổ Chức Tại Việt Nam</h2>
-            <p class="panel-subtitle">Phân tầng sát với thực tế phát triển doanh nghiệp (từ nhóm khởi sự tinh gọn đến nền tảng hệ sinh thái):</p>
+            <p class="panel-subtitle">Phân tầng sát với thực tế phát triển doanh nghiệp tư nhân (từ nhóm khởi sự tinh gọn đến nền tảng hệ sinh thái):</p>
           </div>
         </div>
 
         <div class="scale-grid">
           <div class="scale-card selected" id="sc-micro" onclick="selectScale('micro')">
             <div>
-              <span class="scale-badge" style="background: var(--emerald-soft); color: var(--emerald);">CẤP 1 • MICRO-CELL</span>
+              <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border);">CẤP 1 • MICRO-CELL</span>
               <h3>Tiểu Đội Tự Trị / Hộ KD Số</h3>
               <p>Mô hình siêu tinh gọn: Founder nắm nút thắt + 80% vận hành tự động bằng phần mềm &amp; AI Agents.</p>
             </div>
@@ -1012,7 +1093,7 @@
 
           <div class="scale-card" id="sc-sme" onclick="selectScale('sme')">
             <div>
-              <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary);">CẤP 2 • SME / BU</span>
+              <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); border:1px solid var(--border-color);">CẤP 2 • SME / BU</span>
               <h3>Doanh Nghiệp Nhỏ / Đơn Vị BU</h3>
               <p>Đơn vị kinh doanh độc lập tự chủ P&amp;L, bắt đầu tách 3 khối: Chuyên môn, Kinh doanh và Vận hành.</p>
             </div>
@@ -1025,7 +1106,7 @@
 
           <div class="scale-card" id="sc-chain" onclick="selectScale('chain')">
             <div>
-              <span class="scale-badge" style="background: var(--amber-soft); color: var(--amber);">CẤP 3 • CHAIN</span>
+              <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border);">CẤP 3 • CHAIN</span>
               <h3>Doanh Nghiệp Vừa / Chuỗi</h3>
               <p>Vận hành đa điểm bán/chi nhánh hoặc xưởng sản xuất; cần Trung tâm Dịch vụ Dùng chung (Shared Services).</p>
             </div>
@@ -1038,7 +1119,7 @@
 
           <div class="scale-card" id="sc-platform" onclick="selectScale('platform')">
             <div>
-              <span class="scale-badge" style="background: var(--purple-soft); color: var(--purple);">CẤP 4 • PLATFORM</span>
+              <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">CẤP 4 • PLATFORM</span>
               <h3>Nền Tảng Hệ Sinh Thái Đa Bên</h3>
               <p>Cấu trúc Hub-and-Spoke: Lõi công nghệ &amp; dữ liệu điều phối hàng trăm nhà cung cấp, đại lý hoặc phòng khám.</p>
             </div>
@@ -1065,7 +1146,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">SaaS / Tư vấn số B2B</span>
-                <span class="scale-badge" style="background: var(--emerald-soft); color: var(--emerald); margin:0;">CẤP 1</span>
+                <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); margin:0;">CẤP 1</span>
               </div>
               <h4>Công Cụ Chẩn Đoán Rò Rỉ Dòng Tiền &amp; Vận Hành</h4>
             </div>
@@ -1076,7 +1157,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Truyền thông &amp; Nội dung AI</span>
-                <span class="scale-badge" style="background: var(--emerald-soft); color: var(--emerald); margin:0;">CẤP 1</span>
+                <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); margin:0;">CẤP 1</span>
               </div>
               <h4>Xưởng Sản Xuất Nội Dung Chuyên Gia &amp; Affiliate AI</h4>
             </div>
@@ -1087,7 +1168,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Y tế &amp; Sức khỏe gia đình</span>
-                <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary); margin:0;">CẤP 2</span>
+                <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); margin:0;">CẤP 2</span>
               </div>
               <h4>Trung Tâm Bác Sĩ Gia Đình &amp; Chăm Sóc Tại Nhà</h4>
             </div>
@@ -1098,7 +1179,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Giáo dục Quản trị B2B</span>
-                <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary); margin:0;">CẤP 2</span>
+                <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); margin:0;">CẤP 2</span>
               </div>
               <h4>Học Viện Huấn Luyện Quản Trị &amp; Chuyển Giao AI Cho SME</h4>
             </div>
@@ -1109,7 +1190,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Thực phẩm &amp; Dược liệu Việt</span>
-                <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary); margin:0;">CẤP 2</span>
+                <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); margin:0;">CẤP 2</span>
               </div>
               <h4>Thương Hiệu Dinh Dưỡng Hạt &amp; Thảo Dược D2C</h4>
             </div>
@@ -1120,7 +1201,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Chuỗi dịch vụ Dưỡng sinh</span>
-                <span class="scale-badge" style="background: var(--amber-soft); color: var(--amber); margin:0;">CẤP 3</span>
+                <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); margin:0;">CẤP 3</span>
               </div>
               <h4>Chuỗi Trung Tâm Trị Liệu &amp; Phục Hồi Tự Nhiên</h4>
             </div>
@@ -1131,7 +1212,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Nền tảng Y tế số IoMT</span>
-                <span class="scale-badge" style="background: var(--purple-soft); color: var(--purple); margin:0;">CẤP 4</span>
+                <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); margin:0;">CẤP 4</span>
               </div>
               <h4>Nền Tảng Thiết Bị Y Tế Tại Nhà &amp; Mạng Lưới Bác Sĩ</h4>
             </div>
@@ -1142,7 +1223,7 @@
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Chuỗi cung ứng 2 đầu</span>
-                <span class="scale-badge" style="background: var(--purple-soft); color: var(--purple); margin:0;">CẤP 4</span>
+                <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); margin:0;">CẤP 4</span>
               </div>
               <h4>Mạng Lưới Xúc Tiến Nông Sản Không Ôm Kho</h4>
             </div>
@@ -1156,7 +1237,7 @@
         </div>
 
         <div class="step-actions">
-          <span style="font-size:14px;color:var(--text-muted);">💡 <em>Bấm Tiếp Tục để chuyển sang Bước 2 làm rõ 4 Blocks nền tảng.</em></span>
+          <span style="font-size:14.5px;color:var(--text-muted);font-weight:600;">💡 <em>Bấm Tiếp Tục để chuyển sang Bước 2 làm rõ 4 Blocks nền tảng.</em></span>
           <button class="btn btn-primary" onclick="goStep(2)">
             Tiếp Tục: Sang Bước 2 — Hoạch Định 4 Blocks Nền Tảng ➔
           </button>
@@ -1165,7 +1246,7 @@
 
     </div>
 
-    <!-- ==================== STEP 2 ==================== -->
+    <!-- ==================== BƯỚC 2: HOẠCH ĐỊNH 4 BLOCKS NỀN TẢNG ==================== -->
     <div id="step-2-view" style="display: none;">
       <section class="panel">
         <div class="panel-header">
@@ -1181,7 +1262,7 @@
           <div class="quad-card">
             <div class="quad-head">
               <span class="quad-title">1. Mô Hình Kinh Doanh (Mỏ Vàng)</span>
-              <span class="scale-badge" style="background: var(--amber-soft); color: var(--amber); margin:0;">VALUE &amp; CASH FLOW</span>
+              <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border); margin:0;">VALUE &amp; CASH FLOW</span>
             </div>
             <div class="field-group">
               <label>1.1. Chân dung khách hàng trả tiền &amp; Nỗi đau cấp bách nhất?</label>
@@ -1204,7 +1285,7 @@
           <div class="quad-card">
             <div class="quad-head">
               <span class="quad-title">2. Kế Hoạch Chiến Lược (Cách Đào Vàng)</span>
-              <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary); margin:0;">STRATEGY &amp; FOCUS</span>
+              <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); border:1px solid var(--border-color); margin:0;">STRATEGY &amp; FOCUS</span>
             </div>
             <div class="field-group">
               <label>2.1. Đích thực chứng 90 ngày đầu tiên (Cột mốc V1)?</label>
@@ -1227,7 +1308,7 @@
           <div class="quad-card">
             <div class="quad-head">
               <span class="quad-title">3. Hạ Tầng Tổ Chức &amp; Công Nghệ (Người Đào &amp; AI)</span>
-              <span class="scale-badge" style="background: var(--purple-soft); color: var(--purple); margin:0;">ORG &amp; DIGITAL</span>
+              <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border); margin:0;">ORG &amp; DIGITAL</span>
             </div>
             <div class="field-group">
               <label>3.1. Năng lực lõi sống còn của tổ chức (Core Capability)?</label>
@@ -1250,7 +1331,7 @@
           <div class="quad-card">
             <div class="quad-head">
               <span class="quad-title">4. Mô Hình Tài Chính (Bệ Đỡ Kinh Tế)</span>
-              <span class="scale-badge" style="background: var(--emerald-soft); color: var(--emerald); margin:0;">FINANCIAL MODEL</span>
+              <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border); margin:0;">FINANCIAL MODEL</span>
             </div>
             <div class="field-group">
               <label>4.1. Trần ngân sách đầu tư &amp; Quỹ dự phòng sinh tồn (Runway)?</label>
@@ -1273,19 +1354,19 @@
         <div class="step-actions">
           <button class="btn btn-outline" onclick="goStep(1)">⬅ Quay lại Bước 1</button>
           <button class="btn btn-emerald" onclick="goStep(3)">
-            Xuất Bản Báo Cáo: Sang Bước 3 — Bản V1 Kiến Trúc Tổ Chức (7 Tầng) ➔
+            Xuất Bản Báo Cáo: Sang Bước 3 — Bản Kiến Trúc V1 (7 Tầng) ➔
           </button>
         </div>
       </section>
     </div>
 
-    <!-- ==================== STEP 3: 7 TẦNG TỪ TỔNG THỂ ĐẾN HỆ THỐNG ==================== -->
+    <!-- ==================== BƯỚC 3: BẢN V1 KIẾN TRÚC TỔ CHỨC & GIẢI NGHĨA (7 TẦNG) ==================== -->
     <div id="step-3-view" style="display: none;">
       
       <!-- BANNER BÁO CÁO -->
       <section class="report-banner">
         <div class="report-banner-info">
-          <span class="scale-badge" id="rep-scale-tag" style="background: rgba(255,255,255,0.2); color: #FFF;">...</span>
+          <span class="scale-badge" id="rep-scale-tag" style="background: rgba(255,255,255,0.2); color: #FFF; border:1px solid rgba(255,255,255,0.35);">...</span>
           <h2 id="rep-title">BẢN THIẾT KẾ ĐỊNH HƯỚNG MÔ HÌNH TỔ CHỨC V1</h2>
           <p id="rep-idea-summary">...</p>
         </div>
@@ -1296,7 +1377,7 @@
         </div>
       </section>
 
-      <!-- TẦNG 1: 4 BLOCKS NỀN TẢNG -->
+      <!-- TẦNG 1: ĐỊNH HƯỚNG CHIẾN LƯỢC (4 BLOCKS) & CÁC VÒNG TẠO DOANH THU -->
       <section class="panel">
         <div class="panel-header">
           <div>
@@ -1305,10 +1386,10 @@
           </div>
         </div>
 
-        <div class="scale-grid" style="margin-bottom: 0;">
-          <div class="scale-card" style="cursor: default; border-top: 4px solid var(--amber);">
+        <div class="scale-grid" style="margin-bottom: 24px;">
+          <div class="scale-card" style="cursor: default; border-top: 5px solid var(--amber);">
             <div>
-              <span class="scale-badge" style="background: var(--amber-soft); color: var(--amber);">BLOCK 1 • MỎ VÀNG</span>
+              <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border);">BLOCK 1 • MỎ VÀNG</span>
               <h3>Mô Hình Kinh Doanh</h3>
               <p id="rep-b1-cust">...</p>
             </div>
@@ -1318,9 +1399,9 @@
             </div>
           </div>
 
-          <div class="scale-card" style="cursor: default; border-top: 4px solid var(--primary);">
+          <div class="scale-card" style="cursor: default; border-top: 5px solid var(--brand-primary);">
             <div>
-              <span class="scale-badge" style="background: var(--primary-soft); color: var(--primary);">BLOCK 2 • CÁCH ĐÀO</span>
+              <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); border:1px solid var(--border-color);">BLOCK 2 • CÁCH ĐÀO</span>
               <h3>Kế Hoạch Chiến Lược V1</h3>
               <p id="rep-b2-goal">...</p>
             </div>
@@ -1330,9 +1411,9 @@
             </div>
           </div>
 
-          <div class="scale-card" style="cursor: default; border-top: 4px solid var(--purple);">
+          <div class="scale-card" style="cursor: default; border-top: 5px solid var(--purple);">
             <div>
-              <span class="scale-badge" style="background: var(--purple-soft); color: var(--purple);">BLOCK 3 • NGƯỜI ĐÀO</span>
+              <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">BLOCK 3 • NGƯỜI ĐÀO</span>
               <h3>Năng Lực Lõi &amp; Công Nghệ</h3>
               <p id="rep-b3-cap">...</p>
             </div>
@@ -1342,9 +1423,9 @@
             </div>
           </div>
 
-          <div class="scale-card" style="cursor: default; border-top: 4px solid var(--emerald);">
+          <div class="scale-card" style="cursor: default; border-top: 5px solid var(--emerald);">
             <div>
-              <span class="scale-badge" style="background: var(--emerald-soft); color: var(--emerald);">BLOCK 4 • BỆ ĐỠ VỐN</span>
+              <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border);">BLOCK 4 • BỆ ĐỠ VỐN</span>
               <h3>Mô Hình Tài Chính</h3>
               <p id="rep-b4-unit">...</p>
             </div>
@@ -1354,9 +1435,12 @@
             </div>
           </div>
         </div>
+
+        <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;color:var(--text-primary);">🔄 Các Vòng Tạo Doanh Thu Độc Lập (Revenue Engines)</h3>
+        <div class="cards-grid-3" id="revenueStreamsGrid"></div>
       </section>
 
-      <!-- TẦNG 2: SƠ ĐỒ CƠ CẤU TỔ CHỨC TRỰC QUAN -->
+      <!-- TẦNG 2: SƠ ĐỒ CƠ CẤU TỔ CHỨC TRỰC QUAN & THAM CHIẾU 3 MÔ HÌNH KINH ĐIỂN -->
       <section class="panel">
         <div class="panel-header">
           <div>
@@ -1367,9 +1451,9 @@
 
         <div class="org-tree-wrapper">
           <div class="tree-ceo-node">
-            <span class="scale-badge" style="background: var(--amber-soft); color: var(--amber); margin: 0 auto 6px;">TẦNG LÃNH ĐẠO TỐI CAO (L1 • 100% HUMAN)</span>
-            <div style="font-family: var(--font-display); font-size: 16.5px; font-weight: 800; color: var(--text-title);" id="tree-root-title">FOUNDER / BAN LÃNH ĐẠO</div>
-            <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;" id="tree-root-desc">Giữ Đích chiến lược • Phê duyệt ngân sách &amp; Pháp lý • Quản trị dòng tiền</div>
+            <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border); margin: 0 auto 6px;">TẦNG LÃNH ĐẠO TỐI CAO (L1 • 100% HUMAN)</span>
+            <div style="font-family: var(--font-display); font-size: 17px; font-weight: 800; color: var(--text-primary);" id="tree-root-title">FOUNDER / BAN LÃNH ĐẠO</div>
+            <div style="font-size: 13.5px; color: var(--text-secondary); margin-top: 4px;" id="tree-root-desc">Giữ Đích chiến lược • Phê duyệt ngân sách &amp; Pháp lý • Quản trị dòng tiền</div>
           </div>
 
           <div class="tree-connector-bar"></div>
@@ -1377,14 +1461,17 @@
 
           <div class="tree-branches" id="tree-branches-container"></div>
         </div>
+
+        <h3 style="font-size:18px;font-weight:800;margin:28px 0 14px;color:var(--text-primary);">🌍 Tham Chiếu 3 Mô Hình Tổ Chức Kinh Điển (Toyota • Amazon/Spotify • Haier)</h3>
+        <div class="cards-grid-3" id="classicModelsGrid"></div>
       </section>
 
-      <!-- TẦNG 3: HẠ TẦNG QUẢN TRỊ ĐỒNG TÂM 5 LỚP -->
+      <!-- TẦNG 3: HẠ TẦNG QUẢN TRỊ ĐỒNG TÂM 5 LỚP & VỎ BỌC SỐ HÓA -->
       <section class="panel">
         <div class="panel-header">
           <div>
             <h2 class="panel-title">TẦNG 3: HẠ TẦNG QUẢN TRỊ ĐỒNG TÂM 5 LỚP &amp; SỐ HÓA (MANAGEMENT INFRASTRUCTURE)</h2>
-            <p class="panel-subtitle">Giải nghĩa nguyên lý "Củ hành đồng tâm": Con người (HR) đặt ở tâm điểm nhưng được bảo bọc bởi 4 lớp giáp quản trị và vỏ bọc Số hóa / AI.</p>
+            <p class="panel-subtitle">Giải nghĩa nguyên lý "Củ hành đồng tâm": Con người (HR) đặt ở tâm điểm nhưng được bảo vệ bởi 4 lớp giáp quản trị và vỏ bọc Số hóa / AI.</p>
           </div>
         </div>
 
@@ -1438,14 +1525,15 @@
         <div class="panel-header">
           <div>
             <h2 class="panel-title">TẦNG 4: CHUỖI GIÁ TRỊ &amp; FLOW LUỒNG ĐI CỦA CÁC DÒNG CÔNG VIỆC (WORKFLOW ENGINE)</h2>
-            <p class="panel-subtitle">Giải nghĩa: Luân chuyển các dòng công việc xoay quanh <strong>Hành Trình Khách Hàng</strong> và <strong>Dòng Sản Phẩm</strong> từ lúc tiếp cận đến lúc tiền về két và khách tái mua.</p>
+            <p class="panel-subtitle">Giải nghĩa: Luân chuyển các dòng công việc xoay quanh <strong>Hành Trình Khách Hàng</strong>, <strong>Dòng Sản Phẩm</strong> và <strong>Dữ Liệu Gốc / Dòng Tiền</strong> qua 5 Khâu.</p>
           </div>
+          <span style="font-size:13.5px;color:var(--text-muted);font-weight:700;">👆 Bấm vào từng Khâu để xem Hộp thoại soi sâu</span>
         </div>
 
         <div class="workflow-timeline" id="workflowTimelineContainer"></div>
       </section>
 
-      <!-- TẦNG 5: BẢNG MA TRẬN 7 LỚP KIẾN TRÚC CHI TIẾT -->
+      <!-- TẦNG 5: BẢNG MA TRẬN 7 LỚP KIẾN TRÚC CHI TIẾT CHUỖI GIÁ TRỊ -->
       <section class="panel">
         <div class="panel-header" style="flex-wrap:wrap;gap:16px;">
           <div>
@@ -1479,32 +1567,36 @@
         <!-- VIEW 2: STEPPER CARDS -->
         <div id="matrixCardsView" style="display:none;">
           <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; margin-bottom:18px;" id="matrixStepperNodes"></div>
-          <div id="matrixActiveDetailPanel" style="background:var(--bg-subtle); border-radius:16px; padding:20px; border:1.5px solid var(--primary);"></div>
+          <div id="matrixActiveDetailPanel" style="background:var(--bg-elevated); border-radius:18px; padding:24px; border:2px solid var(--brand-primary); box-shadow:var(--shadow-sm);"></div>
         </div>
       </section>
 
-      <!-- TẦNG 6: BẢN ĐỒ HỆ THỐNG CÔNG NGHỆ -->
+      <!-- TẦNG 6: BẢN ĐỒ HỆ THỐNG CÔNG NGHỆ & ĐÁNH GIÁ SẴN SÀNG (MỨC 1–5) -->
       <section class="panel">
         <div class="panel-header">
           <div>
             <h2 class="panel-title">TẦNG 6: BẢN ĐỒ HỆ THỐNG CÔNG NGHỆ &amp; ĐÁNH GIÁ SẴN SÀNG (MỨC 1–5)</h2>
-            <p class="panel-subtitle">Nguyên tắc: Nghiệp vụ đi trước, công nghệ theo sau. Tách bạch rõ Phần Động (BPM), Phần Tĩnh (CRM/ERP), Điểm chạm và Hạ tầng dùng chung.</p>
+            <p class="panel-subtitle">Nguyên tắc: Nghiệp vụ đi trước, công nghệ theo sau. Tách bạch rõ Phần Động (BPM), Phần Tĩnh (CRM/ERP), Điểm chạm và Hạ tầng dùng chung &amp; AI.</p>
           </div>
         </div>
 
         <div class="scale-grid" style="margin-bottom:0;" id="techSystemsGrid"></div>
       </section>
 
-      <!-- TẦNG 7: LỘ TRÌNH 3 GIAI ĐOẠN, 6 PHIÊN HỌP & XUẤT BẢO CÁO -->
+      <!-- TẦNG 7: LỘ TRÌNH 3 GIAI ĐOẠN, 6 PHIÊN HỌP & XUẤT BẢN BÁO CÁO -->
       <section class="panel">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">TẦNG 7: LỘ TRÌNH TRIỂN KHAI 3 GIAI ĐOẠN &amp; XUẤT BẢN BÁO CÁO HOÀN CHỈNH</h2>
-            <p class="panel-subtitle">Lộ trình cuốn chiếu 90 ngày: Khóa trần chi phí ➔ Chuẩn hóa quy trình dòng tiền ➔ Đưa AI vào tối ưu và nhân rộng.</p>
+            <h2 class="panel-title">TẦNG 7: LỘ TRÌNH TRIỂN KHAI 3 GIAI ĐOẠN, 6 PHIÊN HỌP &amp; XUẤT BÁO CÁO HOÀN CHỈNH</h2>
+            <p class="panel-subtitle">Lộ trình cuốn chiếu 90 ngày kết hợp 6 phiên họp chốt kiến trúc: Khóa trần chi phí ➔ Chuẩn hóa quy trình dòng tiền ➔ Đưa AI vào tối ưu và nhân rộng.</p>
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-bottom:24px;" id="roadmapGrid"></div>
+        <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;color:var(--text-primary);">🚀 A. Lộ Trình Triển Khai 3 Giai Đoạn (Đầu Ra &amp; Nguồn Lực)</h3>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-bottom:28px;" id="roadmapGrid"></div>
+
+        <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;color:var(--text-primary);">🗓️ B. Quy Trình 6 Phiên Làm Mịn Từ Tổng Thể Đến Hệ Thống</h3>
+        <div class="cards-grid-3" id="sixSessionsGrid" style="margin-bottom:28px;"></div>
 
         <div class="step-actions">
           <button class="btn btn-outline" onclick="goStep(2)">⬅ Quay lại chỉnh sửa Bước 2</button>
@@ -1523,12 +1615,12 @@
   <!-- MODAL FOR DEEP INSPECTION -->
   <div class="modal-backdrop" id="detailModal" onclick="if(event.target===this)closeModal()">
     <div class="modal-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:1.5px solid var(--border-color); padding-bottom:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:2px solid var(--border-color); padding-bottom:14px;">
         <div>
-          <span class="scale-badge" id="modalBadge" style="background:var(--primary-soft);color:var(--primary);margin:0 0 6px;">CHI TIẾT KIẾN TRÚC</span>
-          <h3 id="modalTitle" style="font-size:20px; font-weight:800; color:var(--text-title);">Tiêu Đề</h3>
+          <span class="scale-badge" id="modalBadge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);margin:0 0 6px;">CHI TIẾT KIẾN TRÚC</span>
+          <h3 id="modalTitle" style="font-size:22px; font-weight:800; color:var(--text-primary);">Tiêu Đề</h3>
         </div>
-        <button onclick="closeModal()" style="border:none;background:var(--bg-subtle);width:32px;height:32px;border-radius:8px;cursor:pointer;font-weight:800;">✕</button>
+        <button onclick="closeModal()" style="border:none;background:var(--bg-subtle);width:34px;height:34px;border-radius:10px;cursor:pointer;font-weight:800;font-size:16px;">✕</button>
       </div>
       <div id="modalBody" style="display:flex; flex-direction:column; gap:14px;"></div>
     </div>
@@ -1540,14 +1632,14 @@
       document.documentElement.setAttribute('data-theme', theme);
       document.getElementById('theme-icon').innerText = theme === 'dark' ? '☀️' : '🌙';
       document.getElementById('theme-label').innerText = theme === 'dark' ? 'Giao diện Sáng' : 'Giao diện Tối';
-      localStorage.setItem('ea_theme_pref', theme);
+      localStorage.setItem('ea_theme_v5', theme);
     }
 
     function toggleTheme() {
       const cur = document.documentElement.getAttribute('data-theme') || 'light';
       setTheme(cur === 'light' ? 'dark' : 'light');
     }
-    setTheme(localStorage.getItem('ea_theme_pref') || 'light');
+    setTheme(localStorage.getItem('ea_theme_v5') || 'light');
 
     // STATE
     let selectedScale = 'micro';
@@ -1714,7 +1806,7 @@
       }
     };
 
-    // 8 IDEA PRESETS WITH FULL VALUES
+    // 8 PRESETS DATA
     const ideaPresets = {
       micro_saas: {
         scale: 'micro',
@@ -1862,7 +1954,66 @@
       }
     };
 
-    // 5 STAGES OF VALUE CHAIN DEFINITION (UNIVERSAL 7 LAYERS)
+    // 3 REVENUE LOOPS (VÒNG DOANH THU)
+    const REVENUE_LOOPS = [
+      {
+        badge: "VÒNG 1 · DÒNG TIỀN ĐỊNH KỲ",
+        title: "Gói Dịch Vụ / Thuê Bao Năm",
+        target: "Hộ gia đình, khách hàng cá nhân & hội viên thân thiết",
+        value: "Theo dõi, chăm sóc sức khỏe / công cụ tự động phục vụ liên tục hàng ngày",
+        cash: "Thu tiền trước theo năm/quý qua VietQR ➔ Dòng tiền ròng luôn dương"
+      },
+      {
+        badge: "VÒNG 2 · BIÊN LỢI NHUẬN CAO",
+        title: "Bán Thiết Bị & Sản Phẩm Lõi",
+        target: "Khách hàng có nhu cầu sử dụng công cụ/thiết bị chuyên sâu",
+        value: "Sản phẩm vật lý chính hãng, bảo hành trọn gói và tích hợp vào hệ thống",
+        cash: "Thanh toán từng đơn qua cổng QR ➔ Thu tiền ngay khi xuất kho"
+      },
+      {
+        badge: "VÒNG 3 · NHÂN RỘNG MẠNG LƯỚI",
+        title: "Phí Nền Tảng & Điều Phối Mạng Lưới",
+        target: "Mạng lưới Cộng tác viên, Đại lý, Bác sĩ & Điểm dịch vụ",
+        value: "Mở quyền nhận khách, cấp chứng chỉ và sử dụng hệ điều phối quy trình",
+        cash: "Trích 15–20% phí giao dịch thành công ➔ Thu nhập thụ động theo quy mô"
+      }
+    ];
+
+    // 3 CLASSIC MODELS (THAM CHIẾU KINH ĐIỂN)
+    const CLASSIC_MODELS = [
+      {
+        badge: "MÔ HÌNH 1 · TOYOTA (TPS)",
+        title: "Chuẩn Hóa Thao Tác & Phanh Andon Dừng Chuyền",
+        summary: "Mọi thao tác đều có quy chuẩn (SOP); phát hiện lỗi ở khâu nào là giật dây dừng kiểm tra ngay tại khâu đó, không đẩy sản phẩm lỗi sang bước sau.",
+        details: [
+          { label: "Nguyên lý cốt lõi", text: "Chuẩn hóa thao tác + Kiểm soát chất lượng ngay tại nguồn + Cải tiến liên tục (Kaizen) từ hiện trường." },
+          { label: "Khi nào cần áp dụng ngay?", text: "Khi tỷ lệ lỗi dịch vụ cao, các bộ phận hay đổ lỗi cho nhau và chất lượng phụ thuộc vào tâm trạng nhân viên." },
+          { label: "Cách cấy vào doanh nghiệp", text: "Thiết lập Cổng kiểm duyệt độc lập (Người làm khác Người duyệt) ở cuối mỗi Khâu vận hành." }
+        ]
+      },
+      {
+        badge: "MÔ HÌNH 2 · AMAZON & SPOTIFY",
+        title: "Tiểu Đội Tự Chủ & Giao Tiếp Bằng Đầu Ra Chuẩn",
+        summary: "Chia bộ máy thành các đội nhỏ tự chủ trọn vẹn 1 mục tiêu; các đội phối hợp bằng kết quả đầu ra (>0 byte) thay vì họp hành xin ý kiến.",
+        details: [
+          { label: "Nguyên lý cốt lõi", text: "Mỗi đội nhỏ chịu trách nhiệm trọn vẹn 1 chỉ số kinh doanh và kết nối qua dữ liệu gốc thống nhất." },
+          { label: "Khi nào cần áp dụng ngay?", text: "Khi công ty trên 20 người bắt đầu trì trệ, muốn làm 1 việc phải xin chữ ký qua 3–4 cấp phòng ban." },
+          { label: "Cách cấy vào doanh nghiệp", text: "Ràng buộc bàn giao giữa Marketing – Kinh doanh – Vận hành bằng Hồ sơ dữ liệu gốc (1 Nguồn sự thật)." }
+        ]
+      },
+      {
+        badge: "MÔ HÌNH 3 · HAIER & TỔ ONG TỰ CHỦ",
+        title: "Tự Chủ P&L + Phân Quyền Theo Chứng Chỉ + AI",
+        summary: "Mỗi chi nhánh vận hành như một đơn vị tự chủ có hạch toán thu-chi rõ ràng; nhân sự nhận việc theo chứng chỉ năng lực và có Trợ lý AI hỗ trợ.",
+        details: [
+          { label: "Nguyên lý cốt lõi", text: "Khoán gọn theo kết quả đầu ra + Cấp quyền làm việc dựa trên Chứng chỉ đào tạo + Dùng AI gánh việc lặp lại." },
+          { label: "Khi nào cần áp dụng ngay?", text: "Khi mở rộng mạng lưới đa chi nhánh / đa vùng hoặc phát triển đội ngũ hàng trăm Cộng tác viên / Đại lý." },
+          { label: "Cách cấy vào doanh nghiệp", text: "Tích hợp Học viện đào tạo nội bộ (cấp chứng chỉ mở khóa quyền nhận việc) với Sổ cái chia thưởng tự động." }
+        ]
+      }
+    ];
+
+    // UNIVERSAL 5 STAGES OF VALUE CHAIN
     const UNIVERSAL_STAGES = [
       {
         num: "KHÂU 1",
@@ -2009,6 +2160,52 @@
       }
     ];
 
+    // 6 SESSIONS
+    const SIX_SESSIONS = [
+      {
+        num: "PHIÊN 1",
+        title: "Chốt Sơ Đồ Đơn Vị & Danh Mục Vai Trò",
+        owner: "Chủ trì: Ban Điều Hành / CEO",
+        summary: "Liệt kê toàn bộ các đơn vị tham gia vận hành và xác định rõ từng vai trò chịu trách nhiệm về kết quả gì.",
+        check: "Mỗi vai trò đã chịu trách nhiệm đúng 1 kết quả đầu ra chưa? Đã tách bạch vai trò khỏi chức danh chưa?"
+      },
+      {
+        num: "PHIÊN 2",
+        title: "Chốt Kết Quả Đầu Ra Bắt Buộc (>0 byte)",
+        owner: "Chủ trì: Trưởng Các Khối Chức Năng",
+        summary: "Định nghĩa chính xác vật phẩm bàn giao của từng bước: phải quan sát được, đo lường được và lưu trữ được.",
+        check: "Đầu ra có kiểm chứng được bằng dữ liệu thật không? Có bị mơ hồ dạng 'hỗ trợ', 'theo dõi' không?"
+      },
+      {
+        num: "PHIÊN 3",
+        title: "Chuẩn Hóa 5 Khâu Chuỗi Giá Trị & SLA",
+        owner: "Chủ trì: Quản Lý Vận Hành (Ops)",
+        summary: "Nối liền các bước thành dòng chảy không đứt đoạn; gán cam kết thời gian hoàn thành (SLA) cho từng khâu.",
+        check: "Có khâu nào bị nghẽn nút chai không? Điểm bàn giao giữa các bộ phận đã có tiêu chuẩn nghiệm thu chưa?"
+      },
+      {
+        num: "PHIÊN 4",
+        title: "Định Danh Hồ Sơ Dữ Liệu Gốc (Master Data)",
+        owner: "Chủ trì: Giám Đốc Công Nghệ / Dữ Liệu",
+        summary: "Quy định 1 nguồn sự thật duy nhất cho mỗi đối tượng dữ liệu: Khách hàng, Đơn hàng, Biên bản, Sổ cái ví.",
+        check: "Dữ liệu có bị trùng lặp ở 2 nơi không? Các khâu sau có được sửa đè lên dữ liệu gốc của khâu trước không?"
+      },
+      {
+        num: "PHIÊN 5",
+        title: "Đánh Giá GAP Hệ Thống & Quyết Định Đầu Tư",
+        owner: "Chủ trì: CFO & CTO",
+        summary: "Rà soát khoảng trống giữa yêu cầu nghiệp vụ và phần mềm hiện có; quyết định Tự xây (Build), Mua (Buy) hay Dùng lại (Reuse).",
+        check: "Chi phí đầu tư phần mềm có nằm trong trần ngân sách cho phép không? Có chọn công cụ quá phức tạp so với quy mô không?"
+      },
+      {
+        num: "PHIÊN 6",
+        title: "Kế Hoạch Triển Khai Cuốn Chiếu 90 Ngày",
+        owner: "Chủ trì: Toàn Thể Lãnh Đạo",
+        summary: "Phân bổ nguồn lực, giao quyền cho từng Người phụ trách và thiết lập cơ chế họp Kaizen đánh giá hàng tuần.",
+        check: "Đã có chỉ số đo lường thành công rõ ràng sau 90 ngày chưa? Đã chuẩn bị phương án dự phòng dòng tiền chưa?"
+      }
+    ];
+
     // PULSE CALCULATION
     function calcPulseMetrics() {
       const rev = parseFloat(document.getElementById('inRev').value) || 0;
@@ -2025,17 +2222,17 @@
       document.getElementById('pulseSummaryBox').innerHTML = `
         <div class="pulse-card">
           <span class="pulse-label">Trần Quỹ Lương</span>
-          <div class="pulse-val" style="color:var(--primary);">${maxBudget.toLocaleString('vi-VN')} tr</div>
+          <div class="pulse-val" style="color:var(--brand-primary);">${maxBudget.toLocaleString('vi-VN')} tr</div>
           <span class="pulse-sub">Cho phép chi tối đa ${capPct}% doanh thu</span>
         </div>
-        <div class="pulse-card" style="${isOver ? 'border-color:var(--rose);background:#FFF1F2;' : ''}">
+        <div class="pulse-card" style="${isOver ? 'border-color:var(--rose);background:var(--rose-bg);' : ''}">
           <span class="pulse-label">Lương Thực Tế</span>
           <div class="pulse-val" style="color:${isOver ? 'var(--rose)' : 'var(--emerald)'};">${actualPayroll.toLocaleString('vi-VN')} tr</div>
           <span class="pulse-sub">${isOver ? '🚨 Vượt trần +' + (actualPayroll - maxBudget).toLocaleString('vi-VN') + ' tr (' + actualPct + '%)' : '✅ Trong ngưỡng an toàn (' + actualPct + '%)'}</span>
         </div>
         <div class="pulse-card">
           <span class="pulse-label">Định Biên An Toàn</span>
-          <div class="pulse-val" style="color:var(--text-title);">${safeFte} người</div>
+          <div class="pulse-val" style="color:var(--text-primary);">${safeFte} người</div>
           <span class="pulse-sub">Hiện có: ${fte} người (Mức lương BQ: ${sal} tr)</span>
         </div>
         <div class="pulse-card">
@@ -2147,6 +2344,21 @@
       document.getElementById('rep-b4-runway').innerText = q[10];
       document.getElementById('rep-b4-inc').innerText = q[12];
 
+      // Tầng 1 (tiếp): Revenue Streams Grid
+      document.getElementById('revenueStreamsGrid').innerHTML = REVENUE_LOOPS.map(r => `
+        <div class="scale-card" style="cursor:default; border-top:4px solid var(--emerald);">
+          <div>
+            <span class="scale-badge" style="background:var(--emerald-bg);color:var(--emerald);border:1px solid var(--emerald-border);">${r.badge}</span>
+            <h3>${r.title}</h3>
+            <p><strong>Khách hàng:</strong> ${r.target}</p>
+            <p style="margin-top:6px;"><strong>Giá trị:</strong> ${r.value}</p>
+          </div>
+          <div class="scale-specs">
+            <span>💵 <b>Dòng tiền về:</b> ${r.cash}</span>
+          </div>
+        </div>
+      `).join('');
+
       // Tầng 2: Visual Org Tree
       document.getElementById('tree-root-title').innerText = cfg.rootTitle;
       document.getElementById('tree-root-desc').innerText = `${cfg.rootDesc} • Nút thắt trách nhiệm: ${q[8]}`;
@@ -2167,6 +2379,20 @@
         </div>
       `).join('');
 
+      // Tầng 2 (tiếp): Classic Models
+      document.getElementById('classicModelsGrid').innerHTML = CLASSIC_MODELS.map(m => `
+        <div class="scale-card" style="cursor:pointer;" onclick="openCustomModal('${m.badge}', '${m.title}', ${JSON.stringify(m.details).replace(/"/g, '&quot;')})">
+          <div>
+            <span class="scale-badge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);">${m.badge}</span>
+            <h3>${m.title}</h3>
+            <p style="margin-top:6px;">${m.summary}</p>
+          </div>
+          <div class="scale-specs">
+            <span style="color:var(--brand-primary);font-weight:700;">👆 Bấm để xem chi tiết cách áp dụng →</span>
+          </div>
+        </div>
+      `).join('');
+
       // Tầng 3: AI Infra
       document.getElementById('rep-infra-ai-explain').innerText = `Dự án này: ${q[9]}`;
 
@@ -2182,12 +2408,12 @@
             <span class="flow-lane-text">${st.custJourney}</span>
           </div>
 
-          <div class="flow-lane" style="border-left:3px solid var(--emerald);">
+          <div class="flow-lane" style="border-left:3.5px solid var(--emerald);">
             <span class="flow-lane-label" style="color:var(--emerald);">📦 Sản Phẩm / Dịch Vụ:</span>
             <span class="flow-lane-text">${st.prodFlow}</span>
           </div>
 
-          <div class="flow-lane" style="border-left:3px solid var(--amber);">
+          <div class="flow-lane" style="border-left:3.5px solid var(--amber);">
             <span class="flow-lane-label" style="color:var(--amber);">💳 Dữ Liệu &amp; Tiền:</span>
             <span class="flow-lane-text">${st.dataCash}</span>
           </div>
@@ -2201,12 +2427,12 @@
       document.getElementById('techSystemsGrid').innerHTML = TECH_SYSTEMS.map(sys => `
         <div class="scale-card" style="cursor:default;">
           <div>
-            <span class="scale-badge" style="background:var(--primary-soft);color:var(--primary);">${sys.badge}</span>
+            <span class="scale-badge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);">${sys.badge}</span>
             <h3>${sys.title}</h3>
             <p>${sys.summary}</p>
           </div>
           <div class="scale-specs">
-            <span>📊 <b>Sẵn sàng:</b> <span style="color:var(--emerald);font-weight:700;">${sys.level}</span></span>
+            <span>📊 <b>Sẵn sàng:</b> <span style="color:var(--emerald);font-weight:800;">${sys.level}</span></span>
             <span>🔍 <b>Khoảng trống (GAP):</b> ${sys.gap}</span>
             <span>💡 <b>Quyết định:</b> ${sys.decision}</span>
           </div>
@@ -2215,14 +2441,31 @@
 
       // Tầng 7: Roadmap
       document.getElementById('roadmapGrid').innerHTML = ROADMAP_PHASES.map(ph => `
-        <div class="scale-card" style="cursor:default; border-top:4px solid var(--primary);">
+        <div class="scale-card" style="cursor:default; border-top:5px solid var(--brand-primary);">
           <div>
-            <span class="scale-badge" style="background:var(--primary-soft);color:var(--primary);">${ph.phase}</span>
+            <span class="scale-badge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);">${ph.phase}</span>
             <h3>${ph.title}</h3>
             <p style="margin-top:8px;">${ph.focus}</p>
           </div>
           <div class="scale-specs">
             <span>🎯 <b>Đầu ra bắt buộc:</b> ${ph.output}</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Tầng 7 (tiếp): 6 Sessions
+      document.getElementById('sixSessionsGrid').innerHTML = SIX_SESSIONS.map(s => `
+        <div class="scale-card" style="cursor:default; border-top:4px solid var(--purple);">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span class="scale-badge" style="background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border);margin:0;">${s.num}</span>
+              <span style="font-size:12.5px;color:var(--text-muted);font-weight:700;">${s.owner}</span>
+            </div>
+            <h3>${s.title}</h3>
+            <p style="margin-top:6px;">${s.summary}</p>
+          </div>
+          <div class="scale-specs">
+            <span>❓ <b>Câu hỏi kiểm tra:</b> ${s.check}</span>
           </div>
         </div>
       `).join('');
@@ -2243,40 +2486,40 @@
       tbody.innerHTML = UNIVERSAL_STAGES.map((st, idx) => `
         <tr onclick="openStageModal(${idx})">
           <td>
-            <span class="scale-badge" style="background:var(--primary-soft);color:var(--primary);margin-bottom:4px;">${st.num}</span>
-            <div style="font-weight:800;color:var(--text-title);margin-bottom:4px;">${st.name}</div>
-            <div style="font-size:12px;color:var(--text-muted);">⏱️ SLA: ${st.sla}</div>
+            <span class="scale-badge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);margin-bottom:6px;">${st.num}</span>
+            <div style="font-weight:800;color:var(--text-primary);margin-bottom:4px;font-size:15.5px;">${st.name}</div>
+            <div style="font-size:13px;color:var(--text-muted);font-weight:700;">⏱️ SLA: ${st.sla}</div>
           </td>
           <td>
-            <div style="font-weight:700;color:var(--text-primary);margin-bottom:4px;">${st.orgRole}</div>
-            <div style="font-size:12px;color:var(--text-muted);border-top:1px dashed var(--border-color);padding-top:4px;">🎓 ${st.cert}</div>
+            <div style="font-weight:800;color:var(--text-primary);margin-bottom:4px;">${st.orgRole}</div>
+            <div style="font-size:13px;color:var(--text-secondary);border-top:1.5px dashed var(--border-color);padding-top:4px;">🎓 ${st.cert}</div>
           </td>
           <td>
-            <div style="font-weight:700;color:var(--emerald);margin-bottom:4px;">${st.output}</div>
-            <div style="font-size:12px;color:var(--text-muted);border-top:1px dashed var(--border-color);padding-top:4px;">📊 KPI: ${st.kpi}</div>
+            <div style="font-weight:800;color:var(--emerald);margin-bottom:4px;">${st.output}</div>
+            <div style="font-size:13px;color:var(--text-secondary);border-top:1.5px dashed var(--border-color);padding-top:4px;">📊 KPI: ${st.kpi}</div>
           </td>
           <td>
-            <div style="font-size:13.5px;color:var(--text-primary);line-height:1.5;">${st.act}</div>
+            <div style="font-size:14px;color:var(--text-primary);line-height:1.55;">${st.act}</div>
           </td>
           <td>
-            <span class="scale-badge" style="background:var(--emerald-soft);color:var(--emerald);margin-bottom:4px;">${st.masterDataId}</span>
-            <div style="font-size:13px;font-weight:600;color:var(--text-primary);">${st.masterData}</div>
+            <span class="scale-badge" style="background:var(--emerald-bg);color:var(--emerald);border:1px solid var(--emerald-border);margin-bottom:6px;">${st.masterDataId}</span>
+            <div style="font-size:13.5px;font-weight:700;color:var(--text-primary);">${st.masterData}</div>
           </td>
           <td>
-            <div style="font-size:13px;color:var(--text-secondary);">${st.aiSys}</div>
+            <div style="font-size:13.5px;color:var(--text-secondary);">${st.aiSys}</div>
           </td>
           <td>
-            <span class="scale-badge" style="background:var(--amber-soft);color:var(--amber);margin-bottom:4px;">Gate ${idx+1}</span>
-            <div style="font-size:13px;color:var(--text-secondary);">${st.gateAndon}</div>
+            <span class="scale-badge" style="background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border);margin-bottom:6px;">Gate ${idx+1}</span>
+            <div style="font-size:13.5px;color:var(--text-secondary);">${st.gateAndon}</div>
           </td>
         </tr>
       `).join('');
 
       // Cards View
       document.getElementById('matrixStepperNodes').innerHTML = UNIVERSAL_STAGES.map((st, idx) => `
-        <button class="btn btn-outline" style="${idx === currentStageIdx ? 'border-color:var(--primary);background:var(--primary-soft);color:var(--primary);' : ''} justify-content:center; text-align:center; padding:10px;" onclick="selectMatrixStage(${idx})">
-          <div style="font-weight:800;font-size:13px;">${st.num}</div>
-          <div style="font-size:11.5px;opacity:0.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${st.name.substring(0, 16)}...</div>
+        <button class="btn btn-outline" style="${idx === currentStageIdx ? 'border-color:var(--brand-primary);background:var(--bg-accent-soft);color:var(--brand-primary);' : ''} justify-content:center; text-align:center; padding:12px;" onclick="selectMatrixStage(${idx})">
+          <div style="font-weight:900;font-size:14px;">${st.num}</div>
+          <div style="font-size:12px;opacity:0.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${st.name.substring(0, 16)}...</div>
         </button>
       `).join('');
 
@@ -2291,35 +2534,35 @@
     function renderMatrixStageDetail() {
       const st = UNIVERSAL_STAGES[currentStageIdx];
       document.getElementById('matrixActiveDetailPanel').innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1.5px solid var(--border-color); padding-bottom:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; border-bottom:2px solid var(--border-color); padding-bottom:12px;">
           <div>
-            <span class="scale-badge" style="background:var(--primary-soft);color:var(--primary);">${st.num} TRONG CHUỖI GIÁ TRỊ</span>
-            <h3 style="font-size:18px;font-weight:800;margin-top:4px;">${st.name}</h3>
+            <span class="scale-badge" style="background:var(--bg-accent-soft);color:var(--brand-primary);border:1px solid var(--border-color);">${st.num} TRONG CHUỖI GIÁ TRỊ</span>
+            <h3 style="font-size:20px;font-weight:900;margin-top:4px;">${st.name}</h3>
           </div>
-          <span style="font-weight:800;color:var(--amber);font-size:14px;">⏱️ SLA: ${st.sla}</span>
+          <span style="font-weight:900;color:var(--amber);font-size:15px;background:var(--amber-bg);padding:6px 14px;border-radius:999px;border:1px solid var(--amber-border);">⏱️ SLA: ${st.sla}</span>
         </div>
-        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;">
-          <div class="sub-role-item" style="padding:14px;">
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+          <div class="sub-role-item" style="padding:16px;">
             <b>👤 1. Đơn Vị &amp; Vai Trò (T1/T2):</b>
             <span>${st.orgRole}<br>🎓 <em>Chứng chỉ:</em> ${st.cert}</span>
           </div>
-          <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--emerald);">
+          <div class="sub-role-item" style="padding:16px; border-left:4px solid var(--emerald);">
             <b style="color:var(--emerald);">🎯 2. Kết Quả Bắt Buộc (T3 FUNC &gt;0 byte):</b>
             <span>${st.output}<br>📊 <em>KPI:</em> ${st.kpi}</span>
           </div>
-          <div class="sub-role-item" style="padding:14px;">
+          <div class="sub-role-item" style="padding:16px;">
             <b>⚙️ 3. Thao Tác Chuẩn (T4 ACT):</b>
             <span>${st.act}</span>
           </div>
-          <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--purple);">
+          <div class="sub-role-item" style="padding:16px; border-left:4px solid var(--purple);">
             <b>🗂️ 4. Dữ Liệu Gốc (T6 DATA):</b>
             <span><strong>${st.masterDataId}</strong>: ${st.masterData}</span>
           </div>
-          <div class="sub-role-item" style="padding:14px;">
+          <div class="sub-role-item" style="padding:16px;">
             <b>🤖 5. AI &amp; Hệ Thống (T7 SYS):</b>
             <span>${st.aiSys}</span>
           </div>
-          <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--amber);">
+          <div class="sub-role-item" style="padding:16px; border-left:4px solid var(--amber);">
             <b style="color:var(--amber);">🛡️ 6. Cổng Kiểm Duyệt (Gate / Andon):</b>
             <span>${st.gateAndon}</span>
           </div>
@@ -2343,7 +2586,7 @@
           <b>👤 1. Đơn Vị &amp; Vai Trò (T1 ORG / T2 ROLE):</b>
           <span>${st.orgRole} · 🎓 <em>Năng lực / Chứng chỉ:</em> ${st.cert}</span>
         </div>
-        <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--emerald);">
+        <div class="sub-role-item" style="padding:14px; border-left:4px solid var(--emerald);">
           <b style="color:var(--emerald);">🎯 2. Kết Quả Bắt Buộc (T3 FUNC &gt;0 byte):</b>
           <span>${st.output} · 📊 <em>KPI:</em> ${st.kpi}</span>
         </div>
@@ -2351,15 +2594,15 @@
           <b>⚙️ 3. Hoạt Động &amp; Thao Tác Chuẩn (T4 ACT):</b>
           <span>${st.act}</span>
         </div>
-        <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--primary);">
+        <div class="sub-role-item" style="padding:14px; border-left:4px solid var(--brand-primary);">
           <b>🚶‍♂️ 4. Luồng Trải Nghiệm Khách Hàng (Customer Journey):</b>
           <span>${st.custJourney}</span>
         </div>
-        <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--purple);">
+        <div class="sub-role-item" style="padding:14px; border-left:4px solid var(--purple);">
           <b>📦 5. Dòng Bàn Giao Sản Phẩm / Dịch Vụ:</b>
           <span>${st.prodFlow}</span>
         </div>
-        <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--amber);">
+        <div class="sub-role-item" style="padding:14px; border-left:4px solid var(--amber);">
           <b>💳 6. Dữ Liệu Gốc &amp; Dòng Tiền:</b>
           <span>${st.dataCash}</span>
         </div>
@@ -2367,11 +2610,23 @@
           <b>🤖 7. Khai Thác AI &amp; Hệ Thống (T7 SYS):</b>
           <span>${st.aiSys}</span>
         </div>
-        <div class="sub-role-item" style="padding:14px; border-left:3px solid var(--rose);">
+        <div class="sub-role-item" style="padding:14px; border-left:4px solid var(--rose);">
           <b style="color:var(--rose);">🛡️ 8. Cổng Kiểm Duyệt Độc Lập (Gate / Andon):</b>
           <span>${st.gateAndon}</span>
         </div>
       `;
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    function openCustomModal(badge, title, details) {
+      document.getElementById('modalBadge').innerText = badge;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerHTML = details.map(d => `
+        <div class="sub-role-item" style="padding:14px;">
+          <b>${d.label}:</b>
+          <span>${d.text}</span>
+        </div>
+      `).join('');
       document.getElementById('detailModal').classList.add('open');
     }
 
@@ -2392,86 +2647,34 @@
       const q = {};
       for (let i = 1; i <= 12; i++) q[i] = document.getElementById('f-q' + i).value.trim();
 
-      let md = `# BÁO CÁO THIẾT KẾ ĐỊNH HƯỚNG KIẾN TRÚC MÔ HÌNH TỔ CHỨC V1
-`;
-      md += `**Doanh nghiệp / Dự án:** ${projName}
-`;
-      md += `**Quy mô:** ${cfg.name}
-`;
-      md += `**Ngày xuất bản:** ${new Date().toISOString().slice(0, 10)} | **Chuẩn:** BMAA-OS Enterprise Architecture v3.0
-
-`;
-      md += `**Chỉ số điều hành:** Doanh thu ${rev} triệu/tháng · Trần lương ${capPct}% · Định biên ${fte} FTE (${sal} tr/người)
-
-`;
-      md += `---
-
-`;
-      md += `## 💡 1. BÀI TOÁN & Ý TƯỞNG KHỞI NGUỒN
-${idea}
-
-`;
-      md += `## 🏛️ 2. BẢN THIẾT KẾ DOANH CHỦ (4 BLOCKS NỀN TẢNG)
-
-`;
-      md += `### Block 1: Mô Hình Kinh Doanh (Mỏ Vàng)
-- **Khách hàng & Nỗi đau:** ${q[1]}
-- **Cơ chế thu tiền:** ${q[2]}
-- **Rào cản Moat & 5 Luật:** ${q[3]}
-
-`;
-      md += `### Block 2: Kế Hoạch Chiến Lược (Cách Đào)
-- **Đích 90 ngày V1:** ${q[4]}
-- **Kỷ luật đánh đổi:** ${q[5]}
-- **Kênh GTM:** ${q[6]}
-
-`;
-      md += `### Block 3: Hạ Tầng Tổ Chức & Công Nghệ (Người Đào & AI)
-- **Năng lực lõi:** ${q[7]}
-- **Nút thắt Con người:** ${q[8]}
-- **Luồng việc AI:** ${q[9]}
-
-`;
-      md += `### Block 4: Mô Hình Tài Chính (Bệ Đỡ Vốn)
-- **Trần ngân sách & Runway:** ${q[10]}
-- **Kinh tế đơn vị:** ${q[11]}
-- **Cơ chế đãi ngộ:** ${q[12]}
-
-`;
-      md += `## 🌳 3. CƠ CẤU TỔ CHỨC & PHÂN VAI HUMAN × AI
-**Lãnh đạo tối cao:** ${cfg.rootTitle} (${cfg.rootDesc})
-
-`;
+      let md = `# BÁO CÁO THIẾT KẾ ĐỊNH HƯỚNG KIẾN TRÚC MÔ HÌNH TỔ CHỨC V1\n`;
+      md += `**Doanh nghiệp / Dự án:** ${projName}\n`;
+      md += `**Quy mô:** ${cfg.name}\n`;
+      md += `**Ngày xuất bản:** ${new Date().toISOString().slice(0, 10)} | **Chuẩn:** BMAA-OS Enterprise Architecture v5.0\n\n`;
+      md += `**Chỉ số điều hành:** Doanh thu ${rev} triệu/tháng · Trần lương ${capPct}% · Định biên ${fte} FTE (${sal} tr/người)\n\n`;
+      md += `---\n\n`;
+      md += `## 1. BÀI TOÁN & Ý TƯỞNG KHỞI NGUỒN\n${idea}\n\n`;
+      md += `## 2. BẢN THIẾT KẾ DOANH CHỦ (4 BLOCKS NỀN TẢNG)\n\n`;
+      md += `### Block 1: Mô Hình Kinh Doanh (Mỏ Vàng)\n- **Khách hàng & Nỗi đau:** ${q[1]}\n- **Cơ chế thu tiền:** ${q[2]}\n- **Rào cản Moat & 5 Luật:** ${q[3]}\n\n`;
+      md += `### Block 2: Kế Hoạch Chiến Lược (Cách Đào)\n- **Đích 90 ngày V1:** ${q[4]}\n- **Kỷ luật đánh đổi:** ${q[5]}\n- **Kênh GTM:** ${q[6]}\n\n`;
+      md += `### Block 3: Hạ Tầng Tổ Chức & Công Nghệ (Người Đào & AI)\n- **Năng lực lõi:** ${q[7]}\n- **Nút thắt Con người:** ${q[8]}\n- **Luồng việc AI:** ${q[9]}\n\n`;
+      md += `### Block 4: Mô Hình Tài Chính (Bệ Đỡ Vốn)\n- **Trần ngân sách & Runway:** ${q[10]}\n- **Kinh tế đơn vị:** ${q[11]}\n- **Cơ chế đãi ngộ:** ${q[12]}\n\n`;
+      md += `## 3. CƠ CẤU TỔ CHỨC & PHÂN VAI HUMAN × AI\n**Lãnh đạo tối cao:** ${cfg.rootTitle} (${cfg.rootDesc})\n\n`;
       cfg.branches.forEach(b => {
-        md += `### ${b.title}
-*${b.explain}*
-`;
-        b.roles.forEach(r => { md += `- **${r.name}:** ${r.desc}
-`; });
-        md += `
-`;
+        md += `### ${b.title}\n*${b.explain}*\n`;
+        b.roles.forEach(r => { md += `- **${r.name}:** ${r.desc}\n`; });
+        md += `\n`;
       });
-      md += `## ⚙️ 4. CHUỖI GIÁ TRỊ 5 KHÂU (MA TRẬN 7 LỚP)
-
-`;
+      md += `## 4. CHUỖI GIÁ TRỊ 5 KHÂU (MA TRẬN 7 LỚP)\n\n`;
       UNIVERSAL_STAGES.forEach(st => {
-        md += `### ${st.num}: ${st.name} (SLA: ${st.sla})
-`;
-        md += `- **Đơn vị & Vai trò:** ${st.orgRole} (Chứng chỉ: ${st.cert})
-`;
-        md += `- **Đầu ra bắt buộc:** ${st.output} (KPI: ${st.kpi})
-`;
-        md += `- **Thao tác chuẩn:** ${st.act}
-`;
-        md += `- **Khách hàng:** ${st.custJourney} | **Sản phẩm:** ${st.prodFlow}
-`;
-        md += `- **Dữ liệu gốc:** ${st.masterDataId} - ${st.masterData}
-`;
-        md += `- **AI & Hệ thống:** ${st.aiSys}
-`;
-        md += `- **Cổng kiểm duyệt:** ${st.gateAndon}
-
-`;
+        md += `### ${st.num}: ${st.name} (SLA: ${st.sla})\n`;
+        md += `- **Đơn vị & Vai trò:** ${st.orgRole} (Chứng chỉ: ${st.cert})\n`;
+        md += `- **Đầu ra bắt buộc:** ${st.output} (KPI: ${st.kpi})\n`;
+        md += `- **Thao tác chuẩn:** ${st.act}\n`;
+        md += `- **Khách hàng:** ${st.custJourney} | **Sản phẩm:** ${st.prodFlow}\n`;
+        md += `- **Dữ liệu gốc:** ${st.masterDataId} - ${st.masterData}\n`;
+        md += `- **AI & Hệ thống:** ${st.aiSys}\n`;
+        md += `- **Cổng kiểm duyệt:** ${st.gateAndon}\n\n`;
       });
       return md;
     }
@@ -2498,7 +2701,7 @@ ${idea}
       URL.revokeObjectURL(url);
     }
 
-    // INIT
+    // INITIALIZATION
     loadIdea('micro_saas');
   </script>
 </body>
