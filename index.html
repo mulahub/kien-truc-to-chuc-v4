@@ -734,6 +734,152 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    /* VIEW SWITCHER & MATRIX TABLE (7 COLUMNS) */
+    .view-switcher-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      background: var(--bg-surface);
+      padding: 6px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      width: fit-content;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .view-btn {
+      padding: 10px 20px;
+      font-size: 15.5px;
+      font-weight: 800;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .view-btn:hover {
+      color: var(--text-primary);
+      background: var(--bg-accent-soft);
+    }
+
+    .view-btn.active {
+      background: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(29, 78, 216, 0.3);
+    }
+
+    .matrix-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 15.5px;
+      min-width: 1320px;
+    }
+
+    .matrix-table th {
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 14.5px;
+      padding: 18px 16px;
+      border-bottom: 2px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .matrix-table th:last-child {
+      border-right: none;
+    }
+
+    .matrix-table td {
+      padding: 18px 16px;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+      line-height: 1.6;
+      font-size: 15px;
+      transition: background 0.15s;
+    }
+
+    .matrix-table td:last-child {
+      border-right: none;
+    }
+
+    .matrix-table tr:hover td {
+      background: var(--bg-accent-soft);
+    }
+
+    .matrix-badge-stage {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--brand-soft);
+      color: var(--brand-primary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .matrix-stage-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .matrix-sla-tag {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .matrix-tag-gate {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid var(--amber-border);
+      margin-bottom: 6px;
+    }
+
+    .matrix-tag-data {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--emerald-bg);
+      color: var(--emerald);
+      border: 1px solid var(--emerald-border);
+      margin-bottom: 6px;
+    }
+
   </style>
 </head>
 <body>
@@ -867,19 +1013,50 @@
 
     <!-- TAB 2: BƯỚC 3 - 5 KHÂU QUY TRÌNH & HỒ SƠ DỮ LIỆU -->
     <section class="tab-panel" id="tabPanel2">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">Bước 3: Năm Khâu Vận Hành Trong Chuỗi Giá Trị & Hồ Sơ Dữ Liệu Gốc</h2>
-          <p class="panel-desc">Chọn <strong>từng Khâu (từ Khâu 1 đến Khâu 5)</strong> trên thanh ngang dưới đây để xem chi tiết 7 lớp phân rã: <em>Bộ phận ➔ Vai trò ➔ Kết quả ➔ Thao tác ➔ Quy trình ➔ Dữ liệu gốc ➔ Chốt kiểm soát</em>.</p>
+      <div class="panel-header" style="flex-wrap:wrap;gap:16px;">
+        <div style="flex:1;min-width:320px;">
+          <h2 class="panel-title">Bước 3: Năm Khâu Vận Hành Chuỗi Giá Trị & Hồ Sơ Dữ Liệu Gốc</h2>
+          <p class="panel-desc">Chuỗi giá trị hoàn chỉnh 7 lớp: <em>Khâu Chuỗi Giá Trị (T5 PROC) ➔ Đơn Vị & Vai Trò (T1/T2) ➔ Kết Quả Đầu Ra (T3 FUNC) ➔ Thao Tác Chuẩn (T4 ACT) ➔ Dữ Liệu Gốc (T6 DATA) ➔ AI & Hệ Thống (T7 SYS) ➔ Cổng Kiểm Duyệt (Gate/Andon)</em>.</p>
         </div>
-        <span class="click-hint">👆 Bấm chọn Khâu 1 → Khâu 5 để xem chi tiết</span>
+        <div class="view-switcher-bar">
+          <button class="view-btn active" id="btnViewStepper" onclick="switchStageView('stepper')">
+            🎴 Thẻ Tương Tác 5 Khâu
+          </button>
+          <button class="view-btn" id="btnViewMatrix" onclick="switchStageView('matrix')">
+            📊 Bảng Ma Trận 7 Cột Toàn Cảnh
+          </button>
+        </div>
       </div>
 
-      <!-- 5 STAGES SELECTOR -->
-      <div class="stage-pipeline" id="stagePipeline"></div>
+      <!-- VIEW 1: 5 STAGES STEPPER VIEW -->
+      <div id="stageStepperView">
+        <div class="stage-pipeline" id="stagePipeline"></div>
+        <div class="stage-detail-panel" id="stageDetailPanel"></div>
+      </div>
 
-      <!-- SELECTED STAGE DETAIL -->
-      <div class="stage-detail-panel" id="stageDetailPanel"></div>
+      <!-- VIEW 2: FULL 7-COLUMN ARCHITECTURE MATRIX TABLE -->
+      <div id="stageMatrixView" style="display:none;">
+        <div style="margin-bottom:12px;font-size:15px;color:var(--text-muted);display:flex;justify-content:space-between;align-items:center;">
+          <span>💡 <em>Bảng ma trận kiến trúc đối chuẩn 7 lớp theo chuỗi giá trị. Bấm vào bất kỳ dòng nào để xem thẻ chi tiết chuyên sâu.</em></span>
+          <span style="font-weight:700;color:var(--brand-primary);">Khung Kiến Trúc Doanh Nghiệp Chuẩn Mực</span>
+        </div>
+        <div class="matrix-table-wrapper">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th style="width:17%;">Khâu Chuỗi Giá Trị<br><span style="font-size:12px;color:var(--text-muted);font-weight:600;">(T5 PROC)</span></th>
+                <th style="width:14%;">Đơn Vị &amp; Vai Trò<br><span style="font-size:12px;color:var(--text-muted);font-weight:600;">(T1 ORG / T2 ROLE)</span></th>
+                <th style="width:15%;">Kết Quả Đầu Ra Bắt Buộc<br><span style="font-size:12px;color:var(--emerald);font-weight:700;">(T3 FUNC &gt;0 byte)</span></th>
+                <th style="width:18%;">Hoạt Động &amp; Thao Tác Chuẩn<br><span style="font-size:12px;color:var(--text-muted);font-weight:600;">(T4 ACT)</span></th>
+                <th style="width:13%;">Đối Tượng Dữ Liệu Gốc<br><span style="font-size:12px;color:var(--text-muted);font-weight:600;">(T6 MASTER DATA)</span></th>
+                <th style="width:11%;">Khai Thác AI &amp; Hệ Thống<br><span style="font-size:12px;color:var(--text-muted);font-weight:600;">(T7 USE / SYS)</span></th>
+                <th style="width:12%;">Cổng Kiểm Duyệt<br><span style="font-size:12px;color:var(--amber);font-weight:700;">(Gate / Andon)</span></th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
     <!-- TAB 3: BƯỚC 4 - BẢN ĐỒ HỆ THỐNG & ĐÁNH GIÁ SẴN SÀNG -->
@@ -1151,66 +1328,76 @@
             ]
           }
         ],
-        stages: [
+                stages: [
           {
             num: "KHÂU 1",
-            name: "Đào Tạo, Cấp Chứng Chỉ & Kích Hoạt Đội Ngũ",
-            sla: "Mở quyền trong 24h sau khi đạt chứng chỉ",
-            orgRole: "Học viện Đào tạo Nội bộ & Ban Điều phối Vùng",
-            cert: "Hoàn thành khóa học & bài kiểm tra sát hạch thực hành",
-            output: "Nhân sự / Cộng tác viên có chứng chỉ hợp lệ, được mở quyền nhận việc trên ứng dụng và gắn vào Điểm dịch vụ",
-            kpi: "Số CTV đạt chuẩn onboard mới / tháng; Tỷ lệ CTV hoạt động đều",
-            process: "Đăng ký học trên nền tảng Đào tạo ➔ Hoàn thành học phần & thi đạt ➔ Hệ thống tự động cấp chứng chỉ số và mở khóa quyền thực hiện tác vụ tương ứng (khi hết hạn chứng chỉ hệ thống tự thu hồi quyền)",
-            data: "Hồ sơ Năng lực & Chứng chỉ Nhân sự (Dữ liệu gốc dùng để phân quyền cho mọi quy trình)",
-            sysGate: "Hệ thống Đào tạo (LMS) liên thông Quản trị Nhân sự. Chốt kiểm soát: Chưa có chứng chỉ hợp lệ ➔ Hệ thống khóa cứng không cho phân lịch."
+            name: "Thu Hút, Đào Tạo & Kích Hoạt Mạng Lưới Phục Vụ (Lead Gen & Onboarding)",
+            sla: "Mở quyền làm việc trong 24h sau khi đạt sát hạch",
+            orgRole: "Khối Tăng Trưởng & Học Viện Đào Tạo • Trưởng nhóm GTM & Giảng viên (R)",
+            cert: "Chứng chỉ Đào tạo Chuẩn & Sát hạch Kỹ năng Thực tế",
+            output: "Danh sách khách hàng tiềm năng đúng chân dung (>0 byte) + Nhân sự/Cộng tác viên có chứng chỉ hợp lệ, được mở quyền nhận việc trên App",
+            kpi: "Số CTV đạt chuẩn onboard mới/tháng; Tỷ lệ CTV hoạt động thường xuyên",
+            act: "Triển khai mạng lưới đối tác liên kết & gói an sinh trải nghiệm để thu thập thông tin khách; Đào tạo online ➔ Thi sát hạch ➔ Hệ thống tự động cấp chứng chỉ số và mở quyền nhận ca (hết hạn chứng chỉ hệ thống tự thu hồi).",
+            masterDataId: "DATA-01",
+            masterData: "Bảng CRM Hồ Sơ Khách Hàng Tiềm Năng & Sổ Đăng Bạ Chứng Chỉ Năng Lực Nhân Sự",
+            aiSys: "Landing Page / Zalo OA + AI Content Generator + Nền tảng Đào tạo số (LMS)",
+            gateAndon: "Gate 1: Kiểm tra đúng tệp khách trả tiền & chi phí CAC trong trần; Chưa có chứng chỉ hợp lệ ➔ Hệ thống khóa cứng không cho phân lịch."
           },
           {
             num: "KHÂU 2",
-            name: "Tiếp Nhận Khách Hàng, Khảo Sát & Kích Hoạt Gói",
-            sla: "Từ lúc đăng ký đến khi kích hoạt gói ≤ 5 ngày",
-            orgRole: "Trưởng Điểm dịch vụ, Cộng tác viên & Chuyên gia Duyệt",
-            cert: "Chứng chỉ Tư vấn Gói dịch vụ & Quy tắc Bảo mật dữ liệu",
-            output: "Hồ sơ khách hàng có xác nhận đồng thuận dữ liệu + Kế hoạch phục vụ đã được Chuyên gia duyệt + Đơn hàng đã thu tiền",
-            kpi: "Số khách hàng/gia đình đăng ký gói mới; Tỷ lệ chuyển đổi thành công",
-            process: "Tiếp nhận đăng ký ➔ Khách xác nhận đồng ý chia sẻ dữ liệu ➔ Khảo sát thực tế tại nhà ➔ Lập kế hoạch chăm sóc đề xuất ➔ Chuyên gia duyệt độc lập & kích hoạt gói sau khi thanh toán",
-            data: "Hồ sơ Định danh Khách hàng Trọn đời (Một người – Một mã duy nhất) + Sổ Đồng thuận Dữ liệu + Kế hoạch Phục vụ",
-            sysGate: "App Khách hàng + Hệ thống CRM + Cổng thanh toán QR. Chốt kiểm soát: Bắt buộc có Chuyên gia duyệt kế hoạch trước khi đưa vào phục vụ."
+            name: "Tiếp Nhận Nhu Cầu, Lập Kế Hoạch & Thu Tiền Trước (Conversion & Cash-in)",
+            sla: "Từ lúc đăng ký đến khi kích hoạt gói dịch vụ ≤ 5 ngày",
+            orgRole: "Khối Tăng Trưởng • Chuyên viên Tư vấn / Trưởng Điểm Dịch Vụ (R)",
+            cert: "Chứng chỉ Tư vấn Gói Dịch vụ & Quy tắc Bảo mật Dữ liệu Khách hàng",
+            output: "Hợp đồng / Đơn hàng đã thanh toán tiền về tài khoản ngân hàng (>0 byte) + Hồ sơ đồng thuận dữ liệu + Kế hoạch phục vụ được Chuyên gia duyệt",
+            kpi: "Tỷ lệ chuyển đổi thành công; Giá trị đơn hàng trung bình (AOV)",
+            act: "Áp dụng cơ chế thu tiền: Phí thuê bao nền tảng + Chiết khấu thiết bị + Phí dịch vụ định kỳ; Khách xác nhận chia sẻ dữ liệu ➔ Khảo sát nhu cầu ➔ Lập kế hoạch ➔ Kích hoạt sau thanh toán VietQR.",
+            masterDataId: "DATA-02",
+            masterData: "Sổ Cái Đơn Hàng & Bút Toán Thu Tiền (Cash-in Log) + Sổ Đồng Thuận Dữ Liệu Khách Hàng",
+            aiSys: "Cổng thanh toán VietQR tự động + Kịch bản chốt đơn tự động + Hệ thống CRM",
+            gateAndon: "Gate 2: Xác nhận tiền thật về tài khoản (Không bán chịu sai quy định); Bắt buộc có xác nhận đồng thuận và Chuyên gia duyệt kế hoạch trước khi phục vụ."
           },
           {
             num: "KHÂU 3",
-            name: "Thực Hiện Dịch Vụ Định Kỳ, Đồng Bộ Thiết Bị & Xử Lý Cảnh Báo",
-            sla: "Đúng lịch ≥ 95% · Cảnh báo khẩn phản hồi ngay",
-            orgRole: "Cộng tác viên Chăm sóc, Kỹ thuật viên & Chuyên gia Trực",
-            cert: "Chứng chỉ Nghiệp vụ Cấp 1 & Chứng chỉ Vận hành Thiết bị",
-            output: "Phiếu thực hiện dịch vụ có chữ ký/OTP xác nhận của khách + Bộ chỉ số đo hợp lệ + Xử lý dứt điểm ca cảnh báo",
+            name: "Sản Xuất & Cung Ứng Dịch Vụ Lõi (Delivery & Fulfillment)",
+            sla: "Tỷ lệ phục vụ đúng lịch ≥ 95% · Cảnh báo khẩn phản hồi ngay",
+            orgRole: "Khối Chuyên Môn • Trưởng bộ phận Chuyên môn & Đội ngũ Hiện trường (A/R)",
+            cert: "Chứng chỉ Nghiệp vụ Hiện trường Cấp 1 & Vận hành Thiết bị",
+            output: "Sản phẩm / Dịch vụ hoàn chỉnh đạt chuẩn cam kết + Phiếu thực hiện có chữ ký/OTP của khách (>0 byte)",
             kpi: "Tỷ lệ phục vụ đúng hẹn ≥ 95%; Thời gian xử lý ca bất thường trong hạn SLA",
-            process: "Hệ thống lập lịch & tuyến di chuyển theo tuần ➔ CTV đến hiện trường check-in, thực hiện dịch vụ & đồng bộ chỉ số thiết bị (chạy được cả khi mất sóng) ➔ Khách xác nhận OTP ➔ Nếu chỉ số vượt ngưỡng: tự động bật Cảnh báo leo thang lên Điểm dịch vụ & Vùng",
-            data: "Phiếu Thực hiện Dịch vụ (bằng chứng tính hoa hồng) + Dữ liệu Chỉ số Thiết bị (IoT)",
-            sysGate: "App Hiện trường (Offline-first) + Hệ thống Quy trình động (BPM) + Kết nối Thiết bị. Chốt kiểm soát: Phải có OTP/xác nhận của khách hàng mới được tính hoàn thành."
+            act: "Hệ thống tự động lập lịch & tuyến di chuyển theo tuần ➔ CTV đến hiện trường check-in, vận hành thiết bị & đồng bộ dữ liệu (hoạt động cả khi mất sóng) ➔ Khách xác nhận OTP ➔ Chỉ số vượt ngưỡng tự động bật Cảnh báo leo thang.",
+            masterDataId: "DATA-03",
+            masterData: "Hồ Sơ Thực Thi / Biên Bản Nghiệm Thu Bàn Giao / Dữ Liệu Thiết Bị Đồng Bộ (IoT)",
+            aiSys: "App Hiện Trường (Offline-first) + AI Phân tích dữ liệu bất thường 24/7 + Hệ thống Quy trình động (BPM)",
+            gateAndon: "Gate 3 (Bất kiêm nhiệm): Hội đồng Chuyên môn thẩm định; Ban Điều phối duyệt đối tác lớn; Bắt buộc có OTP/chữ ký khách mới tính hoàn thành."
           },
           {
             num: "KHÂU 4",
-            name: "Chăm Sóc Tự Động, Nhắc Gia Hạn & Mở Rộng Đơn Hàng",
-            sla: "Tự động nhắc gia hạn trước 15 ngày hết hạn",
-            orgRole: "Bộ phận Tăng trưởng, CSKH & Hệ thống Tự động hóa",
-            cert: "Quy chuẩn Kịch bản Chăm sóc Đa kênh",
-            output: "Đơn hàng gia hạn gói định kỳ + Đơn mua thêm thiết bị/sản phẩm qua Sàn TMĐT + Khách giới thiệu khách mới",
-            kpi: "Tỷ lệ gia hạn gói (Retention); Doanh thu bình quân trên mỗi khách hàng (ARPU)",
-            process: "Sau mỗi lượt phục vụ: tự động gửi hướng dẫn chăm sóc ➔ Trước khi hết hạn 15 ngày: tự động gửi thông báo cá nhân hóa nhắc gia hạn ➔ Ghi nhận điểm thưởng thành viên khi khách giới thiệu người mới",
-            data: "Lịch sử Chăm sóc Đa kênh + Hạng Thành viên & Điểm thưởng (Loyalty)",
-            sysGate: "Hệ thống Chăm sóc Tự động (Marketing Automation) + Cổng thông báo Zalo/SMS/App + Sàn TMĐT. Chốt kiểm soát: Tự động dừng nhắn tin quảng cáo nếu khách rút đồng thuận."
+            name: "Đồng Hành, Chăm Sóc & Tái Mua (Retention & Referral)",
+            sla: "Tự động gửi hướng dẫn sau 3 ngày · Nhắc gia hạn trước 15 ngày",
+            orgRole: "Khối Vận Hành • Chuyên viên CSKH & Hệ Thống Tự Động (R)",
+            cert: "Quy chuẩn Kịch bản Chăm sóc Đa kênh & Xử lý Khiếu nại",
+            output: "Điểm hài lòng khách hàng NPS ≥ 8/10 + Đơn hàng gia hạn định kỳ / Giới thiệu khách mới (>0 byte)",
+            kpi: "Tỷ lệ khách hàng gia hạn gói (Retention); Doanh thu trọn đời khách hàng (LTV)",
+            act: "Theo dõi kết quả sử dụng của khách, tự động gửi hướng dẫn chăm sóc cá nhân hóa, nhắc lịch gia hạn tự động và ghi nhận điểm thưởng khi khách giới thiệu người mới.",
+            masterDataId: "DATA-04",
+            masterData: "Lịch Sử Chăm Sóc Đa Kênh & Hồ Sơ Điểm Thưởng Thành Viên (LTV / Referral)",
+            aiSys: "Hệ thống nhắc lịch tự động Zalo/Email + Khảo sát 1-Click + Sàn TMĐT đa đại lý",
+            gateAndon: "Gate 4: Nếu khách phản nàn / chấm điểm thấp ➔ Giật dây Andon dừng chuyền xử lý ngay trong 2h. Tự động dừng nhắn tin nếu khách rút đồng thuận."
           },
           {
             num: "KHÂU 5",
-            name: "Quản Lý Sổ Cái Ví, Đối Soát & Chi Trả Hoa Hồng Đa Tầng",
-            sla: "Chốt sổ & chi trả hoa hồng đúng hạn 100%",
-            orgRole: "Kế toán Kiểm soát Trung tâm (HO) & Ban Giám đốc",
-            cert: "Quy chuẩn Kiểm soát Nội bộ & Đối soát Sổ cái",
-            output: "Sổ cái số dư ví chính xác tuyệt đối + Hoa hồng 2 tầng chuyển về ví CTV + Báo cáo Lãi/Lỗ đa chiều theo từng Vùng",
-            kpi: "0 sai lệch số dư ví; 0 khiếu nại chậm trả hoa hồng",
-            process: "Mọi giao dịch nạp/thanh toán/thưởng ghi vào Sổ cái bất biến ➔ Cuối kỳ: hệ thống tự động đối chiếu Đơn hàng đã thu tiền + Phiếu dịch vụ có xác nhận của khách ➔ Tính hoa hồng 2 tầng và chuyển vào ví",
-            data: "Sổ Cái Ví Bất Biến (Immutable Ledger) + Bảng Quyết toán Hoa hồng + Kho Dữ liệu Báo cáo Quản trị",
-            sysGate: "Hệ thống ERP Tài chính + Kho Dữ liệu (Data Warehouse). Chốt kiểm soát: Khớp 3 bên (Tiền về – Đơn hàng – Phiếu xác nhận của khách) mới giải ngân."
+            name: "Đối Soát Tài Chính & Chia Thưởng (Governance & Cash-out)",
+            sla: "Chốt sổ & chi trả hoa hồng đúng hạn 100% · 0 sai lệch",
+            orgRole: "Khối Tài Chính • Kế toán Kiểm soát & Ban Lãnh đạo (A)",
+            cert: "Quy chuẩn Kiểm soát Nội bộ & Đối soát Sổ cái Bất biến",
+            output: "Báo cáo P&L thực tế + Sổ cái ví minh bạch + Bảng chia thưởng đúng cơ chế (>0 byte)",
+            kpi: "0 sai lệch số dư ví; Đảm bảo dòng tiền ròng dương",
+            act: "Đối soát doanh thu - chi phí theo trần ngân sách; Tính hoa hồng đa tầng (Ví dụ: Đối tác thực hiện nhận 80%, Nền tảng thu 20%); Tự động đối chiếu 3 bên trước khi chuyển tiền.",
+            masterDataId: "DATA-05",
+            masterData: "Sổ Cái Ví Bất Biến (Immutable Ledger), Báo Cáo Lãi/Lỗ (P&L) & Sổ Quỹ Tiền Mặt",
+            aiSys: "Dashboard Tài Chính Real-time + Script Canh Trần Chi Phí + Hệ thống Kế toán / ERP",
+            gateAndon: "Gate 5: Founder / Lãnh đạo ký duyệt quyết toán & Họp Kaizen hàng tháng; Khớp 3 bên (Tiền về - Đơn hàng - Biên bản nghiệm thu) mới giải ngân."
           }
         ],
         systems: [
@@ -1993,9 +2180,51 @@
       `).join("");
     }
 
+    let currentStageViewMode = 'stepper';
+
+    function switchStageView(mode) {
+      currentStageViewMode = mode;
+      const stepperView = document.getElementById("stageStepperView");
+      const matrixView = document.getElementById("stageMatrixView");
+      const btnStepper = document.getElementById("btnViewStepper");
+      const btnMatrix = document.getElementById("btnViewMatrix");
+
+      if (mode === 'matrix') {
+        stepperView.style.display = "none";
+        matrixView.style.display = "block";
+        btnStepper.classList.remove("active");
+        btnMatrix.classList.add("active");
+      } else {
+        stepperView.style.display = "block";
+        matrixView.style.display = "none";
+        btnStepper.classList.add("active");
+        btnMatrix.classList.remove("active");
+      }
+    }
+
+    function openStageModal(idx) {
+      const sc = SCENARIOS[currentScenario];
+      const st = sc.stages[idx];
+      openCustomModal(
+        `${st.num} · MA TRẬN 7 LỚP KIẾN TRÚC`,
+        st.name,
+        [
+          { label: "1. Đơn Vị & Vai Trò (T1 ORG / T2 ROLE)", text: `${st.orgRole} <br><span style='color:var(--text-muted);font-size:14px;'>🎓 <strong>Năng lực / Chứng chỉ:</strong> ${st.cert}</span>` },
+          { label: "2. Kết Quả Đầu Ra Bắt Buộc (T3 FUNC >0 byte)", text: `<span style='color:var(--emerald);font-weight:700;'>${st.output}</span> <br><span style='color:var(--text-muted);font-size:14px;'>📊 <strong>Thước đo (KPI):</strong> ${st.kpi}</span>` },
+          { label: "3. Hoạt Động & Thao Tác Chuẩn (T4 ACT)", text: st.act || st.process },
+          { label: "4. Đối Tượng Dữ Liệu Gốc (T6 MASTER DATA)", text: `<strong>${st.masterDataId || 'DATA-0' + (idx+1)}</strong>: ${st.masterData || st.data}` },
+          { label: "5. Khai Thác AI & Hệ Thống (T7 USE / SYS)", text: st.aiSys },
+          { label: "6. Cổng Kiểm Duyệt & Dừng Chuyền (Gate / Andon)", text: `<span style='color:var(--amber);font-weight:700;'>${st.gateAndon}</span>` },
+          { label: "7. Cam Kết Tốc Độ & Thời Gian (SLA)", text: `⏱️ ${st.sla}` }
+        ]
+      );
+    }
+
     function renderStages() {
       const sc = SCENARIOS[currentScenario];
       const stages = sc.stages;
+
+      // 1. Render Stepper Nodes
       document.getElementById("stagePipeline").innerHTML = stages.map((st, idx) => `
         <div class="stage-node ${idx === currentStageIdx ? 'active' : ''}" onclick="selectStage(${idx})">
           <span class="stage-num">${st.num}</span>
@@ -2004,6 +2233,7 @@
         </div>
       `).join("");
 
+      // 2. Render Selected Stage Detail (6 clean cards)
       const activeSt = stages[currentStageIdx];
       document.getElementById("stageDetailPanel").innerHTML = `
         <div class="stage-detail-top">
@@ -2011,43 +2241,94 @@
             <span class="card-badge">${activeSt.num} TRONG CHUỖI GIÁ TRỊ</span>
             <h3 style="font-size:24px;font-weight:900;margin-top:6px;">${activeSt.name}</h3>
           </div>
-          <span style="padding:8px 16px;border-radius:999px;background:var(--amber-bg);border:1.5px solid var(--amber-border);color:var(--amber);font-weight:800;font-size:15px;">
-            ⏱️ Cam kết tốc độ (SLA): ${activeSt.sla}
-          </span>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="padding:8px 16px;border-radius:999px;background:var(--amber-bg);border:1.5px solid var(--amber-border);color:var(--amber);font-weight:800;font-size:15px;">
+              ⏱️ SLA: ${activeSt.sla}
+            </span>
+            <button class="btn btn-secondary" onclick="openStageModal(${currentStageIdx})" style="padding:8px 16px;font-size:14px;border-radius:999px;">
+              🔍 Mở Hộp Thoại Soi Sâu
+            </button>
+          </div>
         </div>
 
         <div class="stage-detail-grid">
           <div class="detail-cell">
-            <div class="detail-cell-label">👤 1. Đơn Vị & Vai Trò Phụ Trách</div>
+            <div class="detail-cell-label">👤 1. Đơn Vị &amp; Vai Trò (T1 ORG / T2 ROLE)</div>
             <div class="detail-cell-body">${activeSt.orgRole}</div>
-            <div class="detail-cell-sub">🎓 <strong>Chứng chỉ / Năng lực cần có:</strong> ${activeSt.cert}</div>
+            <div class="detail-cell-sub">🎓 <strong>Chứng chỉ / Năng lực:</strong> ${activeSt.cert}</div>
           </div>
 
           <div class="detail-cell" style="border-top:4px solid var(--emerald);">
-            <div class="detail-cell-label" style="color:var(--emerald);">🎯 2. Kết Quả Bàn Giao Cầm Nắm Được</div>
+            <div class="detail-cell-label" style="color:var(--emerald);">🎯 2. Kết Quả Đầu Ra Bắt Buộc (T3 FUNC &gt;0 byte)</div>
             <div class="detail-cell-body">${activeSt.output}</div>
             <div class="detail-cell-sub">📊 <strong>Thước đo (KPI):</strong> ${activeSt.kpi}</div>
           </div>
 
           <div class="detail-cell">
-            <div class="detail-cell-label">⚙️ 3. Luồng Quy Trình & Thao Tác Chuẩn</div>
-            <div class="detail-cell-body">${activeSt.process}</div>
-            <div class="detail-cell-sub">🔄 Kích hoạt đầu vào ➔ Xử lý ➔ Bàn giao đầu ra</div>
+            <div class="detail-cell-label">⚙️ 3. Hoạt Động &amp; Thao Tác Chuẩn (T4 ACT)</div>
+            <div class="detail-cell-body">${activeSt.act || activeSt.process}</div>
+            <div class="detail-cell-sub">🔄 Kích hoạt đầu vào ➔ Xử lý ➔ Nghiệm thu đầu ra</div>
           </div>
 
           <div class="detail-cell" style="border-top:4px solid var(--brand-secondary);">
-            <div class="detail-cell-label" style="color:var(--brand-secondary);">🗂️ 4. Hồ Sơ / Dữ Liệu Gốc (1 Nguồn Sự Thật)</div>
-            <div class="detail-cell-body">${activeSt.data}</div>
+            <div class="detail-cell-label" style="color:var(--brand-secondary);">🗂️ 4. Đối Tượng Dữ Liệu Gốc (T6 MASTER DATA)</div>
+            <div class="detail-cell-body"><strong>${activeSt.masterDataId || 'DATA-0' + (currentStageIdx+1)}</strong>: ${activeSt.masterData || activeSt.data}</div>
             <div class="detail-cell-sub">🔒 Sinh ra tại 1 nơi duy nhất, các khâu sau chỉ tham chiếu</div>
           </div>
 
-          <div class="detail-cell" style="grid-column: span 2; border-top:4px solid var(--amber); background:var(--amber-bg);">
-            <div class="detail-cell-label" style="color:var(--amber);">🛡️ 5. Hệ Thống Phần Mềm Hỗ Trợ & Chốt Kiểm Duyệt Độc Lập</div>
-            <div class="detail-cell-body">${activeSt.sysGate}</div>
-            <div class="detail-cell-sub">✅ Nguyên tắc an toàn: Người thực hiện khác Người kiểm duyệt nghiệm thu</div>
+          <div class="detail-cell" style="border-top:4px solid #6366f1;">
+            <div class="detail-cell-label" style="color:#6366f1;">🤖 5. Khai Thác AI &amp; Hệ Thống (T7 USE / SYS)</div>
+            <div class="detail-cell-body">${activeSt.aiSys}</div>
+            <div class="detail-cell-sub">💻 Điểm chạm phần mềm &amp; Tự động hóa giải phóng sức người</div>
+          </div>
+
+          <div class="detail-cell" style="border-top:4px solid var(--amber); background:var(--amber-bg);">
+            <div class="detail-cell-label" style="color:var(--amber);">🛡️ 6. Cổng Kiểm Duyệt Độc Lập (Gate / Andon)</div>
+            <div class="detail-cell-body">${activeSt.gateAndon}</div>
+            <div class="detail-cell-sub">✅ Bất kiêm nhiệm: Bên làm khác bên duyệt · Có lỗi giật dây dừng chuyền</div>
           </div>
         </div>
       `;
+
+      // 3. Render 7-Column Matrix Table Rows
+      const matrixBody = document.getElementById("matrixTableBody");
+      if (matrixBody) {
+        matrixBody.innerHTML = stages.map((st, idx) => `
+          <tr onclick="openStageModal(${idx})">
+            <td>
+              <span class="matrix-badge-stage">${st.num}</span>
+              <div class="matrix-stage-title">${st.name}</div>
+              <div class="matrix-sla-tag">⏱️ SLA: ${st.sla}</div>
+            </td>
+            <td>
+              <div style="font-weight:700;color:var(--text-primary);margin-bottom:6px;">${st.orgRole}</div>
+              <div style="font-size:13.5px;color:var(--text-muted);border-top:1px dashed var(--border-color);padding-top:4px;">
+                🎓 ${st.cert}
+              </div>
+            </td>
+            <td>
+              <div style="font-weight:700;color:var(--emerald);margin-bottom:6px;">${st.output}</div>
+              <div style="font-size:13.5px;color:var(--text-muted);border-top:1px dashed var(--border-color);padding-top:4px;">
+                📊 <strong>KPI:</strong> ${st.kpi}
+              </div>
+            </td>
+            <td>
+              <div style="font-size:14.5px;color:var(--text-primary);line-height:1.55;">${st.act || st.process}</div>
+            </td>
+            <td>
+              <span class="matrix-tag-data">${st.masterDataId || 'DATA-0' + (idx+1)}</span>
+              <div style="font-size:14px;font-weight:600;color:var(--text-primary);">${st.masterData || st.data}</div>
+            </td>
+            <td>
+              <div style="font-size:14px;color:var(--text-secondary);line-height:1.5;">${st.aiSys}</div>
+            </td>
+            <td>
+              <span class="matrix-tag-gate">Gate ${idx+1}</span>
+              <div style="font-size:14px;color:var(--text-secondary);line-height:1.5;">${st.gateAndon}</div>
+            </td>
+          </tr>
+        `).join("");
+      }
     }
 
     function openCustomModal(badge, title, items) {
