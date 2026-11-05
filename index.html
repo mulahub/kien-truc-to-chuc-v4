@@ -389,8 +389,8 @@
     /* SCALE & IDEAS GRID */
     .scale-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
       margin-bottom: 24px;
     }
 
@@ -1078,6 +1078,19 @@
         </div>
 
         <div class="scale-grid">
+          <div class="scale-card" id="sc-solo" onclick="selectScale('solo')">
+            <div>
+              <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">CẤP 0 • SOLO + AI SWARM</span>
+              <h3>Doanh Nghiệp 1 Người (Solo) + AI</h3>
+              <p>1 Founder làm chủ tri thức &amp; định hướng + Đội ngũ AI Agents tự trị đảm trách 90% vận hành.</p>
+            </div>
+            <div class="scale-specs">
+              <span>👥 <b>Nhân sự:</b> 1 Founder (+ AI Agents)</span>
+              <span>💰 <b>Vốn mồi:</b> 5 – 50 triệu VNĐ</span>
+              <span>📈 <b>Doanh thu:</b> 50 – 500 triệu/tháng</span>
+            </div>
+          </div>
+
           <div class="scale-card selected" id="sc-micro" onclick="selectScale('micro')">
             <div>
               <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border);">CẤP 1 • MICRO-CELL</span>
@@ -1137,11 +1150,22 @@
         <div class="panel-header">
           <div>
             <h2 class="panel-title">Biến Số 2: Gợi Ý Mẫu Các Biến Theo Ngành Nghề (Bấm Để Nạp Nhanh)</h2>
-            <p class="panel-subtitle">8 mô hình kinh doanh mẫu tiêu biểu có dòng tiền nhanh và khả năng chuẩn hóa cao tại Việt Nam:</p>
+            <p class="panel-subtitle">9 mô hình kinh doanh mẫu tiêu biểu (kèm mô hình Solo-Business + AI Agents) có dòng tiền nhanh và khả năng chuẩn hóa cao tại Việt Nam:</p>
           </div>
         </div>
 
         <div class="ideas-grid">
+          <div class="idea-card" id="id-solo_ai" onclick="loadIdea('solo_ai')">
+            <div>
+              <div class="idea-card-top">
+                <span class="idea-sector">Solo-Business + AI Swarm</span>
+                <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); margin:0;">CẤP 0</span>
+              </div>
+              <h4>Doanh Nghiệp 1 Người (Solo-Business) + Đội Ngũ AI Agents</h4>
+            </div>
+            <div class="idea-meta">1 Founder điều phối 5–8 AI Agents • Tự động hóa 90% vận hành • Biên LN &gt;80%</div>
+          </div>
+
           <div class="idea-card active" id="id-micro_saas" onclick="loadIdea('micro_saas')">
             <div>
               <div class="idea-card-top">
@@ -1648,6 +1672,50 @@
 
     // SCALES CONFIGURATION
     const scaleConfigs = {
+      solo: {
+        name: 'CẤP 0: DOANH NGHIỆP 1 NGƯỜI (SOLO-BUSINESS) + ĐỘI NGŨ AI AGENTS',
+        rootTitle: 'SOLOPRENEUR / CHỦ DOANH NGHIỆP DUY NHẤT (1 HUMAN FOUNDER)',
+        rootDesc: 'Giữ Đích chiến lược • Duyệt quyết định cốt lõi (Human-in-the-loop) • Năng lực chuyên môn độc bản',
+        branches: [
+          {
+            title: '📡 1. Đội AI Nghiên Cứu & Thu Hút (AI Growth Swarm)',
+            explain: 'Quét xu hướng, nghiên cứu thị trường, sáng tạo nội dung đa kênh và thu hút đầu mối tự động.',
+            roles: [
+              { name: 'Founder (Kiến Trúc & Định Hướng)', desc: 'Cung cấp tri thức chuyên sâu và phê duyệt ấn phẩm.' },
+              { name: 'AI Research & Content Agent', desc: 'Tự động bóc tách tài liệu, viết nháp bài đăng và kịch bản video.' },
+              { name: 'AI Social Publisher Bot', desc: 'Tự động tối ưu SEO, hẹn giờ đăng bài đa kênh (Web, Fanpage, Zalo).' }
+            ]
+          },
+          {
+            title: '🎯 2. Đội AI Tư Vấn & Chốt Đơn (AI Sales & Conversion)',
+            explain: 'Trực 24/7 giải đáp thắc mắc, phân loại khách hàng, sinh báo giá và tạo mã thanh toán tức thì.',
+            roles: [
+              { name: 'AI Consultant & Qualifier Bot', desc: 'Tương tác thông minh, chấm điểm độ nóng của khách hàng.' },
+              { name: 'VietQR Dynamic Payment Engine', desc: 'Tự động tạo mã QR kèm cú pháp chuyển tiền, xác nhận tiền về tức thì.' },
+              { name: 'Founder (Chốt Hợp Đồng Lớn)', desc: 'Chỉ can thiệp đàm phán với khách hàng VIP hoặc đối tác chiến lược.' }
+            ]
+          },
+          {
+            title: '⚡ 3. Đội AI Bàn Giao & Vận Hành Dịch Vụ (AI Delivery & Operations)',
+            explain: 'Tự động bàn giao tài khoản/sản phẩm số trong 30 giây, hướng dẫn sử dụng và đo lường độ hài lòng.',
+            roles: [
+              { name: 'AI Automation Dispatcher (Webhook / N8N)', desc: 'Kích hoạt cấp tài khoản, gửi email/Zalo kèm tài liệu ngay khi có giao dịch.' },
+              { name: 'AI Support & Knowledge Base Bot', desc: 'Giải đáp thắc mắc người dùng dựa trên sổ tay hướng dẫn độc quyền.' },
+              { name: 'Hệ thống Khảo sát 1-Click NPS', desc: 'Đo lường sự hài lòng và tự động mời khách đánh giá, giới thiệu bạn bè.' }
+            ]
+          },
+          {
+            title: '🛡️ 4. Đội AI Canh Gác Tài Chính & Dòng Tiền (AI Guardian & Finance)',
+            explain: 'Quản trị dòng tiền thời gian thực, canh trần chi phí phần mềm và tự động xuất hóa đơn.',
+            roles: [
+              { name: 'Bank Webhook & Real-time Ledger', desc: 'Bắt biến động số dư ngân hàng và ghi nhận doanh thu vào bảng P&L.' },
+              { name: 'AI Cost Guard & Metric Alert', desc: 'Canh chừng hạn mức API/Tool, cảnh báo khi chi phí vượt trần.' },
+              { name: 'Dịch vụ Kế toán / Thuế Hộ KD (Thuê ngoài)', desc: 'Đối soát và nộp thuế định kỳ theo đúng pháp luật.' }
+            ]
+          }
+        ]
+      },
+
       micro: {
         name: 'CẤP 1: TIỂU ĐỘI TỰ TRỊ / HỘ KINH DOANH SỐ (1–9 NHÂN SỰ)',
         rootTitle: 'FOUNDER / CHỦ THỂ SẢN PHẨM (PRODUCT OWNER)',
@@ -1808,6 +1876,25 @@
 
     // 8 PRESETS DATA
     const ideaPresets = {
+      solo_ai: {
+        scale: 'solo',
+        projName: 'Doanh Nghiệp Tri Thức 1 Người + AI Agents Swarm',
+        rev: 250, capPct: 15, fte: 1, sal: 25, bottleneck: 'leadgen',
+        idea: "Mô hình Doanh nghiệp 1 Người (Solo-Business) kết hợp Đội ngũ AI Agents tự trị: 1 Founder làm chủ tri thức chuyên môn độc bản, sử dụng dàn AI Agents làm trợ thủ thực thi từ tạo phễu nội dung, tư vấn tự động 24/7 đến bàn giao dịch vụ và đối soát dòng tiền.",
+        q1: "Các cá nhân kinh doanh, chuyên gia, quản lý cấp cao muốn đóng gói chuyên môn thành sản phẩm số hoặc dịch vụ tư vấn cao cấp mà không muốn đau đầu quản lý bộ máy nhân sự cồng kềnh.",
+        q2: "Bán sản phẩm số / Khóa huấn luyện tự học (1.5 – 5 triệu/người) + Gói Cố vấn đồng hành chuyên sâu 1:1 hạn chế số lượng (30 – 50 triệu/tháng) thanh toán tự động qua VietQR.",
+        q3: "Bản quyền trí tuệ tác giả minh bạch; Tuân thủ quy định thuế thu nhập cá nhân/hộ kinh doanh; Bảo mật tuyệt đối thông tin khách hàng.",
+        q4: "Xây dựng cỗ máy tạo dòng tiền tự động đạt 200 – 300 triệu VNĐ/tháng với 1 nhân sự duy nhất (Founder) và chi phí vận hành công nghệ < 15 triệu/tháng trong 90 ngày.",
+        q5: "BẮT BUỘC LÀM: Tập trung 100% thời gian của Founder vào nghiên cứu chuyên môn sâu và tương tác với khách VIP; CẤM LÀM: Ôm đồm trả lời tin nhắn rác hoặc tự đi gõ máy thủ công các tác vụ lặp đi lặp lại.",
+        q6: "Xây dựng kênh phân phối tri thức (Bản tin chuyên sâu Substack/LinkedIn, Podcast, Video ngắn) chia sẻ các bài học thực chứng kèm link chẩn đoán miễn phí.",
+        q7: "Hệ thống tri thức độc bản đã kiểm chứng + Dàn AI Agents cấu hình chuyên biệt theo giọng điệu và phương pháp luận của Founder.",
+        q8: "Founder giữ quyền quyết định cao nhất (Human-in-the-loop): Duyệt chiến lược sản phẩm, định giá và kiểm tra chất lượng ấn phẩm trước khi ra công chúng.",
+        q9: "AI Agents tự động thực thi 90% tác vụ: Thu thập thông tin, viết nháp nội dung, tạo mã VietQR, kích hoạt tài khoản khóa học, nhắc lịch hẹn và báo cáo tài chính.",
+        q10: "Vốn khởi sự < 20 triệu VNĐ (mua tên miền, gói tài khoản AI cao cấp và hạ tầng lưu trữ); Runway 12 tháng không lo áp lực chi phí cố định.",
+        q11: "CAC cực thấp nhờ hiệu ứng nội dung chuyên môn (< 5% doanh thu); Biên lợi nhuận ròng đạt > 80%; Điểm hòa vốn chỉ cần 3 khách hàng trả phí/tháng.",
+        q12: "Lợi nhuận ròng thuộc về Founder; Trích 10–15% tái đầu tư nâng cấp công cụ AI và thuê chuyên gia hỗ trợ kỹ thuật theo giờ khi cần."
+      },
+
       micro_saas: {
         scale: 'micro',
         projName: 'Công Cụ Chẩn Đoán Dòng Tiền SME',
@@ -2246,7 +2333,7 @@
     // SCALE SELECTOR
     function selectScale(scaleKey) {
       selectedScale = scaleKey;
-      ['micro', 'sme', 'chain', 'platform'].forEach(k => {
+      ['solo', 'micro', 'sme', 'chain', 'platform'].forEach(k => {
         document.getElementById('sc-' + k).classList.toggle('selected', k === scaleKey);
       });
     }
