@@ -929,6 +929,119 @@
       gap: 14px;
     }
 
+    
+    /* 3 SHIELDS STYLES */
+    .shield-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .shield-tab-btn {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shield-tab-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--text-primary);
+    }
+    .shield-tab-btn.active {
+      background: var(--brand-primary);
+      color: #ffffff;
+      border-color: var(--brand-primary);
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    }
+    .risk-alert-box {
+      background: var(--rose-bg);
+      border: 2px solid var(--rose-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+    .risk-alert-box h4 {
+      color: var(--rose);
+      font-size: 16.5px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .risk-alert-box ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-primary);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+    .law-item-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .law-item-card:hover {
+      border-color: var(--brand-primary);
+    }
+    .law-num-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--bg-accent-soft);
+      color: var(--brand-primary);
+      font-weight: 800;
+      font-size: 12.5px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .jar-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .andon-lane-card {
+      border-radius: 12px;
+      padding: 18px;
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+    }
+    .prompt-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-word;
+      position: relative;
+    }
+
     /* MODAL */
     .modal-backdrop {
       position: fixed;
@@ -1605,6 +1718,253 @@
         </div>
 
         <div class="scale-grid" style="margin-bottom:0;" id="techSystemsGrid"></div>
+      </section>
+
+      
+      <!-- ==================== BỘ 3 TẤM KHIÊN QUẢN TRỊ & THỰC THI THỰC CHIẾN ==================== -->
+      <section class="panel" style="border: 2px solid var(--brand-primary); background: var(--bg-surface);">
+        <div class="panel-header">
+          <div>
+            <span class="scale-badge" style="background:var(--brand-primary); color:#ffffff; font-weight:800; border:none; margin-bottom:8px;">BỔ SUNG CHIẾN LƯỢC • PHÒNG THỦ &amp; KÍCH HOẠT</span>
+            <h2 class="panel-title" style="color:var(--brand-primary);">BỘ 3 TẤM KHIÊN BẢO VỆ &amp; KÍCH HOẠT DOANH NGHIỆP THỰC CHIẾN</h2>
+            <p class="panel-subtitle">Hóa giải 2 tử huyệt lớn nhất tại Việt Nam (Pháp chế &amp; Tài chính) cùng 2 căn bệnh mãn tính (Trách nhiệm &amp; Sự cố). Cung cấp kho tri thức chuẩn hóa để nạp cho AI tư vấn ngược lại cho con người.</p>
+          </div>
+        </div>
+
+        <!-- TABS SWITCHER -->
+        <div class="shield-tabs">
+          <button class="shield-tab-btn active" id="tab-btn-legal" onclick="switchShieldTab('legal')">
+            <span>⚖️ Tấm Khiên 1: Pháp Chế Số &amp; Kho Luật Cho AI</span>
+          </button>
+          <button class="shield-tab-btn" id="tab-btn-finance" onclick="switchShieldTab('finance')">
+            <span>💰 Tấm Khiên 2: Pháo Đài Tài Chính &amp; Dòng Tiền Thực</span>
+          </button>
+          <button class="shield-tab-btn" id="tab-btn-ops" onclick="switchShieldTab('ops')">
+            <span>⚡ Tấm Khiên 3: Kỷ Luật Vận Hành &amp; Khắc Tinh Sự Cố (Ops &amp; AI)</span>
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: LEGAL SHIELD -->
+        <div id="shield-view-legal" style="display:block;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+            <div>
+              <h3 style="font-size:18.5px; font-weight:800; color:var(--text-primary); margin-bottom:4px;">
+                Kho Thư Viện Văn Bản Pháp Quy Cho Lĩnh Vực: <span id="legalSectorName" style="color:var(--brand-primary);">...</span>
+              </h3>
+              <p style="font-size:14.5px; color:var(--text-muted); margin:0;">Tự động ánh xạ theo mô hình kinh doanh được chọn. Nạp kho tài liệu này vào NotebookLM hoặc Vector DB để AI làm Trợ lý Pháp chế Nội bộ.</p>
+            </div>
+            <button class="btn btn-primary" onclick="copyLegalPromptForAI()" style="font-size:14px; padding:9px 16px;">
+              📋 1-Click Copy Danh Mục Luật &amp; Prompt Nạp Cho AI
+            </button>
+          </div>
+
+          <!-- CẢNH BÁO 3 RỦI RO CHẾT NGƯỜI -->
+          <div class="risk-alert-box">
+            <h4>⚠️ 3 RỦI RO PHÁP LÝ CHẾT NGƯỜI CỦA NGÀNH NÀY (CẦN PHÒNG VỆ NGAY):</h4>
+            <ul id="legalRisksList"></ul>
+          </div>
+
+          <!-- DANH MỤC VĂN BẢN QUY PHẠM GỐC -->
+          <div style="margin-bottom:18px;">
+            <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin-bottom:12px;">📚 DANH MỤC VĂN BẢN QUY PHẠM PHÁP LUẬT CỐT LÕI (KÈM LINK GỐC TRA CỨU):</h4>
+            <div id="legalLawsList"></div>
+          </div>
+
+          <!-- HƯỚNG DẪN NẠP VÀO AI -->
+          <div style="background:var(--bg-accent-soft); border:2px dashed var(--brand-primary); border-radius:12px; padding:16px 20px;">
+            <h4 style="font-size:15px; font-weight:800; color:var(--brand-primary); margin-bottom:6px;">🤖 HƯỚNG DẪN 3 BƯỚC NẠP VÀO AI ĐỂ TƯ VẤN CHO CON NGƯỜI:</h4>
+            <p id="legalAiGuide" style="font-size:14.5px; color:var(--text-primary); margin:0; line-height:1.55;"></p>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: FINANCIAL FORTRESS -->
+        <div id="shield-view-finance" style="display:none;">
+          <h3 style="font-size:18.5px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">
+            Pháo Đài Quản Trị Tài Chính Thực Chiến: Dòng Tiền Thật, Trần Chi Phí &amp; Runway
+          </h3>
+          <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+            Nguyên lý bất biến: <b>Doanh thu là phù du, Lợi nhuận là ảo ảnh, chỉ có Tiền Mặt trong két mới là Tồn Sinh</b>. Quản trị theo chuẩn 3 chiếc lọ và công thức kinh tế đơn vị.
+          </p>
+
+          <!-- 3 CHIẾC LỌ DÒNG TIỀN -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-bottom:24px;">
+            <div class="jar-card" style="border-top:5px solid var(--brand-primary);">
+              <span class="scale-badge" style="background:var(--bg-accent-soft); color:var(--brand-primary);">LỌ 1 • 60% DÒNG TIỀN VỀ</span>
+              <h4 style="font-size:17px; font-weight:800; color:var(--text-primary); margin:0;">Quỹ Vận Hành &amp; Quỹ Lương (OpEx)</h4>
+              <p style="font-size:14px; color:var(--text-secondary); margin:0;">Chi trả lương cứng, chi phí máy chủ, hoa hồng bán hàng và chi phí vận hành hàng ngày. Tuyệt đối không để chi phí này vượt quá 60% tổng dòng tiền thực thu.</p>
+              <div style="font-size:13.5px; font-weight:700; color:var(--brand-primary); margin-top:auto;" id="jar1Est">Ước tính: ...</div>
+            </div>
+
+            <div class="jar-card" style="border-top:5px solid var(--rose);">
+              <span class="scale-badge" style="background:var(--rose-bg); color:var(--rose);">LỌ 2 • 20% DÒNG TIỀN VỀ</span>
+              <h4 style="font-size:17px; font-weight:800; color:var(--text-primary); margin:0;">Quỹ Thuế &amp; Dự Phòng Sống Còn</h4>
+              <p style="font-size:14px; color:var(--text-secondary); margin:0;">Bắt buộc trích lập ngay khi có tiền về tài khoản. Dùng để đóng thuế GTGT/TNDN/TNCN đúng hạn và tích lũy tạo Runway tối thiểu 6 tháng dự phòng rủi ro.</p>
+              <div style="font-size:13.5px; font-weight:700; color:var(--rose); margin-top:auto;" id="jar2Est">Ước tính: ...</div>
+            </div>
+
+            <div class="jar-card" style="border-top:5px solid var(--emerald);">
+              <span class="scale-badge" style="background:var(--emerald-bg); color:var(--emerald);">LỌ 3 • 20% DÒNG TIỀN VỀ</span>
+              <h4 style="font-size:17px; font-weight:800; color:var(--text-primary); margin:0;">Quỹ Tái Đầu Tư &amp; Thưởng Đột Phá</h4>
+              <p style="font-size:14px; color:var(--text-secondary); margin:0;">Tái đầu tư nâng cấp công cụ AI, phát triển sản phẩm mới và thưởng cho đội ngũ khi vượt chỉ tiêu doanh số thực thu (Cash-in).</p>
+              <div style="font-size:13.5px; font-weight:700; color:var(--emerald); margin-top:auto;" id="jar3Est">Ước tính: ...</div>
+            </div>
+          </div>
+
+          <!-- MÁY TÍNH RUNWAY VÀ ĐIỂM HÒA VỐN -->
+          <div style="background:var(--bg-subtle); border:2px solid var(--border-color); border-radius:14px; padding:20px; margin-bottom:20px;">
+            <h4 style="font-size:16.5px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">🧮 MÁY TÍNH RUNWAY (THỜI GIAN SỐNG BẰNG TIỀN MẶT DỰ PHÒNG):</h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; align-items:flex-end;">
+              <div class="field-group" style="margin:0;">
+                <label>Tiền Mặt Sẵn Có Hiện Tại (Triệu VNĐ)</label>
+                <input type="number" id="inCashReserve" value="300" step="50" oninput="calcRunway()">
+              </div>
+              <div class="field-group" style="margin:0;">
+                <label>Chi Phí Đốt Hàng Tháng (Burn Rate - Tr/tháng)</label>
+                <input type="number" id="inBurnRate" value="60" step="10" oninput="calcRunway()">
+              </div>
+              <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:2px solid var(--border-color); text-align:center;">
+                <span style="font-size:13px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Chỉ Số Runway Thực Tế:</span>
+                <div id="outRunwayVal" style="font-size:26px; font-weight:900; color:var(--emerald);">5.0 Tháng</div>
+                <span id="outRunwayStatus" style="font-size:13px; font-weight:700; color:var(--amber);">⚠️ Cần đẩy nhanh dòng tiền về</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 NGUYÊN TẮC CỨNG KIỂM SOÁT DÒNG TIỀN -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px;">
+            <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:1px solid var(--border-color);">
+              <h5 style="color:var(--brand-primary); font-size:14.5px; font-weight:800; margin-bottom:4px;">1. Bán Thu Tiền Ngay</h5>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:0;">Hạn chế tối đa bán chịu. Mọi đơn hàng phải có tạm ứng $\ge 50\%$ hoặc quét VietQR xác nhận trước khi giao sản phẩm.</p>
+            </div>
+            <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:1px solid var(--border-color);">
+              <h5 style="color:var(--brand-primary); font-size:14.5px; font-weight:800; margin-bottom:4px;">2. Tách Bạch Tài Khoản</h5>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:0;">Mở riêng tài khoản kinh doanh, tuyệt đối không dùng tài khoản cá nhân sinh hoạt chung với dòng tiền công ty.</p>
+            </div>
+            <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:1px solid var(--border-color);">
+              <h5 style="color:var(--brand-primary); font-size:14.5px; font-weight:800; margin-bottom:4px;">3. Canh Trần Quỹ Lương</h5>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:0;">Khóa cứng trần lương theo % doanh thu. Khi doanh thu tụt, lương biến đổi tự động giảm, bảo vệ doanh nghiệp không vỡ nợ.</p>
+            </div>
+            <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:1px solid var(--border-color);">
+              <h5 style="color:var(--brand-primary); font-size:14.5px; font-weight:800; margin-bottom:4px;">4. Khóa Sổ Hàng Ngày</h5>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:0;">Đối soát biến động số dư ngân hàng cuối mỗi ngày (lúc 17h30). Lệch 1 đồng cũng phải truy vết nguyên nhân ngay trong 24h.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 3: OPS & AI EXECUTION -->
+        <div id="shield-view-ops" style="display:none;">
+          <h3 style="font-size:18.5px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">
+            Kỷ Luật Vận Hành &amp; Khắc Tinh Sự Cố (Ops &amp; AI Execution)
+          </h3>
+          <p style="font-size:14.5px; color:var(--text-muted); margin-bottom:20px;">
+            Chấm dứt tình trạng "giao việc miệng", "giấu lỗi sợ phạt" và "họp hành lan man". Đóng gói 4 công cụ thực chiến áp dụng được ngay trong 24h.
+          </p>
+
+          <!-- KHỐI 1: THỎA THUẬN ĐÍCH 1 TRANG -->
+          <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:20px; margin-bottom:24px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+              <div>
+                <span class="scale-badge" style="background:var(--bg-accent-soft); color:var(--brand-primary); margin:0 0 4px;">CÔNG CỤ 1 • THAY THẾ JD DÀI DÒNG</span>
+                <h4 style="font-size:17px; font-weight:800; color:var(--text-primary); margin:0;">Mẫu Thỏa Thuận Đích 1 Trang (One-Page Target Agreement - OPTA)</h4>
+              </div>
+              <button class="btn btn-outline" onclick="copyOptaTemplate()" style="font-size:13.5px; padding:7px 14px;">📋 Copy Mẫu Thỏa Thuận Đích</button>
+            </div>
+            <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;">
+              Mỗi nhân sự (kể cả AI Agent) khi nhận vai trò chỉ cần đúng 1 tờ A4 gồm 4 ô rõ ràng:
+            </p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
+              <div style="padding:14px; border-radius:10px; background:var(--bg-subtle); border-left:4px solid var(--brand-primary);">
+                <b style="color:var(--brand-primary); font-size:14.5px;">🎯 1. Đích Đo Được (>0 byte)</b>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Ví dụ: 30 bài viết chuẩn SEO, 12 hợp đồng ký mới, tỷ lệ NPS $\ge 8.5/10$. Không nói chung chung "làm việc chăm chỉ".</p>
+              </div>
+              <div style="padding:14px; border-radius:10px; background:var(--bg-subtle); border-left:4px solid var(--emerald);">
+                <b style="color:var(--emerald); font-size:14.5px;">🟢 2. Quyền Hạn Xanh (Tự Quyết)</b>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Được chủ động duyệt chi dưới 2 triệu, tự chọn cách viết nội dung, tự đổi lịch ca làm việc trong nội bộ mà không cần xin phép.</p>
+              </div>
+              <div style="padding:14px; border-radius:10px; background:var(--bg-subtle); border-left:4px solid var(--rose);">
+                <b style="color:var(--rose); font-size:14.5px;">🔴 3. Vạch Đỏ (Cấm Vượt Quyền)</b>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Cấm tự ý giảm giá quá 10%, cấm chia sẻ dữ liệu khách hàng ra ngoài, cấm phát ngôn với báo chí khi chưa có chữ ký của Founder.</p>
+              </div>
+              <div style="padding:14px; border-radius:10px; background:var(--bg-subtle); border-left:4px solid var(--purple);">
+                <b style="color:var(--purple); font-size:14.5px;">💎 4. Đãi Ngộ Thật (Cash-in)</b>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Lương cứng tối thiểu sống khỏe + Thưởng khoán 15% trên tiền mặt thực thu từ khách hàng do mình phục vụ thành công.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHỐI 2: 3 LÀN ANDON BÁO ĐỘNG SỰ CỐ -->
+          <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:20px; margin-bottom:24px;">
+            <div style="margin-bottom:14px;">
+              <span class="scale-badge" style="background:var(--amber-bg); color:var(--amber); margin:0 0 4px;">CÔNG CỤ 2 • VĂN HÓA KHÔNG GIẤU LỖI</span>
+              <h4 style="font-size:17px; font-weight:800; color:var(--text-primary); margin:0;">Hệ Thống 3 Làn Andon Báo Động &amp; Dừng Chuyền (Blameless Andon Cord)</h4>
+              <p style="font-size:14px; color:var(--text-secondary); margin:4px 0 0;">Nguyên tắc Toyota: Bất kỳ ai thấy lỗi đều có quyền giật dây dừng chuyền. Cấm tuyệt đối việc khiển trách người báo lỗi đầu tiên.</p>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+              <div class="andon-lane-card" style="border-top:5px solid var(--amber);">
+                <span class="scale-badge" style="background:var(--amber-bg); color:var(--amber);">LÀN VÀNG • XỬ LÝ TRONG 2 GIỜ</span>
+                <h5 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:8px 0 4px;">Sự Cố Nhẹ / Sai Lệch Trải Nghiệm</h5>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 8px;">Khách phàn nàn lỗi giao diện, thiếu tài liệu gửi kèm, bot trả lời sai ngữ cảnh ➔ Nhân sự phụ trách sửa lỗi ngay và ghi vào sổ theo dõi.</p>
+              </div>
+              <div class="andon-lane-card" style="border-top:5px solid #ea580c;">
+                <span class="scale-badge" style="background:#ffedd5; color:#c2410c;">LÀN CAM • XỬ LÝ TRONG 4 GIỜ</span>
+                <h5 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:8px 0 4px;">Nghẽn Quy Trình / Lệch Dòng Tiền</h5>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 8px;">Giao hàng trễ quá 24h, lệch đối soát ngân hàng &lt; 5 triệu, tranh chấp giữa 2 bộ phận ➔ Trưởng 2 khâu họp nóng 15 phút giải quyết dứt điểm.</p>
+              </div>
+              <div class="andon-lane-card" style="border-top:5px solid var(--rose);">
+                <span class="scale-badge" style="background:var(--rose-bg); color:var(--rose);">LÀN ĐỎ • DỪNG TOÀN BỘ NGAY (15 PHÚT)</span>
+                <h5 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:8px 0 4px;">Hiểm Ngọa Pháp Lý / Rò Rỉ Dữ Liệu</h5>
+                <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 8px;">Nghi vấn rò rỉ thông tin cá nhân khách hàng, bị thanh tra đột xuất, lỗi sản phẩm hàng loạt, dọa kiện ➔ Bấm chuông dừng toàn hệ thống, báo khẩn cấp Founder.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- KHỐI 3: BỘ PROMPT PACK & NGHI THỨC HỌP ĐỨNG -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:18px;">
+            <!-- PROMPT PACK -->
+            <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin:0;">🤖 Bộ Prompt Thực Chiến Cho AI</h4>
+                <button class="btn btn-outline" onclick="copyMasterPrompts()" style="font-size:12.5px; padding:5px 10px;">📋 Copy All</button>
+              </div>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:12px;">5 Prompt chuẩn hóa tương ứng 5 khâu chuỗi giá trị:</p>
+              <div class="prompt-box" id="masterPromptPreview" style="max-height:220px; overflow-y:auto;">
+[Khâu 1 - Thu Hút]: "Đóng vai Chuyên gia Sáng tạo Nội dung BMAA, hãy bóc tách 3 nỗi đau lớn nhất của nhóm khách hàng [Mục Tiêu] và viết 1 bài phân tích giải cảnh sâu sắc bằng ngôn từ đời thường, kèm lời kêu gọi trải nghiệm công cụ chẩn đoán miễn phí."
+
+[Khâu 2 - Chốt Đơn]: "Đóng vai Chuyên viên Tư vấn Thấu Cảm, khách hàng đang chê giá 499k là đắt. Hãy viết phản hồi giải thích sự khác biệt giữa chi phí thử sai mất tiền triệu so với khoản đầu tư có quy chuẩn, kèm mã VietQR thanh toán nhanh."
+
+[Khâu 3 - Cung Ứng]: "Đóng vai Trưởng Ban Kiểm Định Chất Lượng, hãy rà soát báo cáo bàn giao này dựa trên 5 tiêu chí: Đúng sự thật khách quan, Đầy đủ số liệu chứng minh, Ngôn từ trong sáng, Không vi phạm bản quyền và Có hành động tiếp theo cụ thể."
+
+[Khâu 4 - CSKH]: "Đóng vai Trợ lý Chăm sóc Tận Tâm, khách hàng vừa đánh giá 4/10 điểm vì tài liệu khó hiểu. Hãy soạn thư xin lỗi chân thành, nhận trách nhiệm và đề xuất 1 buổi hỗ trợ 1:1 trong 24h tới."
+
+[Khâu 5 - Đối Soát]: "Đóng vai Kế toán Trưởng, hãy đối chiếu danh sách 15 giao dịch ngân hàng hôm nay với số lượng tài khoản đã cấp, xác định rõ các khoản chênh lệch và xuất bảng P&L tóm tắt trong ngày."
+              </div>
+            </div>
+
+            <!-- NGHI THỨC HỌP ĐỨNG 15 PHÚT -->
+            <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:20px;">
+              <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin-bottom:8px;">⏱️ Nghi Thức Họp Đứng 15 Phút Hàng Sáng</h4>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin-bottom:12px;">Bắt đầu lúc 08h45 - 09h00. Đứng toàn bộ, không dùng slide. Đúng 3 câu hỏi thực chứng:</p>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="padding:10px 12px; background:var(--bg-subtle); border-radius:8px; border-left:3px solid var(--emerald); font-size:13.5px;">
+                  <b>1. Hôm qua đã xong sản phẩm vật lý nào (>0 byte)?</b><br>
+                  <span style="color:var(--text-muted); font-size:12.5px;">Chỉ báo cáo việc đã kiểm chứng xong, không báo cáo việc "đang làm".</span>
+                </div>
+                <div style="padding:10px 12px; background:var(--bg-subtle); border-radius:8px; border-left:3px solid var(--brand-primary); font-size:13.5px;">
+                  <b>2. Hôm nay cam kết giao đúng Đích nào?</b><br>
+                  <span style="color:var(--text-muted); font-size:12.5px;">Cam kết 1–2 đầu ra quan trọng nhất gắn liền với dòng tiền hoặc tiến độ.</span>
+                </div>
+                <div style="padding:10px 12px; background:var(--bg-subtle); border-radius:8px; border-left:3px solid var(--rose); font-size:13.5px;">
+                  <b>3. Đang nghẽn ở đâu cần giải cứu?</b><br>
+                  <span style="color:var(--text-muted); font-size:12.5px;">Nêu điểm nghẽn để đồng đội hoặc sếp tháo gỡ ngay sau cuộc họp.</span>
+                </div>
+              </div>
+              <div style="margin-top:12px; padding:8px 12px; background:var(--bg-accent-soft); border-radius:8px; font-size:12.5px; color:var(--brand-primary); font-weight:700;">
+                🎙️ Khuyên dùng: Bật điện thoại ghi âm 15 phút ➔ Nạp audio vào AI tự động sinh biên bản hành động trong 30 giây.
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- TẦNG 7: LỘ TRÌNH 3 GIAI ĐOẠN, 6 PHIÊN HỌP & XUẤT BẢN BÁO CÁO -->
@@ -2338,6 +2698,302 @@
       });
     }
 
+    
+    // ==================== BỘ DỮ LIỆU KHO VĂN BẢN PHÁP LUẬT THEO NGÀNH ====================
+    const LEGAL_LIBRARIES = {
+      solo_ai: {
+        sectorName: 'Sản Phẩm Tri Thức Số, Đào Tạo & Solo-Business',
+        risks: [
+          'Doanh thu chuyển khoản về tài khoản cá nhân không kê khai thuế định kỳ bị cơ quan thuế truy thu và xử phạt chậm nộp nặng.',
+          'Tài liệu, video bài giảng bị sao chép và phát tán lậu công khai trên mạng mà không có biện pháp đăng ký bản quyền hoặc đánh dấu Watermark.',
+          'Thu thập thông tin cá nhân (SĐT, Email, Tên) của học viên trên Landing Page mà không có Điều khoản bảo mật theo Nghị định 13/2023/NĐ-CP.'
+        ],
+        laws: [
+          { num: 'Luật 20/2023/QH15', title: 'Luật Giao dịch điện tử 2023 (Có hiệu lực từ 01/07/2024)', desc: 'Quy định giá trị pháp lý của thông điệp dữ liệu, chữ ký số, hợp đồng điện tử và trách nhiệm của bên cung cấp dịch vụ số.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Giao-dich-dien-tu-2023-20-2023-QH15-568393.aspx' },
+          { num: 'Luật 50/2005 (sửa đổi 2022)', title: 'Luật Sở hữu trí tuệ (Sửa đổi, bổ sung 2022)', desc: 'Quy định quyền tác giả đối với tác phẩm viết, video, giáo trình và phần mềm máy tính; cơ chế khiếu nại vi phạm bản quyền.', url: 'https://thuvienphapluat.vn/van-ban/So-huu-tri-tue/Luat-So-huu-tri-tue-sua-doi-2022-so-07-2022-QH15-467554.aspx' },
+          { num: 'Nghị định 13/2023/NĐ-CP', title: 'Nghị định về Bảo vệ dữ liệu cá nhân', desc: 'Bắt buộc lấy sự đồng thuận của người dùng khi thu thập dữ liệu; quy định biện pháp kỹ thuật bảo vệ thông tin khách hàng.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Nghi-dinh-13-2023-ND-CP-bao-ve-du-lieu-ca-nhan-532454.aspx' },
+          { num: 'Thông tư 40/2021/TT-BTC', title: 'Hướng dẫn thuế GTGT, TNCN đối với hộ kinh doanh, cá nhân kinh doanh', desc: 'Quy định biểu tỷ lệ % thuế tính trên doanh thu đối với dịch vụ số, nội dung số và tiếp thị liên kết (Affiliate).', url: 'https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Thong-tu-40-2021-TT-BTC-huong-dan-thue-gia-tri-gia-tang-thu-nhap-ca-nhan-476711.aspx' },
+          { num: 'NĐ 52/2013 & NĐ 85/2021', title: 'Nghị định về Thương mại điện tử', desc: 'Quy định nghĩa vụ thông báo website/landing page bán hàng hoặc đăng ký sàn TMĐT với Bộ Công Thương.', url: 'https://thuvienphapluat.vn/van-ban/Thuong-mai/Nghi-dinh-52-2013-ND-CP-thuong-mai-dien-tu-187588.aspx' }
+        ],
+        aiPromptGuide: "Tải các tệp PDF/Văn bản luật trên nạp vào Google NotebookLM hoặc Vector DB của AI Agent. Sử dụng vai trò: 'Bạn là Cố Vấn Pháp Chế Nội Bộ cho Solo-Business, hãy đối chiếu mọi bài đăng, hợp đồng dịch vụ và điều khoản landing page với Nghị định 13/2023 và Luật SHTT trước khi công bố.'"
+      },
+      micro_saas: {
+        sectorName: 'Phần Mềm Dịch Vụ (SaaS), Nền Tảng Số & Tư Vấn B2B',
+        risks: [
+          'Không có Thỏa thuận mức độ dịch vụ (SLA) và điều khoản Miễn trừ trách nhiệm khi máy chủ gặp sự cố hoặc gián đoạn mạng.',
+          'Lưu trữ và phân tích dữ liệu tài chính/kinh doanh của doanh nghiệp khách hàng mà không có Cam kết bảo mật thông tin (NDA) và mã hóa đạt chuẩn.',
+          'Thu thập thông tin người dùng nhưng không lập Hồ sơ đánh giá tác động xử lý dữ liệu cá nhân (DPIA) theo yêu cầu của Bộ Công An (Cục A05).'
+        ],
+        laws: [
+          { num: 'Luật 20/2023/QH15', title: 'Luật Giao dịch điện tử 2023', desc: 'Quy định giá trị pháp lý của hợp đồng điện tử ký qua API/Web và trách nhiệm bảo đảm an toàn dữ liệu khách hàng.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-Giao-dich-dien-tu-2023-20-2023-QH15-568393.aspx' },
+          { num: 'Nghị định 13/2023/NĐ-CP', title: 'Nghị định về Bảo vệ dữ liệu cá nhân', desc: 'Quy định trách nhiệm bên Kiểm soát và Xử lý dữ liệu cá nhân; quy trình thông báo vi phạm dữ liệu trong 72 giờ.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Nghi-dinh-13-2023-ND-CP-bao-ve-du-lieu-ca-nhan-532454.aspx' },
+          { num: 'Luật 24/2018 & NĐ 53/2022', title: 'Luật An ninh mạng & Nghị định hướng dẫn thi hành', desc: 'Quy định lưu trữ dữ liệu người dùng tại Việt Nam và nghĩa vụ bảo đảm an ninh hệ thống thông tin.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-An-ninh-mang-2018-352285.aspx' },
+          { num: 'Luật 86/2015/QH13', title: 'Luật An toàn thông tin mạng', desc: 'Phân loại cấp độ an toàn hệ thống thông tin (Cấp 1 đến Cấp 5) và các tiêu chuẩn phòng chống tấn công mạng.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Luat-an-toan-thong-tin-mang-2015-298375.aspx' }
+        ],
+        aiPromptGuide: "Nạp toàn bộ văn bản về NĐ 13/2023 và Luật An ninh mạng vào AI. Ra lệnh: 'Hãy rà soát bản Điều khoản sử dụng (Terms of Service) và Thỏa thuận xử lý dữ liệu (DPA) của phần mềm SaaS này để đảm bảo 100% không vi phạm nghĩa vụ báo cáo tác động dữ liệu.'"
+      },
+      micro_content: {
+        sectorName: 'Truyền Thông, Tiếp Thị Nội Dung AI & Affiliate',
+        risks: [
+          'Xuất bản các nội dung quảng cáo có chứa từ ngữ cam kết tuyệt đối, giật tít sai sự thật vi phạm Luật Quảng cáo.',
+          'Sử dụng hình ảnh, âm nhạc, đoạn trích video của bên thứ ba mà không có bản quyền hoặc vi phạm chính sách bản quyền số.',
+          'Không kê khai hoặc không khấu trừ thuế TNCN tại nguồn khi chi trả tiền hoa hồng tiếp thị liên kết cho đội ngũ cộng tác viên.'
+        ],
+        laws: [
+          { num: 'Luật 16/2012/QH13', title: 'Luật Quảng cáo 2012 (và các văn bản sửa đổi)', desc: 'Cấm sử dụng từ "nhất", "duy nhất", "tốt nhất" khi không có tài liệu hợp pháp chứng minh; quy định quảng cáo trên mạng xã hội.', url: 'https://thuvienphapluat.vn/van-ban/Thuong-mai/Luat-quang-cao-2012-143633.aspx' },
+          { num: 'Luật SHTT 2022', title: 'Luật Sở hữu trí tuệ về Quyền tác giả và Quyền liên quan', desc: 'Bảo hộ tác phẩm nghe nhìn, bài viết, bản ghi âm; chế tài xử lý sao chép không xin phép.', url: 'https://thuvienphapluat.vn/van-ban/So-huu-tri-tue/Luat-So-huu-tri-tue-sua-doi-2022-so-07-2022-QH15-467554.aspx' },
+          { num: 'NĐ 72/2013 & NĐ 27/2018', title: 'Quản lý, cung cấp, sử dụng dịch vụ Internet và thông tin trên mạng', desc: 'Quy định về thiết lập trang thông tin điện tử tổng hợp, tài khoản mạng xã hội và trách nhiệm ngăn chặn tin giả.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Nghi-dinh-72-2013-ND-CP-quan-ly-cung-cap-su-dung-dich-vu-Internet-thong-tin-tren-mang-203203.aspx' },
+          { num: 'Thông tư 40/2021/TT-BTC', title: 'Chính sách thuế đối với dịch vụ quảng cáo và tiếp thị liên kết', desc: 'Nghĩa vụ kê khai và nộp thuế đối với các khoản thu nhập từ nền tảng số xuyên biên giới (Facebook, Google, TikTok).', url: 'https://thuvienphapluat.vn/van-ban/Thue-Phi-Le-Phi/Thong-tu-40-2021-TT-BTC-huong-dan-thue-gia-tri-gia-tang-thu-nhap-ca-nhan-476711.aspx' }
+        ],
+        aiPromptGuide: "Thiết lập AI Gatekeeper: 'Trước khi duyệt bất kỳ kịch bản video hoặc bài đăng nào, hãy kiểm tra đối chiếu với Luật Quảng cáo 2012 xem có chứa từ ngữ vi phạm, nói quá sự thật hoặc xâm phạm nhãn hiệu đối thủ không.'"
+      },
+      sme_clinic: {
+        sectorName: 'Phòng Khám Bác Sĩ Gia Đình & Chăm Sóc Sức Khỏe Tại Nhà',
+        risks: [
+          'Bác sĩ/Điều dưỡng thực hiện can thiệp y tế tại nhà vượt quá phạm vi chứng chỉ hành nghề hoặc ngoài danh mục kỹ thuật được cấp phép.',
+          'Kê đơn thuốc hoặc chẩn đoán qua mạng khi chưa đáp ứng đủ tiêu chuẩn khám chữa bệnh từ xa theo quy định của Bộ Y tế.',
+          'Để lộ lọt thông tin bệnh án, dữ liệu đo chỉ số sức khỏe của khách hàng — vi phạm dữ liệu cá nhân nhạy cảm theo NĐ 13/2023.'
+        ],
+        laws: [
+          { num: 'Luật 15/2023/QH15', title: 'Luật Khám bệnh, chữa bệnh 2023 (Hiệu lực từ 01/01/2024)', desc: 'Quy định bắt buộc về giấy phép hành nghề, điều kiện hoạt động phòng khám, khám chữa bệnh từ xa và y học gia đình.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Luat-Kham-benh-chua-benh-2023-so-15-2023-QH15-513689.aspx' },
+          { num: 'Nghị định 96/2023/NĐ-CP', title: 'Quy định chi tiết một số điều của Luật Khám bệnh, chữa bệnh', desc: 'Hướng dẫn điều kiện cấp phép cơ sở khám bệnh gia đình, cơ sở chăm sóc tại nhà và danh mục chuyên môn kỹ thuật.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Nghi-dinh-96-2023-ND-CP-huong-dan-Luat-Kham-benh-chua-benh-587287.aspx' },
+          { num: 'Thông tư 32/2023/TT-BYT', title: 'Tiêu chuẩn kỹ thuật phòng khám bác sĩ gia đình và bệnh án điện tử', desc: 'Quy định chi tiết quy trình chuyên môn, tiêu chuẩn nhân lực y tế và bệnh án điện tử.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-32-2023-TT-BYT-huong-dan-Luat-Kham-benh-chua-benh-593685.aspx' },
+          { num: 'Nghị định 13/2023/NĐ-CP', title: 'Bảo vệ dữ liệu cá nhân nhạy cảm trong y tế', desc: 'Dữ liệu sức khỏe và bệnh án là dữ liệu nhạy cảm cao nhất; bắt buộc áp dụng biện pháp mã hóa và phân quyền nghiêm ngặt.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Nghi-dinh-13-2023-ND-CP-bao-ve-du-lieu-ca-nhan-532454.aspx' }
+        ],
+        aiPromptGuide: "Đưa toàn bộ Luật Khám chữa bệnh 2023 và NĐ 96/2023 vào AI: 'Đóng vai Trưởng Ban Pháp Chế Y Tế, rà soát mọi hợp đồng dịch vụ chăm sóc tại nhà, cảnh báo mọi điều khoản vượt quá quyền hạn của Bác sĩ gia đình và Điều dưỡng viên.'"
+      },
+      sme_academy: {
+        sectorName: 'Học Viện Đào Tạo Quản Trị & Tư Vấn Chuyển Giao B2B',
+        risks: [
+          'Đưa ra các cam kết kết quả kinh doanh tuyệt đối trong hợp đồng B2B dẫn đến nguy cơ kiện tụng khi doanh nghiệp khách hàng triển khai thất bại.',
+          'Chuyên gia/Coach vi phạm điều khoản bảo mật (NDA) khi chia sẻ số liệu nội bộ của doanh nghiệp này cho học viên lớp khác.',
+          'Tài liệu, biểu mẫu SOP đào tạo bị học viên sao chép nhân bản và mở lớp cạnh tranh trực tiếp do thiếu Thỏa thuận Không Cạnh Tranh (NCA).'
+        ],
+        laws: [
+          { num: 'Luật 59/2020/QH14', title: 'Luật Doanh nghiệp 2020', desc: 'Quy định về hợp đồng tư vấn, trách nhiệm của người quản lý doanh nghiệp và các giao dịch kinh doanh hợp pháp.', url: 'https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Luat-Doanh-nghiep-so-59-2020-QH14-445999.aspx' },
+          { num: 'Bộ luật Dân sự 2015', title: 'Quy định về Hợp đồng Dịch vụ và Bồi thường thiệt hại', desc: 'Cơ sở pháp lý cho các điều khoản phạt vi phạm, cam kết bảo mật thông tin (NDA) và nghĩa vụ của bên cung ứng dịch vụ.', url: 'https://thuvienphapluat.vn/van-ban/Quyen-dan-su/Bo-luat-dan-su-2015-298366.aspx' },
+          { num: 'Luật 74/2014/QH13', title: 'Luật Giáo dục nghề nghiệp', desc: 'Quy định về đào tạo thường xuyên, bồi dưỡng kỹ năng ngắn hạn và giá trị pháp lý của chứng nhận đào tạo nội bộ.', url: 'https://thuvienphapluat.vn/van-ban/Giao-duc/Luat-Giao-duc-nghe-nghiep-2014-259727.aspx' },
+          { num: 'Luật SHTT 2022', title: 'Bảo hộ Bí mật kinh doanh và Tác phẩm viết', desc: 'Bảo vệ bộ biểu mẫu SOP, quy trình vận hành và tài liệu bản quyền chống lại hành vi sao chép trái phép.', url: 'https://thuvienphapluat.vn/van-ban/So-huu-tri-tue/Luat-So-huu-tri-tue-sua-doi-2022-so-07-2022-QH15-467554.aspx' }
+        ],
+        aiPromptGuide: "Nạp các mẫu hợp đồng tư vấn B2B và NDA vào AI: 'Hãy kiểm tra hợp đồng chuyển giao quản trị này, bổ sung các điều khoản giới hạn trách nhiệm, xác định rõ khách hàng tự chịu trách nhiệm thực thi và cam kết bảo mật bí mật kinh doanh hai chiều.'"
+      },
+      sme_agri_d2c: {
+        sectorName: 'Nông Sản Chế Biến Sâu, Thảo Dược & Hạt Dinh Dưỡng D2C',
+        risks: [
+          'Sản phẩm lưu hành trên thị trường khi chưa hoàn tất thủ tục Tự công bố sản phẩm theo Nghị định 15/2018/NĐ-CP.',
+          'Bao bì nhãn mác vi phạm quy định về nhãn hàng hóa (thiếu ngày sản xuất, hạn sử dụng, thông tin dị ứng hoặc xuất xứ nguyên liệu).',
+          'Quảng cáo sản phẩm thảo dược có từ ngữ gây hiểu lầm là thuốc chữa bệnh, bị phạt tiền và buộc tiêu hủy toàn bộ lô hàng.'
+        ],
+        laws: [
+          { num: 'Luật 55/2010/QH12', title: 'Luật An toàn thực phẩm', desc: 'Quy định điều kiện bảo đảm an toàn thực phẩm trong sản xuất, chế biến, bảo quản và kinh doanh thực phẩm đóng gói.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Luat-an-toan-thuc-pham-2010-109071.aspx' },
+          { num: 'Nghị định 15/2018/NĐ-CP', title: 'Hướng dẫn chi tiết thi hành một số điều của Luật An toàn thực phẩm', desc: 'Quy định trình tự, thủ tục Tự công bố sản phẩm; kiểm tra nhà nước về an toàn thực phẩm nhập khẩu và lưu thông.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Nghi-dinh-15-2018-ND-CP-huong-dan-Luat-an-toan-thuc-pham-374526.aspx' },
+          { num: 'NĐ 43/2017 & NĐ 111/2021', title: 'Nghị định về Nhãn hàng hóa', desc: 'Nội dung bắt buộc phải thể hiện trên nhãn hàng hóa thực phẩm; quy định về kích thước chữ, ngôn ngữ và nguồn gốc.', url: 'https://thuvienphapluat.vn/van-ban/Thuong-mai/Nghi-dinh-43-2017-ND-CP-nhan-hang-hoa-344445.aspx' },
+          { num: 'Thông tư 24/2019/TT-BYT', title: 'Quy định về quản lý và sử dụng phụ gia thực phẩm', desc: 'Danh mục phụ gia thực phẩm được phép sử dụng và mức giới hạn tối đa cho phép đối với từng nhóm thực phẩm chế biến.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-24-2019-TT-BYT-quan-ly-va-su-dung-phu-gia-thuc-pham-423580.aspx' }
+        ],
+        aiPromptGuide: "Nạp Nghị định 15/2018 và Nghị định 43/2017 vào AI: 'Hãy đối chiếu maket bao bì sản phẩm dinh dưỡng này với quy chuẩn nhãn hàng hóa bắt buộc của Việt Nam, kiểm tra từng dòng thông tin xem có thiếu sót hoặc dùng từ sai luật không.'"
+      },
+      chain_wellness: {
+        sectorName: 'Chuỗi Dịch Vụ Dưỡng Sinh, Spa Phục Hồi & Trị Liệu',
+        risks: [
+          'Kỹ thuật viên thực hiện thao tác xoa bóp bấm huyệt không có chứng chỉ đào tạo chuyên môn hợp lệ theo quy định của Sở Y tế.',
+          'Cơ sở không đáp ứng đủ điều kiện về Giấy chứng nhận đủ điều kiện an ninh trật tự hoặc tiêu chuẩn Phòng cháy chữa cháy (PCCC).',
+          'Treo biển hiệu hoặc quảng cáo cam kết chữa dứt điểm bệnh xương khớp vượt quá phạm vi hoạt động của dịch vụ chăm sóc sắc đẹp/dưỡng sinh.'
+        ],
+        laws: [
+          { num: 'Nghị định 96/2016/NĐ-CP', title: 'Quy định điều kiện về an ninh, trật tự kinh doanh dịch vụ xoa bóp', desc: 'Điều kiện bắt buộc về Giấy chứng nhận an ninh trật tự đối với kinh doanh dịch vụ xoa bóp (massage, bấm huyệt dưỡng sinh).', url: 'https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Nghi-dinh-96-2016-ND-CP-dieu-kien-an-ninh-trat-tu-nganh-nghe-dau-tu-kinh-doanh-co-dieu-kien-315868.aspx' },
+          { num: 'Nghị định 96/2023/NĐ-CP', title: 'Phân định dịch vụ massage thư giãn và cơ sở phục hồi chức năng', desc: 'Quy chuẩn cơ sở vật chất, phòng xoa bóp riêng biệt nam/nữ, điều kiện y bạ và nhân viên kỹ thuật.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Nghi-dinh-96-2023-ND-CP-huong-dan-Luat-Kham-benh-chua-benh-587287.aspx' },
+          { num: 'Nghị định 136/2020/NĐ-CP', title: 'Quy định chi tiết thi hành Luật Phòng cháy và chữa cháy', desc: 'Tiêu chuẩn thẩm duyệt thiết kế, lối thoát hiểm và trang thiết bị PCCC tại từng điểm cơ sở kinh doanh dịch vụ.', url: 'https://thuvienphapluat.vn/van-ban/Tai-nguyen-Moi-truong/Nghi-dinh-136-2020-ND-CP-huong-dan-Luat-Phong-chay-va-chua-chay-458145.aspx' },
+          { num: 'Bộ luật Lao động 2019', title: 'Quy định về hợp đồng lao động, ca kíp và bảo hộ lao động', desc: 'Trách nhiệm ký hợp đồng, đóng BHXH và đảm bảo an toàn vệ sinh lao động cho đội ngũ kỹ thuật viên phục vụ.', url: 'https://thuvienphapluat.vn/van-ban/Lao-dong-Tien-luong/Bo-luat-Lao-dong-2019-333670.aspx' }
+        ],
+        aiPromptGuide: "Nạp NĐ 96/2016 và quy định PCCC vào AI: 'Đóng vai Trưởng phòng Kiểm soát nội bộ chuỗi, hãy lập checklist 20 điểm bắt buộc phải kiểm tra đột xuất tại các cơ sở chi nhánh trước khi đón đoàn kiểm tra liên ngành.'"
+      },
+      plat_telehealth: {
+        sectorName: 'Nền Tảng Thiết Bị Y Tế Tại Nhà & Mạng Lưới Bác Sĩ',
+        risks: [
+          'Kinh doanh và tích hợp các thiết bị y tế đo tại nhà không có Giấy phép lưu hành và giấy chứng nhận xuất xứ của Bộ Y tế.',
+          'Để xảy ra sự cố sức khỏe cho bệnh nhân khi thuật toán AI cảnh báo sai chỉ số hoặc bác sĩ trên mạng tư vấn thiếu căn cứ.',
+          'Vi phạm quy định về bảo vệ Dữ liệu cá nhân nhạy cảm (hồ sơ bệnh án điện tử) theo Nghị định 13/2023/NĐ-CP.'
+        ],
+        laws: [
+          { num: 'Luật 15/2023/QH15', title: 'Quy định về Khám bệnh, chữa bệnh từ xa và Hỗ trợ y tế từ xa', desc: 'Điều kiện pháp lý bắt buộc đối với người hành nghề và cơ sở cung cấp dịch vụ khám bệnh, tư vấn sức khỏe từ xa.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Luat-Kham-benh-chua-benh-2023-so-15-2023-QH15-513689.aspx' },
+          { num: 'NĐ 98/2021 & NĐ 07/2023', title: 'Nghị định về Quản lý trang thiết bị y tế', desc: 'Quy định phân loại thiết bị y tế, cấp số lưu hành, công bố đủ điều kiện kinh doanh thiết bị y tế loại B, C, D.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Nghi-dinh-98-2021-ND-CP-quan-ly-trang-thiet-bi-y-te-494957.aspx' },
+          { num: 'Thông tư 32/2023/TT-BYT', title: 'Quy định tiêu chuẩn hồ sơ bệnh án điện tử và đơn thuốc điện tử', desc: 'Chuẩn kết nối dữ liệu y tế, liên thông đơn thuốc quốc gia và quy chuẩn bảo mật thông tin khám chữa bệnh từ xa.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-32-2023-TT-BYT-huong-dan-Luat-Kham-benh-chua-benh-593685.aspx' },
+          { num: 'Nghị định 13/2023/NĐ-CP', title: 'Đánh giá tác động xử lý dữ liệu cá nhân nhạy cảm trong hệ thống y tế số', desc: 'Bắt buộc lập hồ sơ DPIA gửi Bộ Công an và có sự đồng thuận rõ ràng của bệnh nhân trước khi lưu trữ chỉ số sinh tồn.', url: 'https://thuvienphapluat.vn/van-ban/Cong-nghe-thong-tin/Nghi-dinh-13-2023-ND-CP-bao-ve-du-lieu-ca-nhan-532454.aspx' }
+        ],
+        aiPromptGuide: "Nạp toàn bộ văn bản về Telehealth và Thiết bị y tế vào AI: 'Đóng vai Giám đốc Tuân Thủ Y Tế Số, rà soát điều khoản hợp đồng giữa Nền tảng với Bác sĩ chuyên khoa và điều khoản dịch vụ với hộ gia đình, đảm bảo 0 rủi ro pháp lý liên đới.'"
+      },
+      plat_b2b2c: {
+        sectorName: 'Mạng Lưới Nông Sản B2B2C & Cung Ứng Không Ôm Kho',
+        risks: [
+          'Không đăng ký vận hành Sàn giao dịch Thương mại điện tử với Bộ Công Thương (mức phạt từ 40–100 triệu VNĐ và buộc dừng hoạt động).',
+          'Trách nhiệm liên đới về an toàn thực phẩm khi nguồn hàng từ Hợp tác xã/Nông trại bị nhiễm dư lượng thuốc bảo vệ thực vật.',
+          'Không có hợp đồng đại lý phân phối và quy chế chia sẻ hoa hồng minh bạch với mạng lưới Trưởng nhóm chung cư.'
+        ],
+        laws: [
+          { num: 'NĐ 52/2013 & NĐ 85/2021', title: 'Nghị định về Thương mại điện tử', desc: 'Nghĩa vụ đăng ký thiết lập website/ứng dụng cung cấp dịch vụ thương mại điện tử; quy chế hoạt động và giải quyết tranh chấp.', url: 'https://thuvienphapluat.vn/van-ban/Thuong-mai/Nghi-dinh-52-2013-ND-CP-thuong-mai-dien-tu-187588.aspx' },
+          { num: 'Luật 55/2010/QH12', title: 'Luật An toàn thực phẩm', desc: 'Nghĩa vụ kiểm soát nguồn gốc xuất xứ, lưu giữ hồ sơ truy xuất nguồn gốc và kiểm nghiệm chỉ tiêu an toàn thực phẩm.', url: 'https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Luat-an-toan-thuc-pham-2010-109071.aspx' },
+          { num: 'Luật 36/2005/QH11', title: 'Luật Thương mại (Hợp đồng đại lý và môi giới thương mại)', desc: 'Khung pháp lý cho cơ chế hoa hồng, bảo lãnh thanh toán và phân chia rủi ro trong chuỗi cung ứng nông sản.', url: 'https://thuvienphapluat.vn/van-ban/Thuong-mai/Luat-Thuong-mai-2005-36-2005-QH11-2679.aspx' },
+          { num: 'Thông tư 40/2021/TT-BTC', title: 'Trách nhiệm cung cấp thông tin của chủ sở hữu sàn TMĐT cho cơ quan thuế', desc: 'Nghĩa vụ báo cáo định kỳ doanh thu của các cá nhân, đại lý bán hàng trên nền tảng cho Tổng cục Thuế.', url: 'https://thuvienphapluat.vn/van-ban/Doanh-nghiep/Nghi-dinh-91-2022-ND-CP-sua-doi-Nghi-dinh-126-2020-ND-CP-huong-dan-Luat-Quan-ly-thue-537446.aspx' }
+        ],
+        aiPromptGuide: "Nạp NĐ 52/2013 và Luật An toàn thực phẩm vào AI: 'Hãy soạn thảo Bản Quy chế Hoạt động Sàn TMĐT và Mẫu Hợp đồng Hợp tác Đại lý Chung Cư, bảo vệ quyền lợi nền tảng và ràng buộc trách nhiệm cam kết an toàn thực phẩm của bên Hợp tác xã.'"
+      }
+    };
+
+    // SWITCH SHIELD TAB
+    function switchShieldTab(tabKey) {
+      ['legal', 'finance', 'ops'].forEach(k => {
+        const btn = document.getElementById('tab-btn-' + k);
+        const view = document.getElementById('shield-view-' + k);
+        if (btn) btn.classList.toggle('active', k === tabKey);
+        if (view) view.style.display = k === tabKey ? 'block' : 'none';
+      });
+    }
+
+    // RENDER LEGAL SHIELD CONTENT
+    function renderLegalShield(ideaKey) {
+      const lib = LEGAL_LIBRARIES[ideaKey] || LEGAL_LIBRARIES['solo_ai'];
+      document.getElementById('legalSectorName').innerText = lib.sectorName;
+
+      // Risks
+      document.getElementById('legalRisksList').innerHTML = lib.risks.map(r => `<li>${r}</li>`).join('');
+
+      // Laws
+      document.getElementById('legalLawsList').innerHTML = lib.laws.map(l => `
+        <div class="law-item-card">
+          <div style="flex:1;">
+            <span class="law-num-badge">${l.num}</span>
+            <h5 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:0 0 4px;">${l.title}</h5>
+            <p style="font-size:13.5px; color:var(--text-secondary); margin:0;">${l.desc}</p>
+          </div>
+          <a href="${l.url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:12.5px; padding:6px 12px; white-space:nowrap; text-decoration:none;">
+            Tra cứu gốc ↗
+          </a>
+        </div>
+      `).join('');
+
+      // AI Guide
+      document.getElementById('legalAiGuide').innerText = lib.aiPromptGuide;
+    }
+
+    // CALCULATE RUNWAY
+    function calcRunway() {
+      const cash = parseFloat(document.getElementById('inCashReserve').value) || 0;
+      const burn = parseFloat(document.getElementById('inBurnRate').value) || 1;
+      const months = (cash / (burn > 0 ? burn : 1)).toFixed(1);
+
+      const outVal = document.getElementById('outRunwayVal');
+      const outStatus = document.getElementById('outRunwayStatus');
+
+      outVal.innerText = `${months} Tháng`;
+      if (months < 3) {
+        outVal.style.color = 'var(--rose)';
+        outStatus.style.color = 'var(--rose)';
+        outStatus.innerText = '🚨 BÁO ĐỘNG ĐỎ: Nguy cơ đứt gãy dòng tiền trong < 90 ngày!';
+      } else if (months <= 6) {
+        outVal.style.color = 'var(--amber)';
+        outStatus.style.color = 'var(--amber)';
+        outStatus.innerText = '⚠️ CẢNH BÁO VÀNG: Cần đẩy mạnh thu tiền mặt (Cash-in) gấp!';
+      } else {
+        outVal.style.color = 'var(--emerald)';
+        outStatus.style.color = 'var(--emerald)';
+        outStatus.innerText = '✅ AN TOÀN XANH: Đạt chuẩn Runway sống khỏe > 6 tháng.';
+      }
+    }
+
+    // UPDATE JAR AMOUNTS
+    function updateJarEstimates(rev) {
+      const j1 = Math.round(rev * 0.6);
+      const j2 = Math.round(rev * 0.2);
+      const j3 = Math.round(rev * 0.2);
+      document.getElementById('jar1Est').innerText = `Dự kiến: ${j1.toLocaleString('vi-VN')} triệu VNĐ / tháng`;
+      document.getElementById('jar2Est').innerText = `Dự kiến trích lập: ${j2.toLocaleString('vi-VN')} triệu VNĐ / tháng`;
+      document.getElementById('jar3Est').innerText = `Dự kiến tái đầu tư: ${j3.toLocaleString('vi-VN')} triệu VNĐ / tháng`;
+    }
+
+    // COPY LEGAL PROMPT FOR AI
+    function copyLegalPromptForAI() {
+      const lib = LEGAL_LIBRARIES[selectedIdeaKey] || LEGAL_LIBRARIES['solo_ai'];
+      let text = `BỘ HỒ SƠ PHÁP CHẾ SỐ CHO AI AGENT (NGÀNH: ${lib.sectorName})
+
+`;
+      text += `--- 3 RỦI RO PHÁP LÝ CHẾT NGƯỜI CẦN PHÒNG TRÁNH ---
+`;
+      lib.risks.forEach((r, idx) => { text += `${idx + 1}. ${r}
+`; });
+      text += `
+--- DANH MỤC VĂN BẢN QUY PHẠM PHÁP LUẬT CỐT LÕI ---
+`;
+      lib.laws.forEach((l, idx) => {
+        text += `${idx + 1}. [${l.num}] ${l.title}
+   Nội dung: ${l.desc}
+   Đường dẫn tra cứu: ${l.url}
+`;
+      });
+      text += `
+--- HƯỚNG DẪN PROMPT GỐC CHO AI LEGAL CO-PILOT ---
+${lib.aiPromptGuide}
+`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Đã sao chép Danh mục Văn bản Pháp luật & Prompt nạp cho AI vào Clipboard!');
+      });
+    }
+
+    // COPY OPTA TEMPLATE
+    function copyOptaTemplate() {
+      const text = `THỎA THUẬN ĐÍCH 1 TRANG (ONE-PAGE TARGET AGREEMENT - OPTA)
+` +
+        `Người nhận vai trò: [Họ Tên / Biệt danh AI Agent]
+` +
+        `Khâu phụ trách: [Tên Khâu trong Chuỗi Giá Trị]
+` +
+        `Thời hạn cam kết: 30 ngày (Đánh giá hàng tuần)
+
+` +
+        `1. ĐÍCH BÀN GIAO ĐO ĐƯỢC (>0 byte):
+` +
+        `- Đầu ra 1: [Số lượng cụ thể + Chuẩn chất lượng]
+` +
+        `- Đầu ra 2: [Doanh số thực thu hoặc Tỷ lệ hài lòng NPS]
+
+` +
+        `2. RANH GIỚI TỰ QUYẾT (QUYỀN HẠN XANH):
+` +
+        `- Toàn quyền quyết định phương pháp thực thi không cần xin phép.
+` +
+        `- Được duyệt chi ngân sách trong định mức: [Ngân sách tối đa/tháng].
+
+` +
+        `3. VẠCH ĐỎ CẤM KỴ (BẮT BUỘC TRÌNH DUYỆT):
+` +
+        `- Cấm vượt ngân sách hoặc giảm giá quá định mức quy định.
+` +
+        `- Cấm chia sẻ dữ liệu hoặc phát ngôn thay mặt công ty.
+
+` +
+        `4. ĐÃI NGỘ & THƯỞNG KHOÁN THỰC THU (CASH-IN):
+` +
+        `- Lương cứng / Chi phí cố định: [...] triệu VNĐ.
+` +
+        `- Thưởng khoán: [...]% trên tiền mặt thực về tài khoản.
+
+` +
+        `Người giao việc (Founder)                  Người nhận việc
+` +
+        `(Ký & ghi rõ họ tên)                      (Ký & ghi rõ họ tên)`;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Đã sao chép Mẫu Thỏa Thuận Đích 1 Trang vào Clipboard!');
+      });
+    }
+
+    // COPY MASTER PROMPTS
+    function copyMasterPrompts() {
+      const el = document.getElementById('masterPromptPreview');
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        alert('Đã sao chép toàn bộ 5 Prompt Thực Chiến cho AI vào Clipboard!');
+      });
+    }
+
     // LOAD IDEA PRESET
     function loadIdea(key) {
       selectedIdeaKey = key;
@@ -2432,6 +3088,12 @@
       document.getElementById('rep-b4-inc').innerText = q[12];
 
       // Tầng 1 (tiếp): Revenue Streams Grid
+      
+      // Populate 3 Shields
+      renderLegalShield(selectedIdeaKey);
+      updateJarEstimates(rev);
+      calcRunway();
+
       document.getElementById('revenueStreamsGrid').innerHTML = REVENUE_LOOPS.map(r => `
         <div class="scale-card" style="cursor:default; border-top:4px solid var(--emerald);">
           <div>
@@ -2763,6 +3425,31 @@
         md += `- **AI & Hệ thống:** ${st.aiSys}\n`;
         md += `- **Cổng kiểm duyệt:** ${st.gateAndon}\n\n`;
       });
+      
+      // BỔ SUNG 3 TẤM KHIÊN VÀO BÁO CÁO MARKDOWN
+      const lib = LEGAL_LIBRARIES[selectedIdeaKey] || LEGAL_LIBRARIES['solo_ai'];
+      md += `## 5. BỘ 3 TẤM KHIÊN QUẢN TRỊ & THỰC THI THỰC CHIẾN\n\n`;
+      md += `### 5.1 TẤM KHIÊN PHÁP CHẾ SỐ (KHO VĂN BẢN CHO AI)\n`;
+      md += `**Lĩnh vực:** ${lib.sectorName}\n\n`;
+      md += `**3 Rủi ro pháp lý chết người cần phòng tránh:**\n`;
+      lib.risks.forEach((r, idx) => { md += `${idx + 1}. ${r}\n`; });
+      md += `\n**Danh mục văn bản quy phạm pháp luật cốt lõi (Có link tra cứu):**\n`;
+      lib.laws.forEach((l, idx) => {
+        md += `- **[${l.num}] ${l.title}**: ${l.desc} ([Tra cứu](${l.url}))\n`;
+      });
+      md += `\n*Hướng dẫn AI Legal Co-pilot:* ${lib.aiPromptGuide}\n\n`;
+
+      md += `### 5.2 PHÁO ĐÀI QUẢN TRỊ TÀI CHÍNH (QUY TẮC 3 CHIẾC LỌ)\n`;
+      md += `- **Lọ 1 (60% Dòng tiền về):** Quỹ Vận Hành & Quỹ Lương (OpEx) — Ước tính ${Math.round(rev * 0.6)} triệu VNĐ/tháng.\n`;
+      md += `- **Lọ 2 (20% Dòng tiền về):** Quỹ Thuế & Dự Phòng Rủi Ro (Runway $\\ge$ 6 tháng) — Ước tính ${Math.round(rev * 0.2)} triệu VNĐ/tháng.\n`;
+      md += `- **Lọ 3 (20% Dòng tiền về):** Quỹ Tái Đầu Tư & Thưởng Đột Phá — Ước tính ${Math.round(rev * 0.2)} triệu VNĐ/tháng.\n`;
+      md += `- **Nguyên tắc cốt lõi:** Bán thu tiền ngay (Cash-in $\\neq$ P&L); Tách bạch tài khoản công ty và cá nhân; Canh trần lương cứng.\n\n`;
+
+      md += `### 5.3 KỶ LUẬT VẬN HÀNH & KHẮC TINH SỰ CỐ (OPS & AI)\n`;
+      md += `1. **Thỏa thuận Đích 1 trang (OPTA):** Thay thế JD dài dòng bằng 4 ô (Đích đo được >0 byte, Quyền hạn tự quyết xanh, Vạch đỏ cấm vượt quyền, Đãi ngộ theo tiền mặt thực thu).\n`;
+      md += `2. **Sơ đồ 3 làn Andon:** Làn Vàng (sự cố nhẹ - xử lý trong 2h) $\\rightarrow$ Làn Cam (nghẽn quy trình/lệch tiền - xử lý trong 4h) $\\rightarrow$ Làn Đỏ (hiểm họa pháp lý/lộ dữ liệu - dừng toàn bộ hệ thống trong 15 phút, báo Founder).\n`;
+      md += `3. **Nghi thức họp đứng 15 phút (Daily Standup):** 08h45 - 09h00 hàng sáng với 3 câu hỏi thực chứng (Hôm qua xong gì >0 byte? Hôm nay cam kết đích nào? Đang nghẽn ở đâu cần gỡ?).\n\n`;
+
       return md;
     }
 
