@@ -678,19 +678,117 @@
       font-size: 13.5px;
     }
 
-    /* TẦNG 3: CONCENTRIC RINGS */
+    /* TẦNG 3: CONCENTRIC RINGS (KAIZEN VÒNG TRÒN ĐỒNG TÂM THỰC CHỨNG) */
     .concentric-layout {
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       gap: 28px;
-      align-items: center;
+      align-items: flex-start;
     }
 
-    .rings-visual {
+    @media (max-width: 1024px) {
+      .concentric-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .concentric-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .concentric-switcher-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 2px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .concentric-switcher-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--text-primary);
+    }
+
+    .concentric-switcher-btn.active {
+      background: var(--brand-primary);
+      color: #ffffff;
+      border-color: var(--brand-primary);
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+    }
+
+    .concentric-svg-container {
       background: var(--bg-surface);
       border: 2px solid var(--border-color);
       border-radius: 20px;
-      padding: 24px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .ring-shape {
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .ring-shape:hover, .ring-shape.active-ring {
+      stroke-width: 4.5px !important;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.18));
+    }
+
+    /* Nested Shells (Khung Lồng Nhau) */
+    .nested-onion-container {
+      background: var(--bg-surface);
+      border: 2px dashed #0d9488;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nested-shell {
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nested-shell:hover {
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .nested-shell-dig { border: 2px solid #0d9488; background: rgba(13, 148, 136, 0.08); }
+    .nested-shell-cul { border: 2px solid #7c3aed; background: rgba(124, 58, 237, 0.08); }
+    .nested-shell-org { border: 2px solid #2563eb; background: rgba(37, 99, 235, 0.08); }
+    .nested-shell-pol { border: 2px solid #059669; background: rgba(5, 150, 105, 0.08); }
+    .nested-shell-sop { border: 2px solid #d97706; background: rgba(217, 119, 6, 0.08); }
+    .nested-shell-core {
+      background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(225, 29, 72, 0.35);
+      border: 2px solid #991b1b;
+    }
+
+    /* Cards Stack View */
+    .rings-visual-cards {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-color);
+      border-radius: 20px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -702,10 +800,12 @@
       border-radius: 14px;
       padding: 14px 18px;
       transition: all 0.2s;
+      cursor: pointer;
     }
 
-    .ring-layer:hover {
-      transform: translateX(5px);
+    .ring-layer:hover, .ring-layer.active-layer {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-sm);
     }
 
     .ring-layer.l-core { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
@@ -726,6 +826,16 @@
       font-weight: 600;
       opacity: 0.95;
       margin-top: 3px;
+    }
+
+    /* Layer Inspector Card */
+    .layer-inspector-card {
+      background: var(--bg-surface);
+      border: 2px solid var(--brand-primary);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 16px;
     }
 
     /* TẦNG 4: VALUE STREAM & WORKFLOW ENGINE (3 LANES) */
@@ -1607,40 +1717,164 @@
       <section class="panel">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">TẦNG 3: HẠ TẦNG QUẢN TRỊ ĐỒNG TÂM 5 LỚP &amp; SỐ HÓA (MANAGEMENT INFRASTRUCTURE)</h2>
-            <p class="panel-subtitle">Giải nghĩa nguyên lý "Củ hành đồng tâm": Con người (HR) đặt ở tâm điểm nhưng được bảo vệ bởi 4 lớp giáp quản trị và vỏ bọc Số hóa / AI.</p>
+            <h2 class="panel-title">TẦNG 3: HẠ TẦNG QUẢN TRỊ ĐỒNG TÂM 5 LỚP &amp; SỐ HÓA (CONCENTRIC RINGS)</h2>
+            <p class="panel-subtitle">Giải nghĩa nguyên lý "Củ hành đồng tâm": Con người (HR) đặt ở tâm điểm nhưng không bao giờ làm việc trần trụi mà được bảo vệ và dẫn dắt bởi 4 lớp giáp quản trị và vỏ bọc Số hóa / AI.</p>
           </div>
         </div>
 
+        <!-- BỘ CHUYỂN ĐỔI CHẾ ĐỘ HIỂN THỊ -->
+        <div class="concentric-switcher">
+          <button class="concentric-switcher-btn active" id="btn-c-mode-circle" onclick="switchConcentricView('circle')">
+            <span>🎯 Sơ Đồ Vòng Tròn Đồng Tâm (Circular Rings)</span>
+          </button>
+          <button class="concentric-switcher-btn" id="btn-c-mode-nested" onclick="switchConcentricView('nested')">
+            <span>🧅 Khung Lồng Nhau Kiểu Củ Hành (Nested Shells)</span>
+          </button>
+          <button class="concentric-switcher-btn" id="btn-c-mode-cards" onclick="switchConcentricView('cards')">
+            <span>📑 Danh Sách Thẻ Phẳng (Cards List)</span>
+          </button>
+        </div>
+
         <div class="concentric-layout">
-          <div class="rings-visual">
-            <div class="ring-layer l-dig">
-              <div class="ring-title">⚡ VỎ BỌC GIA TỐC: DIGITALIZATION &amp; AI AGENTS</div>
-              <div class="ring-sub" id="rep-infra-ai-explain">Tự động hóa ghi nhận dữ liệu từ quy trình để xuất Dashboard thời gian thực cho Founder</div>
+          <!-- CỘT TRÁI: KHU VỰC VẼ HÌNH ĐỒNG TÂM -->
+          <div>
+            <!-- CHẾ ĐỘ 1: VÒNG TRÒN ĐỒNG TÂM SVG -->
+            <div class="concentric-svg-container" id="concentric-view-circle" style="display:block;">
+              <span style="display:block; font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase;">
+                💡 Rê chuột hoặc bấm vào từng vòng tròn để soi chi tiết nhiệm vụ và rủi ro:
+              </span>
+              <svg viewBox="0 0 620 620" class="concentric-svg" style="width:100%; max-width:520px; height:auto; display:block; margin:auto;" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="grad-core" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ef4444" />
+                    <stop offset="100%" stop-color="#b91c1c" />
+                  </radialGradient>
+                  <!-- Arcs for text (Top hemisphere) -->
+                  <path id="arc-dig" d="M 45,310 A 265,265 0 0,1 575,310" fill="none" />
+                  <path id="arc-cul" d="M 85,310 A 225,225 0 0,1 535,310" fill="none" />
+                  <path id="arc-org" d="M 125,310 A 185,185 0 0,1 495,310" fill="none" />
+                  <path id="arc-pol" d="M 170,310 A 140,140 0 0,1 450,310" fill="none" />
+                  <path id="arc-sop" d="M 215,310 A 95,95 0 0,1 405,310" fill="none" />
+                </defs>
+
+                <!-- Vòng 5: Vỏ bọc AI & Số hóa -->
+                <circle cx="310" cy="310" r="290" fill="#f0fdfa" stroke="#0d9488" stroke-width="3.5" stroke-dasharray="8 5" class="ring-shape" id="svg-ring-5" onclick="inspectRingLayer(5)" onmouseenter="inspectRingLayer(5)" />
+                <!-- Vòng 4: Văn Hóa 5 Luật -->
+                <circle cx="310" cy="310" r="242" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5" class="ring-shape" id="svg-ring-4" onclick="inspectRingLayer(4)" onmouseenter="inspectRingLayer(4)" />
+                <!-- Vòng 3: Cơ Cấu Tổ Chức & Phân Quyền -->
+                <circle cx="310" cy="310" r="195" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" class="ring-shape" id="svg-ring-3" onclick="inspectRingLayer(3)" onmouseenter="inspectRingLayer(3)" />
+                <!-- Vòng 2: Báo Cáo & Chính Sách -->
+                <circle cx="310" cy="310" r="150" fill="#f0fdf4" stroke="#059669" stroke-width="2.5" class="ring-shape" id="svg-ring-2" onclick="inspectRingLayer(2)" onmouseenter="inspectRingLayer(2)" />
+                <!-- Vòng 1: SOP -->
+                <circle cx="310" cy="310" r="105" fill="#fffbeb" stroke="#d97706" stroke-width="2.5" class="ring-shape" id="svg-ring-1" onclick="inspectRingLayer(1)" onmouseenter="inspectRingLayer(1)" />
+                <!-- Tâm điểm: Core HR -->
+                <circle cx="310" cy="310" r="60" fill="url(#grad-core)" stroke="#991b1b" stroke-width="3" class="ring-shape" id="svg-ring-0" onclick="inspectRingLayer(0)" onmouseenter="inspectRingLayer(0)" />
+
+                <!-- Chữ trung tâm: Tâm điểm -->
+                <g onclick="inspectRingLayer(0)" style="cursor:pointer;">
+                  <text x="310" y="295" text-anchor="middle" fill="#ffffff" font-family="'Be Vietnam Pro', sans-serif" font-size="20">🎯</text>
+                  <text x="310" y="316" text-anchor="middle" fill="#ffffff" font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="900" letter-spacing="0.05em">NHÂN SỰ LÕI</text>
+                  <text x="310" y="332" text-anchor="middle" fill="#fecaca" font-family="'Be Vietnam Pro', sans-serif" font-size="10.5" font-weight="700">(HR CORE)</text>
+                  <text x="310" y="347" text-anchor="middle" fill="#ffffff" opacity="0.9" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">&gt;0 byte</text>
+                </g>
+
+                <!-- Nhãn vòng cong -->
+                <text font-family="'Be Vietnam Pro', sans-serif" font-size="11" font-weight="800" fill="#92400e" letter-spacing="0.02em" onclick="inspectRingLayer(1)" style="cursor:pointer;">
+                  <textPath href="#arc-sop" startOffset="50%" text-anchor="middle">LỚP 1: QUY TRÌNH THAO TÁC CHUẨN (SOP)</textPath>
+                </text>
+                <text font-family="'Be Vietnam Pro', sans-serif" font-size="11.5" font-weight="800" fill="#065f46" letter-spacing="0.02em" onclick="inspectRingLayer(2)" style="cursor:pointer;">
+                  <textPath href="#arc-pol" startOffset="50%" text-anchor="middle">LỚP 2: BÁO CÁO &amp; CHÍNH SÁCH (POLICIES)</textPath>
+                </text>
+                <text font-family="'Be Vietnam Pro', sans-serif" font-size="12" font-weight="800" fill="#1e40af" letter-spacing="0.02em" onclick="inspectRingLayer(3)" style="cursor:pointer;">
+                  <textPath href="#arc-org" startOffset="50%" text-anchor="middle">LỚP 3: CƠ CẤU TỔ CHỨC &amp; PHÂN QUYỀN</textPath>
+                </text>
+                <text font-family="'Be Vietnam Pro', sans-serif" font-size="12.5" font-weight="800" fill="#5b21b6" letter-spacing="0.02em" onclick="inspectRingLayer(4)" style="cursor:pointer;">
+                  <textPath href="#arc-cul" startOffset="50%" text-anchor="middle">LỚP 4: GIÁ TRỊ CỐT LÕI – VĂN HÓA 5 LUẬT</textPath>
+                </text>
+                <text font-family="'Be Vietnam Pro', sans-serif" font-size="13" font-weight="900" fill="#0f766e" letter-spacing="0.04em" onclick="inspectRingLayer(5)" style="cursor:pointer;">
+                  <textPath href="#arc-dig" startOffset="50%" text-anchor="middle">⚡ VỎ BỌC GIA TỐC: DIGITALIZATION &amp; AI AGENTS</textPath>
+                </text>
+              </svg>
             </div>
-            <div class="ring-layer l-cul">
-              <div class="ring-title">LỚP 4: GIÁ TRỊ CỐT LÕI – VĂN HÓA 5 LUẬT</div>
-              <div class="ring-sub">Hiến pháp tinh thần giúp tổ chức đồng lòng, trung thực, không vi phạm pháp luật</div>
+
+            <!-- CHẾ ĐỘ 2: KHUNG LỒNG NHAU KIỂU CỦ HÀNH -->
+            <div class="nested-onion-container" id="concentric-view-nested" style="display:none;">
+              <span style="display:block; font-size:12.5px; font-weight:800; color:#0d9488; text-transform:uppercase; margin-bottom:8px;">
+                ⚡ VỎ BỌC GIA TỐC: DIGITALIZATION &amp; AI AGENTS (TỰ ĐỘNG HÓA DỮ LIỆU)
+              </span>
+              <div class="nested-shell nested-shell-dig" onclick="inspectRingLayer(5)">
+                <div class="ring-title" style="color:#0f766e;">LỚP 5: VỎ BỌC SỐ HÓA &amp; AI AGENTS</div>
+                <div class="ring-sub" style="color:#115e59;">Tự động hóa ghi nhận dữ liệu từ quy trình để xuất Dashboard thời gian thực cho Founder</div>
+                <div class="nested-shell nested-shell-cul" onclick="event.stopPropagation(); inspectRingLayer(4);">
+                  <div class="ring-title" style="color:#5b21b6;">LỚP 4: GIÁ TRỊ CỐT LÕI – VĂN HÓA 5 LUẬT</div>
+                  <div class="ring-sub" style="color:#6d28d9;">Hiến pháp tinh thần giúp tổ chức đồng lòng, trung thực, không vi phạm pháp luật</div>
+                  <div class="nested-shell nested-shell-org" onclick="event.stopPropagation(); inspectRingLayer(3);">
+                    <div class="ring-title" style="color:#1e40af;">LỚP 3: CƠ CẤU TỔ CHỨC &amp; PHÂN QUYỀN (ORG STRUCTURE)</div>
+                    <div class="ring-sub" style="color:#1d4ed8;">Ranh giới chức năng rõ ràng, đúng người đúng việc, phân quyền theo chứng chỉ</div>
+                    <div class="nested-shell nested-shell-pol" onclick="event.stopPropagation(); inspectRingLayer(2);">
+                      <div class="ring-title" style="color:#065f46;">LỚP 2: HỆ THỐNG BÁO CÁO &amp; CHÍNH SÁCH (POLICIES)</div>
+                      <div class="ring-sub" style="color:#047857;">Dashboard số liệu thật mỗi ngày &amp; Cơ chế thưởng phạt minh bạch theo kết quả</div>
+                      <div class="nested-shell nested-shell-sop" onclick="event.stopPropagation(); inspectRingLayer(1);">
+                        <div class="ring-title" style="color:#92400e;">LỚP 1: QUY TRÌNH THAO TÁC CHUẨN (SOP)</div>
+                        <div class="ring-sub" style="color:#b45309;">Cẩm nang từng bước giúp nhân viên mới làm chuẩn ngay như người cũ</div>
+                        <div class="nested-shell-core" onclick="event.stopPropagation(); inspectRingLayer(0);">
+                          🎯 TÂM ĐIỂM: NHÂN SỰ THỰC THI (HR CORE)<br/>
+                          <span style="font-size:12.5px; font-weight:600; opacity:0.95;">Tròn vai • Tròn chức năng • Tạo kết quả thực chứng (>0 byte)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="ring-layer l-org">
-              <div class="ring-title">LỚP 3: CƠ CẤU TỔ CHỨC &amp; PHÂN QUYỀN (ORG STRUCTURE)</div>
-              <div class="ring-sub">Ranh giới chức năng rõ ràng, đúng người đúng việc, phân quyền theo chứng chỉ</div>
-            </div>
-            <div class="ring-layer l-pol">
-              <div class="ring-title">LỚP 2: HỆ THỐNG BÁO CÁO &amp; CHÍNH SÁCH (POLICIES)</div>
-              <div class="ring-sub">Dashboard số liệu thật mỗi ngày &amp; Cơ chế lương thưởng minh bạch theo kết quả</div>
-            </div>
-            <div class="ring-layer l-sop">
-              <div class="ring-title">LỚP 1: QUY TRÌNH THAO TÁC CHUẨN (SOP)</div>
-              <div class="ring-sub">Cẩm nang từng bước giúp nhân sự mới làm chuẩn ngay như người cũ</div>
-            </div>
-            <div class="ring-layer l-core">
-              <div class="ring-title">🎯 TÂM ĐIỂM: NHÂN SỰ THỰC THI (HR CORE)</div>
-              <div class="ring-sub">Tròn vai • Tròn chức năng • Tạo ra kết quả thực chứng cầm nắm được (>0 byte)</div>
+
+            <!-- CHẾ ĐỘ 3: DANH SÁCH THẺ PHẲNG -->
+            <div class="rings-visual-cards" id="concentric-view-cards" style="display:none;">
+              <div class="ring-layer l-dig" onclick="inspectRingLayer(5)">
+                <div class="ring-title">⚡ VỎ BỌC GIA TỐC: DIGITALIZATION &amp; AI AGENTS</div>
+                <div class="ring-sub" id="rep-infra-ai-explain">Tự động hóa ghi nhận dữ liệu từ quy trình để xuất Dashboard thời gian thực cho Founder</div>
+              </div>
+              <div class="ring-layer l-cul" onclick="inspectRingLayer(4)">
+                <div class="ring-title">LỚP 4: GIÁ TRỊ CỐT LÕI – VĂN HÓA 5 LUẬT</div>
+                <div class="ring-sub">Hiến pháp tinh thần giúp tổ chức đồng lòng, trung thực, không vi phạm pháp luật</div>
+              </div>
+              <div class="ring-layer l-org" onclick="inspectRingLayer(3)">
+                <div class="ring-title">LỚP 3: CƠ CẤU TỔ CHỨC &amp; PHÂN QUYỀN (ORG STRUCTURE)</div>
+                <div class="ring-sub">Ranh giới chức năng rõ ràng, đúng người đúng việc, phân quyền theo chứng chỉ</div>
+              </div>
+              <div class="ring-layer l-pol" onclick="inspectRingLayer(2)">
+                <div class="ring-title">LỚP 2: HỆ THỐNG BÁO CÁO &amp; CHÍNH SÁCH (POLICIES)</div>
+                <div class="ring-sub">Dashboard số liệu thật mỗi ngày &amp; Cơ chế lương thưởng minh bạch theo kết quả</div>
+              </div>
+              <div class="ring-layer l-sop" onclick="inspectRingLayer(1)">
+                <div class="ring-title">LỚP 1: QUY TRÌNH THAO TÁC CHUẨN (SOP)</div>
+                <div class="ring-sub">Cẩm nang từng bước giúp nhân sự mới làm chuẩn ngay như người cũ</div>
+              </div>
+              <div class="ring-layer l-core" onclick="inspectRingLayer(0)">
+                <div class="ring-title">🎯 TÂM ĐIỂM: NHÂN SỰ THỰC THI (HR CORE)</div>
+                <div class="ring-sub">Tròn vai • Tròn chức năng • Tạo ra kết quả thực chứng cầm nắm được (>0 byte)</div>
+              </div>
             </div>
           </div>
 
-          <div style="display:flex; flex-direction:column; gap:14px;">
+          <!-- CỘT PHẢI: THẺ SOI CHI TIẾT LỚP ĐANG CHỌN & 3 BÀI HỌC VẬN HÀNH -->
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <!-- DYNAMIC LAYER INSPECTOR -->
+            <div class="layer-inspector-card" id="layerInspectorBox">
+              <span class="scale-badge" id="inspBadge" style="background:var(--rose-bg); color:var(--rose); border:1px solid var(--rose-border); margin:0 0 8px;">TÂM ĐIỂM • LÕI CON NGƯỜI</span>
+              <h3 id="inspTitle" style="font-size:18px; font-weight:800; color:var(--text-primary); margin:0 0 8px;">🎯 Tâm Điểm: Nhân Sự Thực Thi (HR Core)</h3>
+              <p id="inspMission" style="font-size:14px; color:var(--text-secondary); margin:0 0 10px; line-height:1.55;">
+                Con người là chủ thể tạo ra thấu cảm và phán đoán chuyên môn độc bản. Nhân sự được trao quyền để tạo ra kết quả thực chứng cầm nắm được (>0 byte).
+              </p>
+              <div style="padding:10px 12px; background:var(--bg-subtle); border-radius:8px; border-left:3px solid var(--rose); font-size:13px; color:var(--text-primary); margin-bottom:8px;">
+                <b>⚠️ Rủi ro chí tử nếu thiếu các lớp giáp:</b> <span id="inspRisk">Nhân sự làm việc theo cảm hứng, mệt mỏi sự vụ, người giỏi ra đi là toàn bộ hệ thống sụp đổ.</span>
+              </div>
+              <div style="font-size:13px; color:var(--brand-primary); font-weight:700;" id="inspProjectApp">
+                Dự án hiện tại: 1 Founder làm chủ tri thức + Đội ngũ trợ thủ.
+              </div>
+            </div>
+
+            <!-- 3 CÂU HỎI THỰC CHỨNG -->
             <div class="sub-role-item" style="border-left:4px solid var(--rose); padding:16px;">
               <b>1. Vì sao Con người (HR) nằm ở lõi trong cùng?</b>
               <span>Con người là chủ thể tạo ra thấu cảm và phán đoán chuyên môn. Nhưng nếu thiếu các lớp bọc quản trị, nhân sự sẽ làm việc tự phát, người giỏi đi là tổ chức tê liệt.</span>
@@ -2992,6 +3226,103 @@ ${lib.aiPromptGuide}
       navigator.clipboard.writeText(el.innerText).then(() => {
         alert('Đã sao chép toàn bộ 5 Prompt Thực Chiến cho AI vào Clipboard!');
       });
+    }
+
+    
+    // ==================== CONCENTRIC RINGS INTERACTIVITY ====================
+    const CONCENTRIC_LAYERS_DATA = [
+      {
+        idx: 0,
+        badge: 'TÂM ĐIỂM • LÕI CON NGƯỜI',
+        badgeBg: 'var(--rose-bg)', badgeColor: 'var(--rose)',
+        title: '🎯 Tâm Điểm: Nhân Sự Thực Thi (HR Core)',
+        mission: 'Con người là chủ thể tạo ra thấu cảm và phán đoán chuyên môn độc bản. Nhân sự được trao quyền để tạo ra kết quả thực chứng cầm nắm được (>0 byte).',
+        risk: 'Nhân sự làm việc theo cảm hứng, mệt mỏi vì sự vụ lặp lại, khi người giỏi ra đi là toàn bộ hệ thống sụp đổ ngay lập tức.',
+        appKey: 'core'
+      },
+      {
+        idx: 1,
+        badge: 'LỚP 1 • CẨM NANG THAO TÁC',
+        badgeBg: 'var(--amber-bg)', badgeColor: 'var(--amber)',
+        title: '📋 Lớp 1: Quy Trình Thao Tác Chuẩn (SOP)',
+        mission: 'Chuyển tri thức từ trong đầu chuyên gia thành tài sản đóng gói của tổ chức. Cẩm nang từng bước giúp nhân sự mới làm chuẩn ngay như người cũ.',
+        risk: 'Mỗi người làm một phách theo thói quen cá nhân, chất lượng sản phẩm dịch vụ trồi sụt thất thường, khách hàng mất niềm tin.',
+        appKey: 'sop'
+      },
+      {
+        idx: 2,
+        badge: 'LỚP 2 • ĐIỀU HÀNH & ĐÃI NGỘ',
+        badgeBg: 'var(--emerald-bg)', badgeColor: 'var(--emerald)',
+        title: '📊 Lớp 2: Hệ Thống Báo Cáo & Chính Sách (Policies)',
+        mission: 'Bảng điều khiển số liệu thật mỗi ngày (Dashboard) và cơ chế phân chia đãi ngộ, thưởng khoán minh bạch gắn liền với tiền thật về tài khoản.',
+        risk: 'Mù mờ về sức khỏe tài chính, cãi nhau vào cuối tháng, nhân sự làm việc tốt nhưng không được ghi nhận xứng đáng nên bỏ đi.',
+        appKey: 'pol'
+      },
+      {
+        idx: 3,
+        badge: 'LỚP 3 • CẤU TRÚC BỘ MÁY',
+        badgeBg: 'var(--bg-accent-soft)', badgeColor: 'var(--brand-primary)',
+        title: '🏛️ Lớp 3: Cơ Cấu Tổ Chức & Phân Quyền (Org Structure)',
+        mission: 'Ranh giới chức năng rõ ràng, phân quyền dựa trên chứng chỉ và năng lực thực chứng, bảo đảm mỗi luồng việc có đúng một người chịu trách nhiệm cuối cùng.',
+        risk: 'Đùn đẩy trách nhiệm, nhiều người cùng làm một việc hoặc không ai làm khâu sống còn, tổ chức bị phân mảnh khi tăng quy mô.',
+        appKey: 'org'
+      },
+      {
+        idx: 4,
+        badge: 'LỚP 4 • HIẾN PHÁP TINH THẦN',
+        badgeBg: 'var(--purple-bg)', badgeColor: 'var(--purple)',
+        title: '⚖️ Lớp 4: Giá Trị Cốt Lõi – Văn Hóa 5 Luật',
+        mission: 'Hiến pháp tinh thần giúp tổ chức đồng lòng: Luật Nhà Thiên, Luật Tự Nhiên, Giới Luật, Luật Lương Tâm và Thượng tôn Pháp Luật quốc gia.',
+        risk: 'Kinh doanh chộp giật, gian lận số liệu, trốn thuế hoặc lừa dối khách hàng; khi đụng chạm cơ quan pháp luật thì tan rã trong 24 giờ.',
+        appKey: 'cul'
+      },
+      {
+        idx: 5,
+        badge: 'VỎ BỌC GIA TỐC • CÔNG NGHỆ & AI',
+        badgeBg: '#ccfbf1', badgeColor: '#0f766e',
+        title: '⚡ Lớp 5: Vỏ Bọc Số Hóa & AI Agents',
+        mission: 'Hệ thống tự động hóa ghi nhận dữ liệu từ quy trình để xuất Dashboard thời gian thực, điều phối đơn hàng, VietQR và giải phóng 85% tác vụ sự vụ.',
+        risk: 'Con người chìm ngập trong việc nhập liệu thủ công, gõ máy lặp đi lặp lại, tốc độ phản hồi khách hàng chậm chạp và chi phí vận hành phình to.',
+        appKey: 'dig'
+      }
+    ];
+
+    function switchConcentricView(mode) {
+      ['circle', 'nested', 'cards'].forEach(m => {
+        const btn = document.getElementById('btn-c-mode-' + m);
+        const view = document.getElementById('concentric-view-' + m);
+        if (btn) btn.classList.toggle('active', m === mode);
+        if (view) view.style.display = m === mode ? 'block' : 'none';
+      });
+    }
+
+    function inspectRingLayer(idx) {
+      const data = CONCENTRIC_LAYERS_DATA[idx] || CONCENTRIC_LAYERS_DATA[0];
+      const p = ideaPresets[selectedIdeaKey] || {};
+
+      document.getElementById('inspBadge').innerText = data.badge;
+      document.getElementById('inspBadge').style.background = data.badgeBg;
+      document.getElementById('inspBadge').style.color = data.badgeColor;
+      document.getElementById('inspTitle').innerText = data.title;
+      document.getElementById('inspMission').innerText = data.mission;
+      document.getElementById('inspRisk').innerText = data.risk;
+
+      // Project application specific text
+      let appText = '';
+      if (idx === 0) appText = `Dự án hiện tại (${p.projName || 'Doanh nghiệp'}): Định biên ${document.getElementById('inFte').value} nhân sự lõi phụ trách chuyên môn chính.`;
+      else if (idx === 1) appText = `Dự án hiện tại: Chuẩn hóa bộ SOP 5 khâu chuỗi giá trị và phiếu giao việc 1 trang.`;
+      else if (idx === 2) appText = `Dự án hiện tại: Trần lương ${document.getElementById('inCapPct').value}% doanh thu, đối soát VietQR và khóa sổ hàng ngày.`;
+      else if (idx === 3) appText = `Dự án hiện tại: Sơ đồ cơ cấu tổ chức cấp ${selectedScale.toUpperCase()} phân vai Human × AI rõ ràng.`;
+      else if (idx === 4) appText = `Dự án hiện tại: ${p.q3 || 'Tuân thủ nghiêm ngặt 5 Luật và đạo đức kinh doanh trung thực.'}`;
+      else if (idx === 5) appText = `Dự án hiện tại: ${p.q9 || 'AI Agents tự động hóa thu thập dữ liệu, báo cáo và chăm sóc khách.'}`;
+
+      document.getElementById('inspProjectApp').innerText = appText;
+
+      // Highlight corresponding SVG circle
+      for (let i = 0; i <= 5; i++) {
+        const svgEl = document.getElementById('svg-ring-' + i);
+        if (svgEl) svgEl.classList.toggle('active-ring', i === idx);
+      }
     }
 
     // LOAD IDEA PRESET
