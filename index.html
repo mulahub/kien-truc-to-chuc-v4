@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="BMAA-OS Enterprise Architect v5.0 — Hệ thống thiết kế định hướng kiến trúc tổ chức và vận hành doanh nghiệp thực chiến tại Việt Nam" />
   <meta name="theme-color" content="#1d4ed8" />
-  <title>BMAA-OS Enterprise Architect v5.0 — Hệ Thống Kiến Trúc Tổ Chức & Vận Hành Doanh Nghiệp</title>
+  <title>BMAA-OS Enterprise Architect v6.0 — Hệ Thống Kiến Trúc Tổ Chức & Bộ Trợ Lý AI Doanh Nghiệp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -200,7 +200,7 @@
     /* WIZARD STEPPERS */
     .wizard-nav {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
       margin-bottom: 28px;
     }
@@ -1207,7 +1207,7 @@
       <div class="brand-wrap">
         <div class="brand-icon">EA</div>
         <div>
-          <h1>HỆ THỐNG KIẾN TRÚC TỔ CHỨC DOANH NGHIỆP V5.0</h1>
+          <h1>HỆ THỐNG KIẾN TRÚC TỔ CHỨC & BỘ TRỢ LÝ AI DOANH NGHIỆP V6.0</h1>
           <div class="brand-sub">Chuẩn Hóa Theo Thực Tiễn Doanh Nghiệp Việt Nam • Mô Hình 7 Tầng Từ Tổng Thể Đến Hệ Thống</div>
         </div>
       </div>
@@ -1243,6 +1243,13 @@
         <div>
           <div class="wiz-title">Bước 3: Bản Kiến Trúc V1 &amp; Giải Nghĩa</div>
           <div class="wiz-desc">Trọn vẹn 7 tầng từ Tổng thể đến Hệ thống &amp; Báo cáo</div>
+        </div>
+      </div>
+      <div class="wiz-step" id="wiz-4" onclick="goStep(4)">
+        <div class="wiz-num">4</div>
+        <div>
+          <div class="wiz-title">Bước 4: Đóng Gói Bộ Trợ Lý AI</div>
+          <div class="wiz-desc">4 Dòng Chảy BMAA &amp; Agent Cards</div>
         </div>
       </div>
     </nav>
@@ -2224,15 +2231,90 @@
         <div class="cards-grid-3" id="sixSessionsGrid" style="margin-bottom:28px;"></div>
 
         <div class="step-actions">
-          <button class="btn btn-outline" onclick="goStep(2)">⬅ Quay lại chỉnh sửa Bước 2</button>
+          <button class="btn btn-outline" onclick="goStep(2)">⬅ Quay lại Bước 2</button>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn btn-outline" onclick="copyReportMD()">📋 1-Click Copy Báo Cáo Markdown</button>
-            <button class="btn btn-emerald" onclick="downloadReportMD()">💾 Tải File Báo Cáo (.md)</button>
-            <button class="btn btn-primary" onclick="window.print()">🖨️ In / Xuất PDF</button>
+            <button class="btn btn-outline" onclick="copyReportMD()">📋 Copy Báo Cáo MD</button>
+            <button class="btn btn-primary" onclick="goStep(4)" style="background:var(--emerald); border-color:var(--emerald);">
+              Tiếp Tục: Sang Bước 4 — Đóng Gói Bộ Trợ Lý AI MulaHub ➔
+            </button>
           </div>
         </div>
       </section>
 
+    </div>
+
+    <!-- ==================== BƯỚC 4: ĐÓNG GÓI BỘ CÔNG CỤ TRỢ LÝ AI (AI AGENTS PACK) ==================== -->
+    <div id="step-4-view" style="display: none;">
+      <!-- BANNER TỔNG QUAN BƯỚC 4 -->
+      <section class="blueprint-banner" style="border-left: 6px solid var(--purple); background: var(--bg-surface);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;">
+          <div>
+            <span class="scale-badge" id="step4-scale-tag" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">
+              BƯỚC 4 • ĐÓNG GÓI BỘ CÔNG CỤ TRỢ LÝ AI THEO 4 DÒNG CHẢY BMAA
+            </span>
+            <h2 id="step4-title" style="font-size: 24px; font-weight: 900; color: var(--text-primary); margin: 6px 0 10px;">
+              KHUYẾN NGHỊ BỘ TRỢ LÝ AI DÀNH RIÊNG CHO DOANH NGHIỆP
+            </h2>
+            <p id="step4-summary" style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+              Dựa trên Quy mô và Điểm nghẽn vận hành đã chọn. <b>Bạn làm Chủ Tịch — Trợ lý AI thi công</b>, mọi quyết định chi tiền và pháp lý luôn chờ bạn phê duyệt (Human-in-the-loop).
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="copyAiAgentsPackSpec()">📋 1-Click Copy Hồ Sơ Trợ Lý AI</button>
+            <button class="btn btn-emerald" onclick="downloadReportMD()">💾 Tải Toàn Bộ Báo Cáo V6 (.md)</button>
+            <button class="btn btn-outline" onclick="window.print()">🖨️ In / Xuất PDF</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- GÓI TRỢ LÝ ĐƯỢC CHỌN TỰ ĐỘNG -->
+      <section class="panel" style="border: 2px solid var(--brand-primary); background: var(--bg-surface);">
+        <div class="panel-header">
+          <div>
+            <span class="scale-badge" id="packBadge" style="background:var(--emerald-bg); color:var(--emerald);">GÓI KHUYẾN NGHỊ ĐẶC THÙ</span>
+            <h2 class="panel-title" id="packTitle" style="color:var(--brand-primary);">...</h2>
+            <p class="panel-subtitle" id="packDesc">...</p>
+          </div>
+        </div>
+
+        <!-- 4 DÒNG CHẢY CARDS CONTAINER -->
+        <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">
+          🌊 Phân Bổ Nhiệm Vụ Trợ Lý AI Theo 4 Dòng Chảy Bất Biến (BMAA Engine)
+        </h3>
+        <div class="scale-grid" id="fourStreamsContainer" style="margin-bottom:24px;"></div>
+
+        <!-- DANH SÁCH CHI TIẾT TỪNG TRỢ LÝ (AI AGENT CARDS) -->
+        <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">
+          🤖 Danh Mục Thẻ Nhiệm Vụ Nhân Sự Số (AI Agent Cards Specifications)
+        </h3>
+        <div style="display:flex; flex-direction:column; gap:14px;" id="agentCardsList"></div>
+
+        <!-- LỘ TRÌNH TRIỂN KHAI 2 TUẦN (ONBOARDING) -->
+        <div style="background:var(--bg-accent-soft); border:2px solid var(--border-color); border-radius:14px; padding:20px; margin-top:24px;">
+          <h4 style="font-size:16.5px; font-weight:800; color:var(--brand-primary); margin:0 0 8px;">
+            🚀 Lộ Trình 2 Tuần Dựng Xong Hệ Thống Trợ Lý AI Của Doanh Nghiệp (MulaHub Onboarding)
+          </h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:12px;">
+            <div style="background:var(--bg-surface); padding:14px; border-radius:10px; border-left:4px solid var(--brand-primary);">
+              <b style="color:var(--brand-primary); font-size:14.5px;">Tuần 1: Cài Đặt Hạ Tầng &amp; Nạp Bộ Não Tri Thức</b>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Thiết lập tài khoản, kết nối API/Model, nạp Brandkit, Persona và toàn bộ văn bản pháp luật, tài liệu sản phẩm vào Sổ tay tri thức.</p>
+            </div>
+            <div style="background:var(--bg-surface); padding:14px; border-radius:10px; border-left:4px solid var(--emerald);">
+              <b style="color:var(--emerald); font-size:14.5px;">Tuần 2: Chạy Thử Nghiệm &amp; Bàn Giao Vận Hành</b>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Thực hành quy trình 4 bước (Giao việc ➔ Thực thi ➔ Báo cáo ➔ Tư vấn), kiểm thử giật dây Andon và tích hợp báo cáo Zalo/Telegram mỗi sáng.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-actions" style="margin-top:24px;">
+          <button class="btn btn-outline" onclick="goStep(3)">⬅ Quay lại Bước 3 (Kiến Trúc 7 Tầng)</button>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="copyReportMD()">📋 1-Click Copy Báo Cáo Markdown V6</button>
+            <button class="btn btn-emerald" onclick="downloadReportMD()">💾 Tải File Báo Cáo V6 (.md)</button>
+            <button class="btn btn-primary" onclick="window.print()">🖨️ In / Xuất PDF Toàn Diện</button>
+          </div>
+        </div>
+      </section>
     </div>
 
   </main>
@@ -3332,6 +3414,243 @@ ${lib.aiPromptGuide}
       }
     }
 
+    
+    // ==================== BƯỚC 4: BỘ CÔNG CỤ TRỢ LÝ AI (AI AGENTS PACK) ====================
+    const AI_PACK_SOLO = {
+      badge: 'CẤP 0 & 1 • MULAHUB SOLO-COPILOT',
+      title: 'Gói Trợ Lý Điều Hành Toàn Năng (Executive Co-pilot 1-to-1)',
+      desc: '1 Founder làm Chủ tịch — 1 Trợ lý AI toàn năng điều phối trọn vẹn 4 Dòng Chảy kinh doanh & đời sống. Không làm rối bộ máy, tự động hóa 90% sự vụ.',
+      streams: [
+        {
+          name: '🧠 Dòng Thông Tin & Tri Thức',
+          color: 'var(--brand-primary)',
+          roleName: 'Personal Knowledge & Content Agent',
+          duty: 'Bóc băng ghi âm bài giảng/cuộc gọi của Founder, quản lý Bộ Não Thứ 2 (Obsidian/Markdown), soạn nháp 5 định dạng bài đăng BMAA.',
+          tool: 'NotebookLM, Whisper/CoreAudio, Google Docs, Substack/Fanpage'
+        },
+        {
+          name: '👥 Dòng Khách Hàng (Người)',
+          color: 'var(--purple)',
+          roleName: 'Personal CRM & Relationship Agent',
+          duty: 'Lưu vết lịch sử khách VIP, nhắc lịch hẹn cố vấn trước 2h, nhắc ngày sinh nhật, lọc khách ấm/nóng và giải đáp thắc mắc cơ bản theo SOP.',
+          tool: 'Zalo cá nhân / OA, Google Calendar, Lark Base / Notion'
+        },
+        {
+          name: '📦 Dòng Sản Phẩm (Hàng)',
+          color: 'var(--amber)',
+          roleName: 'Fulfillment & Quality Agent',
+          duty: 'Tự động gửi tài khoản/tài liệu số cho khách trong 30 giây, kiểm tra checklist chất lượng (>0 byte) trước khi gửi bản tư vấn chính thức.',
+          tool: 'Webhook n8n / Zapier, Google Drive, Email Resend'
+        },
+        {
+          name: '💰 Dòng Tiền & Tài Chính',
+          color: 'var(--emerald)',
+          roleName: 'Cashflow & Debt Reminder Agent',
+          duty: 'Bắt biến động số dư VietQR, xác nhận tiền về tức thì, nhắc nợ khéo léo, tự động phân bổ tỷ lệ 3 chiếc lọ (60% OpEx, 20% Thuế, 20% Tái đầu tư).',
+          tool: 'VietQR Dynamic API, Sổ Cái Google Sheets / Casso, Script Canh Trần'
+        }
+      ],
+      agents: [
+        {
+          id: 'solo-co-pilot',
+          name: 'Trợ Lý Điều Hành Cá Nhân (Executive Co-pilot)',
+          level: 'Trợ Lý Trực Tiếp Cho Founder',
+          brain: 'Não Mạnh (Claude 3.7 Sonnet / GPT-4o / Gemini 1.5 Pro)',
+          skills: ['Gỡ băng âm thanh', 'Quản trị Bộ Não Thứ 2', 'Tạo mã VietQR', 'Nhắc lịch Zalo'],
+          roleText: 'Tương tác 1-1 với Founder qua Zalo/Telegram. Sáng điểm tin 3 việc quan trọng, chiều tổng hợp số tiền thực thu, tối chuẩn bị tài liệu cho ngày mai.',
+          gatekeeper: 'Mọi giao dịch chuyển tiền và đăng bài công khai đều cần 1 chạm duyệt của Founder.'
+        }
+      ]
+    };
+
+    const AI_PACK_ENTERPRISE = {
+      badge: 'CẤP 2, 3 & 4 • MULAHUB ENTERPRISE SWARM',
+      title: 'Đội Quân Trợ Lý Tự Trị Đa Chuyên Môn (Enterprise Multi-Agent Crew)',
+      desc: 'Founder làm Chủ tịch — Trợ lý AI Tổng Điều Phối (AI COO) dẫn dắt 4 Tiểu đội Ong Thợ cắm vào 5 khâu chuỗi giá trị. Kiểm soát chất lượng theo chuẩn Jidoka.',
+      streams: [
+        {
+          name: '📡 1. Tiểu Đội AI Thu Hút & Tạo Nguồn (Growth Swarm)',
+          color: 'var(--brand-primary)',
+          roleName: 'Radar & Content Engine',
+          duty: 'Quét xu hướng ngành, nghiên cứu đối thủ, viết bài phân tích tình huống chuyển đổi cao BMAA và tự động lên lịch đăng bài đa kênh.',
+          tool: 'Radar Scanner, Web Search, AI Content Writer, Auto-Publisher'
+        },
+        {
+          name: '🎯 2. Tiểu Đội AI Bán Hàng & Chốt Đơn (Sales Swarm)',
+          color: 'var(--purple)',
+          roleName: 'Conversion & VietQR Engine',
+          duty: 'Trực chat 24/7 trên Fanpage/Zalo OA, giải đáp chuyên môn theo SOP, sinh mã VietQR động theo đơn hàng và bám đuổi giỏ hàng chưa thanh toán.',
+          tool: 'Chatbot AI Zalo/Web, VietQR Dynamic Generator, CRM Lead Scoring'
+        },
+        {
+          name: '⚡ 3. Tiểu Đội AI Cung Ứng & Vận Hành (Ops Swarm)',
+          color: 'var(--amber)',
+          roleName: 'Fulfillment & Jidoka Quality Bot',
+          duty: 'Cấp tài khoản/giao hàng trong 30s, giám sát cam kết SLA, khảo sát mức độ hài lòng NPS 1-click, kích hoạt chuông Andon khi có sự cố.',
+          tool: 'Webhook Dispatcher, SLA Monitor, NPS Survey Bot, Andon 3 Làn'
+        },
+        {
+          name: '🛡️ 4. Tiểu Đội AI Tài Chính & Pháp Chế (Guardian Swarm)',
+          color: 'var(--emerald)',
+          roleName: 'Ledger & Legal Co-pilot',
+          duty: 'Tự động khóa sổ đối soát ngân hàng lúc 17h30, canh trần chi phí quỹ lương & Runway, rà soát hợp đồng B2B và quét từ cấm quảng cáo.',
+          tool: 'Bank Ledger Webhook, Runway Calculator, Legal Knowledge Base AI'
+        }
+      ],
+      agents: [
+        {
+          id: 'agent-coo',
+          name: 'Trợ Lý Tổng Điều Phối (AI Operations Director / COO)',
+          level: 'Trưởng Nhóm / Điều Phối Trực Tiếp Cho Founder',
+          brain: 'Não Mạnh (Claude 3.7 Sonnet / GPT-4o)',
+          skills: ['Lập kế hoạch 4 bước', 'Phân bổ việc cho phòng ban', 'Tổng hợp Dashboard sáng', 'Giám sát Andon'],
+          roleText: 'Nhận 1 câu mục tiêu từ Founder ➔ chia việc cho các trưởng phòng AI ➔ nhận bài duyệt lần 1 ➔ báo cáo về Zalo của Founder lúc 08h30.',
+          gatekeeper: 'Chi tiêu ngân sách > 5 triệu và thay đổi giá bán bắt buộc trình Founder duyệt.'
+        },
+        {
+          id: 'agent-growth',
+          name: 'Trợ Lý Tăng Trưởng & Nội Dung (AI Growth Operator)',
+          level: 'Trưởng Khâu Thu Hút (Khâu 1)',
+          brain: 'Não Nhanh (Gemini Flash / Claude Haiku / GPT-4o-mini)',
+          skills: ['Nghiên cứu đối thủ', 'Viết bài BMAA', 'SEO Copywriting', 'Lên lịch đa kênh'],
+          roleText: 'Mỗi tuần sản xuất 5 bài phân tích tình huống thực tế và 10 kịch bản video ngắn, gửi Trưởng phòng duyệt trước khi đăng.',
+          gatekeeper: 'Mọi bài đăng công khai phải qua bộ lọc kiểm tra từ cấm quảng cáo của Legal Co-pilot.'
+        },
+        {
+          id: 'agent-sales',
+          name: 'Trợ Lý Tư Vấn & Chốt Đơn (AI Sales Consultant)',
+          level: 'Trưởng Khâu Chốt Đơn (Khâu 2)',
+          brain: 'Não Nhanh (Gemini Flash / GPT-4o-mini)',
+          skills: ['Trực chat 24/7', 'Xử lý từ chối giá', 'Tạo VietQR động', 'Chăm sóc giỏ hàng'],
+          roleText: 'Phản hồi khách trong 15 giây, tư vấn đúng tài liệu kỹ thuật, gửi mã QR thanh toán và tự động báo tiền về tài khoản.',
+          gatekeeper: 'Chiết khấu giảm giá vượt quá 10% bắt buộc chuyển cho Tư vấn viên trưởng (Human).'
+        },
+        {
+          id: 'agent-ops',
+          name: 'Trợ Lý Kiểm Soát Chất Lượng & CSKH (AI Quality & Customer Success)',
+          level: 'Trưởng Khâu Cung Ứng & CSKH (Khâu 3 & 4)',
+          brain: 'Não Nhanh (Claude Haiku / GPT-4o-mini)',
+          skills: ['Cấp quyền tự động', 'Soát lỗi SLA', 'Khảo sát NPS', 'Kích hoạt chuông Andon'],
+          roleText: 'Giao tài liệu số trong 30 giây, gửi khảo sát NPS sau 24h, nếu điểm dưới 7 kích hoạt Làn Andon Cam xử lý trong 4h.',
+          gatekeeper: 'Các khiếu nại mức độ nghiêm trọng lập tức dừng quy trình và báo Founder trong 15 phút.'
+        },
+        {
+          id: 'agent-finance-legal',
+          name: 'Trợ Lý Tài Chính & Pháp Chế Nội Bộ (AI Finance & Legal Co-pilot)',
+          level: 'Trưởng Khâu Đối Soát & Kiểm Soát Rủi Ro (Khâu 5)',
+          brain: 'Não Mạnh (Claude Sonnet / GPT-4o / Gemini Pro)',
+          skills: ['Đối soát ngân hàng 17h30', 'Canh trần chi phí', 'Rà soát hợp đồng', 'Tra cứu văn bản luật'],
+          roleText: 'Khóa sổ số dư tài khoản cuối ngày, tính Runway, đối chiếu hợp đồng với quy định pháp luật và thông tư theo ngành.',
+          gatekeeper: 'Xuất hóa đơn thuế và thanh toán nhà cung cấp luôn chờ Kế toán trưởng ký duyệt.'
+        }
+      ]
+    };
+
+    function renderStep4AiPack() {
+      const projName = document.getElementById('inProjName').value.trim() || 'Dự Án Khởi Nghiệp';
+      const isSolo = selectedScale === 'solo';
+      const pack = isSolo ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
+
+      document.getElementById('step4-scale-tag').innerText = `BƯỚC 4 • ĐÓNG GÓI BỘ TRỢ LÝ AI: ${selectedScale.toUpperCase()}`;
+      document.getElementById('step4-title').innerText = `BỘ CÔNG CỤ TRỢ LÝ AI DÀNH RIÊNG CHO: ${projName.toUpperCase()}`;
+      document.getElementById('packBadge').innerText = pack.badge;
+      document.getElementById('packTitle').innerText = pack.title;
+      document.getElementById('packDesc').innerText = pack.desc;
+
+      // 4 Streams
+      document.getElementById('fourStreamsContainer').innerHTML = pack.streams.map(s => `
+        <div class="scale-card" style="cursor:default; border-top:4px solid ${s.color};">
+          <div>
+            <span class="scale-badge" style="background:var(--bg-accent-soft); color:${s.color}; border:1px solid var(--border-color);">${s.roleName}</span>
+            <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin:6px 0;">${s.name}</h4>
+            <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">${s.duty}</p>
+          </div>
+          <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); background:var(--bg-subtle); padding:6px 10px; border-radius:6px;">
+            🛠️ <b>Công cụ kết nối:</b> ${s.tool}
+          </div>
+        </div>
+      `).join('');
+
+      // Agent Cards List
+      document.getElementById('agentCardsList').innerHTML = pack.agents.map(a => `
+        <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+            <div>
+              <span class="scale-badge" style="background:var(--bg-accent-soft); color:var(--brand-primary); margin:0 0 4px;">${a.level}</span>
+              <h4 style="font-size:17.5px; font-weight:800; color:var(--text-primary); margin:0;">🤖 ${a.name}</h4>
+            </div>
+            <span style="font-size:13px; font-weight:700; color:var(--purple); background:var(--purple-bg); padding:4px 10px; border-radius:6px; border:1px solid var(--purple-border);">
+              🧠 Khuyên dùng: ${a.brain}
+            </span>
+          </div>
+          <p style="font-size:14px; color:var(--text-secondary); margin:0; line-height:1.55;">
+            <b>Vai trò &amp; Nhiệm vụ:</b> ${a.roleText}
+          </p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <span style="font-size:12.5px; font-weight:700; color:var(--text-muted);">Kỹ năng (Skills):</span>
+            ${a.skills.map(sk => `<span style="font-size:12px; font-weight:600; background:var(--bg-subtle); padding:3px 8px; border-radius:4px; border:1px solid var(--border-color);">${sk}</span>`).join('')}
+          </div>
+          <div style="padding:10px 12px; border-radius:8px; background:var(--rose-bg); border-left:3px solid var(--rose); font-size:13px; color:var(--rose); font-weight:600;">
+            🛡️ <b>Chốt chặn phê duyệt con người (Human Gatekeeper):</b> ${a.gatekeeper}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // UPDATE goStep() TO HANDLE 4 STEPS
+    function goStep(stepNum) {
+      if (stepNum === 2) {
+        const ideaVal = document.getElementById('seed-idea').value.trim();
+        if (!ideaVal) {
+          alert('Vui lòng chọn 1 mô hình mẫu hoặc nhập mô tả dự án của anh/chị!');
+          return;
+        }
+      }
+      if (stepNum === 3) {
+        renderBlueprintV1();
+      }
+      if (stepNum === 4) {
+        renderStep4AiPack();
+      }
+
+      [1, 2, 3, 4].forEach(n => {
+        const v = document.getElementById('step-' + n + '-view');
+        const w = document.getElementById('wiz-' + n);
+        if (v) v.style.display = n === stepNum ? 'block' : 'none';
+        if (w) w.classList.toggle('active', n === stepNum);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // COPY AI AGENTS PACK SPEC
+    function copyAiAgentsPackSpec() {
+      const projName = document.getElementById('inProjName').value.trim() || 'Dự Án Khởi Nghiệp';
+      const isSolo = selectedScale === 'solo';
+      const pack = isSolo ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
+
+      let text = `BẢN ĐẶC TẢ BỘ TRỢ LÝ AI DOANH NGHIỆP — MULAHUB AI AGENTS PACK V6.0\n`;
+      text += `Dự án: ${projName}\n`;
+      text += `Quy mô: ${selectedScale.toUpperCase()} | Gói: ${pack.title}\n`;
+      text += `Nguyên lý: Bạn làm Chủ tịch — Trợ lý AI làm cả đội thi công (Human-in-the-loop)\n\n`;
+      text += `--- 4 DÒNG CHẢY BẤT BIẾN (BMAA ENGINE) ---\n`;
+      pack.streams.forEach((s, idx) => {
+        text += `${idx + 1}. ${s.name} (${s.roleName})\n   Nhiệm vụ: ${s.duty}\n   Công cụ: ${s.tool}\n\n`;
+      });
+      text += `--- CHI TIẾT THẺ NHIỆM VỤ TỪNG AGENT (SPECS) ---\n`;
+      pack.agents.forEach((a, idx) => {
+        text += `[Agent ${idx + 1}] ${a.name} (${a.level})\n`;
+        text += `- Não AI khuyên dùng: ${a.brain}\n`;
+        text += `- Kỹ năng: ${a.skills.join(', ')}\n`;
+        text += `- Vai trò: ${a.roleText}\n`;
+        text += `- Chốt chặn con người: ${a.gatekeeper}\n\n`;
+      });
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Đã sao chép Bản Đặc Tả Bộ Trợ Lý AI vào Clipboard!');
+      });
+    }
+
     // LOAD IDEA PRESET
     function loadIdea(key) {
       selectedIdeaKey = key;
@@ -3787,6 +4106,29 @@ ${lib.aiPromptGuide}
       md += `1. **Thỏa thuận Đích 1 trang (OPTA):** Thay thế JD dài dòng bằng 4 ô (Đích đo được >0 byte, Quyền hạn tự quyết xanh, Vạch đỏ cấm vượt quyền, Đãi ngộ theo tiền mặt thực thu).\n`;
       md += `2. **Sơ đồ 3 làn Andon:** Làn Vàng (sự cố nhẹ - xử lý trong 2h) $\\rightarrow$ Làn Cam (nghẽn quy trình/lệch tiền - xử lý trong 4h) $\\rightarrow$ Làn Đỏ (hiểm họa pháp lý/lộ dữ liệu - dừng toàn bộ hệ thống trong 15 phút, báo Founder).\n`;
       md += `3. **Nghi thức họp đứng 15 phút (Daily Standup):** 08h45 - 09h00 hàng sáng với 3 câu hỏi thực chứng (Hôm qua xong gì >0 byte? Hôm nay cam kết đích nào? Đang nghẽn ở đâu cần gỡ?).\n\n`;
+
+      
+      // BỔ SUNG PHẦN 6: BỘ TRỢ LÝ AI MULAHUB
+      const isSoloMd = selectedScale === 'solo';
+      const packMd = isSoloMd ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
+      md += `## 6. ĐÓNG GÓI BỘ CÔNG CỤ TRỢ LÝ AI (MULAHUB AI AGENTS PACK V6.0)\n\n`;
+      md += `**Gói khuyến nghị:** ${packMd.title}\n`;
+      md += `*${packMd.desc}*\n\n`;
+      md += `### 6.1 Phân Bổ Nhiệm Vụ Theo 4 Dòng Chảy BMAA\n`;
+      packMd.streams.forEach((s, idx) => {
+        md += `${idx + 1}. **${s.name}** (*${s.roleName}*): ${s.duty} (Công cụ: ${s.tool})\n`;
+      });
+      md += `\n### 6.2 Danh Mục Thẻ Nhiệm Vụ Từng Trợ Lý AI (Agent Cards)\n`;
+      packMd.agents.forEach((a, idx) => {
+        md += `#### ${idx + 1}. ${a.name} (${a.level})\n`;
+        md += `- **Não AI khuyên dùng:** ${a.brain}\n`;
+        md += `- **Kỹ năng kết nối (Skills):** ${a.skills.join(', ')}\n`;
+        md += `- **Mô tả vai trò:** ${a.roleText}\n`;
+        md += `- **Chốt chặn phê duyệt con người:** ${a.gatekeeper}\n\n`;
+      });
+      md += `### 6.3 Lộ Trình 2 Tuần Bàn Giao Vận Hành\n`;
+      md += `- **Tuần 1:** Cài đặt hạ tầng, nạp Brandkit & Sổ tay tri thức pháp chế/sản phẩm.\n`;
+      md += `- **Tuần 2:** Chạy thử nghiệm quy trình 4 bước, kiểm thử Andon và tích hợp báo cáo Zalo/Telegram mỗi sáng.\n\n`;
 
       return md;
     }
