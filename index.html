@@ -2389,6 +2389,71 @@
         <div style="display:flex; flex-direction:column; gap:14px;" id="agentCardsList"></div>
       </section>
 
+      <!-- KHỐI ĐẶC BIỆT: GÓI CHUYỂN GIAO MŨI NHỌN CHO CHUYÊN GIA BẢO HIỂM & TÀI CHÍNH -->
+      <section class="panel" style="border: 2px solid var(--emerald); background: linear-gradient(135deg, rgba(4,120,87,0.06) 0%, var(--bg-surface) 100%); margin-bottom: 24px;">
+        <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+            <div>
+              <span class="scale-badge" style="background:var(--emerald-bg); color:var(--emerald); border:1px solid rgba(4,120,87,0.3);">
+                CASE STUDY THỰC CHỨNG • NGÁCH MŨI NHỌN 30 NGÀY TỚI
+              </span>
+              <h3 class="panel-title" style="color:var(--emerald); font-size:21px; margin-top:4px;">
+                🏆 Gói Chuyển Giao Mini-App (PWA) Tên Miền Riêng Cho Chuyên Gia Bảo Hiểm — Tài Chính
+              </h3>
+              <p class="panel-subtitle" style="margin:4px 0 0; font-size:14.5px;">
+                Dựa trên dự án hạt nhân <b>BU-05-Insurance-Growth-Suite</b> và công nghệ PWA 0 đồng (kế thừa từ EFCommunity). Bàn giao <b>chìa khóa trao tay trong 14 ngày</b> chạy trên tên miền riêng của bạn.
+              </p>
+            </div>
+            <button class="btn btn-emerald" onclick="openHandoffConsultationModal()" style="box-shadow:0 4px 14px rgba(4,120,87,0.3); font-size:14px;">
+              🚀 Đăng Ký Nhận Mini-App PWA (14 Ngày)
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Cột Lợi Ích Vượt Trội -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:20px;">
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--emerald);">
+            <div style="font-size:22px; margin-bottom:6px;">📱</div>
+            <b style="color:var(--text-primary); font-size:15px;">1. Ứng Dụng PWA Tên Miền Riêng</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.55;">
+              Khách hàng cài đặt 1-chạm lên màn hình điện thoại (không cần qua App Store/Google Play), chạy trên tên miền cá nhân của bạn (vd: <i>kehoach.nguyenvana.vn</i>), định vị thương hiệu chuyên gia đẳng cấp MDRT.
+            </p>
+          </div>
+
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--brand-primary);">
+            <div style="font-size:22px; margin-bottom:6px;">⚡</div>
+            <b style="color:var(--text-primary); font-size:15px;">2. Hạ Tầng Server 0 Đồng / Tháng</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.55;">
+              Vận hành trên <b>Cloudflare Pages + D1 SQLite + Google Sheets 2 chiều</b> (chịu tải 100.000 lượt/ngày, độ trễ &lt;30ms, <b>chi phí máy chủ = 0 VNĐ/tháng</b> trọn đời).
+            </p>
+          </div>
+
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--purple);">
+            <div style="font-size:22px; margin-bottom:6px;">💬</div>
+            <b style="color:var(--text-primary); font-size:15px;">3. Tự Động Báo Về Zalo Trong 3 Giây</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.55;">
+              Ngay khi khách hàng hoàn thành bài khảo sát khoảng trống bảo hiểm, hệ thống tự động bắn toàn bộ số liệu và nhu cầu của khách về <b>Zalo cá nhân / Zalo OA</b> của chuyên gia để gọi tư vấn chốt đơn.
+            </p>
+          </div>
+        </div>
+
+        <!-- Khung Mô Hình Giá Kép -->
+        <div style="background:var(--bg-subtle); border-radius:12px; padding:16px 20px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+          <div>
+            <span class="scale-badge" style="background:var(--amber-bg); color:var(--amber); margin-bottom:4px;">MÔ HÌNH HỢP TÁC KÉP</span>
+            <div style="font-size:16px; font-weight:800; color:var(--text-primary);">
+              Phí Cài Đặt Ban Đầu (One-off Setup Fee) + Phí Đồng Hành &amp; Tinh Chỉnh Hàng Tháng (Monthly Retainer)
+            </div>
+            <p style="font-size:13.5px; color:var(--text-secondary); margin:4px 0 0;">
+              Chìa khóa trao tay trong 14 ngày làm việc. Được bảo hành kỹ thuật, cập nhật kịch bản prompt theo luật mới và hỗ trợ tối ưu phễu chuyển đổi liên tục.
+            </p>
+          </div>
+          <button class="btn btn-emerald" onclick="openHandoffConsultationModal()">
+            📋 Xem Báo Giá &amp; Lộ Trình 14 Ngày
+          </button>
+        </div>
+      </section>
+
       <!-- KHỐI 3: GÓI CHUYỂN GIAO BỘ CÔNG CỤ MULAHUB CHÌA KHÓA TRAO TAY (MỞ RA CƠ HỘI KINH DOANH) -->
       <section class="panel" style="border: 2px solid var(--emerald); background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(4,120,87,0.04) 100%); margin-bottom: 24px;">
         <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 18px;">
@@ -2746,6 +2811,18 @@
 
     // 8 PRESETS DATA
     const ideaPresets = {
+      solo_ins: {
+        scale: 'solo',
+        projName: 'Phòng Tham Vấn Tài Chính Gia Đình & Hưu Trí (MDRT Solo)',
+        rev: 150, capPct: 15, fte: 1, sal: 20, bottleneck: 'leadgen',
+        idea: "Mô hình Chuyên gia Tư vấn Tài chính & Bảo hiểm Cá nhân kết hợp Ứng dụng PWA Server 0 đồng chạy trên tên miền riêng: Khách hàng tự trải nghiệm khảo sát khoảng trống bảo hiểm và mô phỏng quỹ hưu trí trong 3 phút, dữ liệu tự động đồng bộ về Google Sheets và bắn thông báo tức thì về Zalo chuyên gia để đặt lịch tư vấn sâu.",
+        q1: "Các trụ cột gia đình (30–45 tuổi), cha mẹ có con nhỏ, hoặc cá nhân thu nhập khá cần hoạch định an toàn tài chính, quỹ học vấn và bảo vệ thu nhập trước rủi ro nhưng ngại gặp đại lý bảo hiểm vì sợ bị ép mua.",
+        q2: "Thu nhập hoa hồng tư vấn giải pháp bảo hiểm nhân thọ/sức khỏe (30–50 triệu/hợp đồng) + Phí dịch vụ hoạch định tài chính cá nhân độc lập (3–5 triệu/hồ sơ) + Phí đào tạo đội ngũ đại lý vệ tinh.",
+        q3: "Tuân thủ triệt để Luật Kinh doanh Bảo hiểm số 08/2022/QH15; Luật Bảo vệ Dữ liệu Cá nhân số 91/2025/QH15 (che mờ thông tin cá nhân PII); Minh bạch các điều khoản loại trừ và bảng minh họa quyền lợi.",
+        q4: "Xây dựng cỗ máy thu hút và tư vấn tài chính tự động đạt doanh số 120 – 180 triệu VNĐ/tháng với 1 chuyên gia duy nhất, giảm 70% thời gian giải thích thủ công các khái niệm cơ bản trong 90 ngày.",
+        q5: "BẮT BUỘC LÀM: Bàn giao ứng dụng PWA chạy trên tên miền riêng của chuyên gia trong 14 ngày, kết nối Google Sheets + Zalo; CẤM LÀM: Không spam danh bạ người quen, không hứa hẹn lợi nhuận đầu tư sai lệch.",
+        q6: "Chia sẻ Mini-App tính toán tài chính qua Zalo/Facebook/TikTok cá nhân; Khách hàng tự nhập số liệu thu nhập và nhận ngay Bản Báo Cáo Sức Khỏe Tài Chính 1 trang, sau đó tự nguyện đặt lịch hẹn tư vấn 1:1."
+      },
       solo_ai: {
         scale: 'solo',
         projName: 'Doanh Nghiệp Tri Thức 1 Người + AI Agents Swarm',
