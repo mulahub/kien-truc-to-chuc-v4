@@ -2246,77 +2246,264 @@
     <!-- ==================== BƯỚC 4: ĐÓNG GÓI BỘ CÔNG CỤ TRỢ LÝ AI (AI AGENTS PACK) ==================== -->
     <div id="step-4-view" style="display: none;">
       <!-- BANNER TỔNG QUAN BƯỚC 4 -->
-      <section class="blueprint-banner" style="border-left: 6px solid var(--purple); background: var(--bg-surface);">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;">
+      <section class="blueprint-banner" style="border-left: 6px solid var(--purple); background: var(--bg-surface); margin-bottom: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
           <div>
             <span class="scale-badge" id="step4-scale-tag" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">
-              BƯỚC 4 • ĐÓNG GÓI BỘ CÔNG CỤ TRỢ LÝ AI THEO 4 DÒNG CHẢY BMAA
+              BƯỚC 4 • ĐÓNG GÓI BỘ TRỢ LÝ AI & CHUYỂN GIAO GIẢI PHÁP
             </span>
-            <h2 id="step4-title" style="font-size: 24px; font-weight: 900; color: var(--text-primary); margin: 6px 0 10px;">
-              KHUYẾN NGHỊ BỘ TRỢ LÝ AI DÀNH RIÊNG CHO DOANH NGHIỆP
+            <h2 id="step4-title" style="font-size: 24px; font-weight: 900; color: var(--text-primary); margin: 8px 0 10px;">
+              BỘ TRỢ LÝ AI DOANH NGHIỆP & GÓI CHUYỂN GIAO TOÀN DIỆN
             </h2>
-            <p id="step4-summary" style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin: 0;">
-              Dựa trên Quy mô và Điểm nghẽn vận hành đã chọn. <b>Bạn làm Chủ Tịch — Trợ lý AI thi công</b>, mọi quyết định chi tiền và pháp lý luôn chờ bạn phê duyệt (Human-in-the-loop).
+            <p id="step4-summary" style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; margin: 0; max-width: 820px;">
+              Dựa trên hoạch định 4 Blocks và 7 Tầng kiến trúc. Hệ thống tự động phân tích <b>khoảng trống năng lực</b>, xác định <b>chính xác những Trợ lý AI doanh nghiệp cần</b> để giải phóng điểm nghẽn, và cung cấp <b>gói chuyển giao chìa khóa trao tay</b>.
             </p>
           </div>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="copyAiAgentsPackSpec()">📋 1-Click Copy Hồ Sơ Trợ Lý AI</button>
-            <button class="btn btn-emerald" onclick="downloadReportMD()">💾 Tải Toàn Bộ Báo Cáo V6 (.md)</button>
-            <button class="btn btn-outline" onclick="window.print()">🖨️ In / Xuất PDF</button>
+            <button class="btn btn-primary" onclick="openHandoffConsultationModal()" style="box-shadow: 0 4px 12px rgba(37,99,235,0.25);">
+              🚀 Đăng Ký Chuyển Giao Trọn Gói
+            </button>
+            <button class="btn btn-outline" onclick="copyAiAgentsPackSpec()">
+              📋 1-Click Copy Hồ Sơ Trợ Lý
+            </button>
+            <button class="btn btn-emerald" onclick="downloadReportMD()">
+              💾 Tải Báo Cáo V6 (.md)
+            </button>
+            <button class="btn btn-outline" onclick="window.print()">
+              🖨️ In / PDF
+            </button>
           </div>
         </div>
       </section>
 
-      <!-- GÓI TRỢ LÝ ĐƯỢC CHỌN TỰ ĐỘNG -->
-      <section class="panel" style="border: 2px solid var(--brand-primary); background: var(--bg-surface);">
-        <div class="panel-header">
+      <!-- KHỐI 1: BẢNG CHẨN ĐOÁN QUÁ TẢI VẬN HÀNH & KHOẢNG TRỐNG TRỢ LÝ AI -->
+      <section class="panel" style="border: 2px solid var(--purple-border); background: var(--bg-surface); margin-bottom: 24px;">
+        <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 18px;">
           <div>
-            <span class="scale-badge" id="packBadge" style="background:var(--emerald-bg); color:var(--emerald);">GÓI KHUYẾN NGHỊ ĐẶC THÙ</span>
-            <h2 class="panel-title" id="packTitle" style="color:var(--brand-primary);">...</h2>
-            <p class="panel-subtitle" id="packDesc">...</p>
+            <span class="scale-badge" style="background:var(--rose-bg); color:var(--rose);">CHẨN ĐOÁN THỰC ĐỊA</span>
+            <h3 class="panel-title" style="color:var(--text-primary); font-size:19px; margin-top:4px;">
+              🔍 Bảng Chẩn Đoán Sức Ép Vận Hành & Khoảng Trống Nhân Sự Số
+            </h3>
+            <p class="panel-subtitle" style="margin:4px 0 0;">
+              Đối chiếu trực tiếp giữa Quy mô, Doanh thu kỳ vọng, Nhân sự hiện có (FTE) và Điểm nghẽn thực tế.
+            </p>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:20px;">
+          <!-- Thẻ 1: Sức ép vận hành -->
+          <div style="background:var(--bg-subtle); border-radius:12px; padding:16px; border-left:4px solid var(--rose);">
+            <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Chỉ Số Sức Ép Vận Hành</div>
+            <div id="diagLoadIndex" style="font-size:28px; font-weight:900; color:var(--rose); margin:6px 0;">78% • QUÁ TẢI</div>
+            <div style="height:6px; background:var(--border-color); border-radius:3px; overflow:hidden; margin-bottom:8px;">
+              <div id="diagLoadBar" style="width:78%; height:100%; background:var(--rose); border-radius:3px;"></div>
+            </div>
+            <div style="font-size:12.5px; color:var(--text-secondary); line-height:1.4;">
+              Nguy cơ tắc nghẽn cao do chưa có hệ thống trợ lý đệm để giải phóng sự vụ.
+            </div>
+          </div>
+
+          <!-- Thẻ 2: Giờ thủ công lãng phí -->
+          <div style="background:var(--bg-subtle); border-radius:12px; padding:16px; border-left:4px solid var(--amber);">
+            <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Thời Gian Lãng Phí Thủ Công</div>
+            <div id="diagWasteHours" style="font-size:28px; font-weight:900; color:var(--amber); margin:6px 0;">~140 Giờ / Tháng</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.4;">
+              Tương đương <b>1.2 – 1.5 nhân sự toàn thời gian</b> đang phải làm các việc lặp lại (báo giá, nhắc hẹn, đối soát, gõ nháp).
+            </div>
+          </div>
+
+          <!-- Thẻ 3: Chi phí cơ hội thất thoát -->
+          <div style="background:var(--bg-subtle); border-radius:12px; padding:16px; border-left:4px solid var(--brand-primary);">
+            <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Chi Phí Cơ Hội Thất Thoát</div>
+            <div id="diagWasteCost" style="font-size:28px; font-weight:900; color:var(--brand-primary); margin:6px 0;">~25.000.000 đ / Tháng</div>
+            <div style="font-size:13px; color:var(--text-secondary); line-height:1.4;">
+              Bao gồm quỹ lương cho việc sự vụ và doanh thu bị tuột mất do phản hồi khách hàng chậm trễ.
+            </div>
+          </div>
+        </div>
+
+        <!-- Hộp kết luận phân tích điểm nghẽn -->
+        <div style="background:var(--bg-accent-soft); border-radius:12px; padding:16px 20px; border:1px solid var(--border-color);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span style="font-size:18px;">💡</span>
+            <b style="font-size:15px; color:var(--brand-primary);">KẾT LUẬN CHẨN ĐOÁN & KHUYẾN NGHỊ ĐẶC THÙ CHO DỰ ÁN:</b>
+          </div>
+          <p id="diagConclusionText" style="font-size:14px; color:var(--text-secondary); line-height:1.65; margin:0;">
+            Dự án của bạn đang ở giai đoạn mở rộng nhưng bị giới hạn bởi điểm nghẽn con người. Tuyển thêm người lúc này sẽ làm tăng chi phí cố định (Fixed Cost) và tăng rủi ro quản trị. Giải pháp tối ưu và an toàn nhất là <b>kích hoạt ngay Bộ Trợ Lý AI Chuyên Biệt</b> theo kiến trúc 4 Dòng Chảy bên dưới.
+          </p>
+        </div>
+      </section>
+
+      <!-- KHỐI 2: MA TRẬN PHÂN BỔ: AI CẦN NHỮNG TRỢ LÝ NÀO? (SOLO VS ENTERPRISE) -->
+      <section class="panel" style="border: 2px solid var(--border-color); background: var(--bg-surface); margin-bottom: 24px;">
+        <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+          <div>
+            <span class="scale-badge" style="background:var(--emerald-bg); color:var(--emerald);">PHÂN BỔ TRỢ LÝ THEO QUY MÔ</span>
+            <h3 class="panel-title" style="color:var(--text-primary); font-size:19px; margin-top:4px;">
+              🎯 Ma Trận: Doanh Nghiệp Của Bạn Cần Những Trợ Lý AI Nào?
+            </h3>
+            <p class="panel-subtitle" style="margin:4px 0 0;">
+              Chọn đúng cấu hình để tránh lãng phí chi phí phần mềm và không làm rối quy trình vận hành.
+            </p>
+          </div>
+          <!-- Toggle chọn gói xem -->
+          <div style="display:inline-flex; background:var(--bg-subtle); padding:4px; border-radius:10px; border:1px solid var(--border-color);">
+            <button id="btnScaleSolo" class="btn btn-sm" onclick="switchAiPackScale('solo')" style="border-radius:8px; font-weight:700;">
+              👤 Mô Hình Solo-Business (1 Co-pilot)
+            </button>
+            <button id="btnScaleEnt" class="btn btn-sm" onclick="switchAiPackScale('enterprise')" style="border-radius:8px; font-weight:700;">
+              🏢 Doanh Nghiệp / BU (Biệt Đội 6 Trợ Lý)
+            </button>
+          </div>
+        </div>
+
+        <!-- Tóm tắt gói đang xem -->
+        <div style="padding:16px 20px; border-radius:12px; background:var(--bg-subtle); border-left:4px solid var(--purple); margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <span class="scale-badge" id="packBadge" style="background:var(--purple-bg); color:var(--purple); margin-bottom:4px;">GÓI KHUYẾN NGHỊ</span>
+              <h4 id="packTitle" style="font-size:17.5px; font-weight:800; color:var(--text-primary); margin:4px 0;">...</h4>
+              <p id="packDesc" style="font-size:14px; color:var(--text-secondary); margin:0; line-height:1.5;">...</p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="openHandoffConsultationModal()">
+              🤝 Nhận Chuyển Giao Gói Này
+            </button>
           </div>
         </div>
 
         <!-- 4 DÒNG CHẢY CARDS CONTAINER -->
-        <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">
+        <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin-bottom:12px;">
           🌊 Phân Bổ Nhiệm Vụ Trợ Lý AI Theo 4 Dòng Chảy Bất Biến (BMAA Engine)
-        </h3>
+        </h4>
         <div class="scale-grid" id="fourStreamsContainer" style="margin-bottom:24px;"></div>
 
         <!-- DANH SÁCH CHI TIẾT TỪNG TRỢ LÝ (AI AGENT CARDS) -->
-        <h3 style="font-size:18px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">
-          🤖 Danh Mục Thẻ Nhiệm Vụ Nhân Sự Số (AI Agent Cards Specifications)
-        </h3>
-        <div style="display:flex; flex-direction:column; gap:14px;" id="agentCardsList"></div>
-
-        <!-- LỘ TRÌNH TRIỂN KHAI 2 TUẦN (ONBOARDING) -->
-        <div style="background:var(--bg-accent-soft); border:2px solid var(--border-color); border-radius:14px; padding:20px; margin-top:24px;">
-          <h4 style="font-size:16.5px; font-weight:800; color:var(--brand-primary); margin:0 0 8px;">
-            🚀 Lộ Trình 2 Tuần Dựng Xong Hệ Thống Trợ Lý AI Của Doanh Nghiệp (MulaHub Onboarding)
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+          <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin:0;">
+            🤖 Danh Mục Thẻ Nhiệm Vụ & Bộ Não Nhân Sự Số (AI Agent Cards)
           </h4>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-top:12px;">
-            <div style="background:var(--bg-surface); padding:14px; border-radius:10px; border-left:4px solid var(--brand-primary);">
-              <b style="color:var(--brand-primary); font-size:14.5px;">Tuần 1: Cài Đặt Hạ Tầng &amp; Nạp Bộ Não Tri Thức</b>
-              <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Thiết lập tài khoản, kết nối API/Model, nạp Brandkit, Persona và toàn bộ văn bản pháp luật, tài liệu sản phẩm vào Sổ tay tri thức.</p>
+          <span style="font-size:12.5px; color:var(--text-muted); font-weight:600;">
+            Bấm "Copy Prompt" để nạp vào Claude / ChatGPT / Gemini
+          </span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;" id="agentCardsList"></div>
+      </section>
+
+      <!-- KHỐI 3: GÓI CHUYỂN GIAO BỘ CÔNG CỤ MULAHUB CHÌA KHÓA TRAO TAY (MỞ RA CƠ HỘI KINH DOANH) -->
+      <section class="panel" style="border: 2px solid var(--emerald); background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(4,120,87,0.04) 100%); margin-bottom: 24px;">
+        <div class="panel-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 18px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px;">
+            <div>
+              <span class="scale-badge" style="background:var(--emerald-bg); color:var(--emerald); border:1px solid rgba(4,120,87,0.25);">
+                GÓI GIẢI PHÁP ĐỒNG HÀNH DOANH NGHIỆP
+              </span>
+              <h3 class="panel-title" style="color:var(--emerald); font-size:21px; margin-top:4px;">
+                🎁 Gói Chuyển Giao Bộ Trợ Lý AI MulaHub Chìa Khóa Trao Tay (Turn-Key Handoff)
+              </h3>
+              <p class="panel-subtitle" style="margin:4px 0 0; font-size:14.5px;">
+                MulaHub không bán phần mềm rời rạc. Chúng tôi <b>cài đặt sẵn, nạp tri thức ngành và bàn giao toàn bộ hệ thống</b> cho bạn làm chủ 100% trong 14 ngày.
+              </p>
+            </div>
+            <button class="btn btn-emerald" onclick="openHandoffConsultationModal()" style="box-shadow:0 4px 14px rgba(4,120,87,0.3); font-size:14px;">
+              🚀 Đăng Ký Chuyển Giao Trọn Gói
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Trụ Cột Trong Gói Bàn Giao -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:20px;">
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--brand-primary);">
+            <div style="font-size:22px; margin-bottom:6px;">🧠</div>
+            <b style="color:var(--text-primary); font-size:15px;">1. Bộ Não Tri Thức Tinh Chỉnh</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.5;">
+              Nạp sẵn toàn bộ tài liệu sản phẩm, chân dung khách hàng, quy chế công ty và rào cản 5 Luật vào Sổ tay tri thức (NotebookLM / Vector DB).
+            </p>
+          </div>
+
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--purple);">
+            <div style="font-size:22px; margin-bottom:6px;">📑</div>
+            <b style="color:var(--text-primary); font-size:15px;">2. Hệ Thống 12 Quy Trình SOPs</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.5;">
+              Checklist thao tác chuẩn cho từng vị trí, phân định rõ khâu nào AI làm 90%, khâu nào con người ký duyệt (Human Gatekeeper M2).
+            </p>
+          </div>
+
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--amber);">
+            <div style="font-size:22px; margin-bottom:6px;">🔌</div>
+            <b style="color:var(--text-primary); font-size:15px;">3. Tích Hợp Vào Công Cụ Thật</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.5;">
+              Kết nối trực tiếp vào Zalo cá nhân / OA, Lark Suite, Google Drive, Google Sheets để nhận báo cáo và điều phối công việc hàng ngày.
+            </p>
+          </div>
+
+          <div style="background:var(--bg-surface); padding:16px; border-radius:12px; border:1px solid var(--border-color); border-top:4px solid var(--emerald);">
+            <div style="font-size:22px; margin-bottom:6px;">🧑‍🏫</div>
+            <b style="color:var(--text-primary); font-size:15px;">4. Huấn Luyện Thực Chiến 14 Ngày</b>
+            <p style="font-size:13px; color:var(--text-secondary); margin:6px 0 0; line-height:1.5;">
+              Chuyên gia MulaHub đồng hành 1-1, chạy thử nghiệm với 20 khách hàng thật, tinh chỉnh phản hồi và bàn giao toàn bộ mã nguồn + mật khẩu.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bảng So Sánh Giá Trị Chuyển Giao -->
+        <div style="background:var(--bg-subtle); border-radius:12px; padding:18px; border:1px solid var(--border-color); margin-bottom:20px;">
+          <h4 style="font-size:15px; font-weight:800; color:var(--text-primary); margin:0 0 12px;">
+            ⚖️ So Sánh: Tự Mày Mò Triển Khai vs. Nhận Chuyển Giao Trọn Gói MulaHub
+          </h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+            <div style="background:var(--bg-surface); padding:14px; border-radius:10px; border-left:4px solid var(--rose);">
+              <b style="color:var(--rose); font-size:14px;">❌ Tự Mày Mò Tìm Kiếm & Thử Sai</b>
+              <ul style="margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--text-secondary); line-height:1.6;">
+                <li>Mất 3 – 6 tháng mò mẫm prompt, công cụ rời rạc không ăn khớp.</li>
+                <li>Chi phí thử sai 50 – 80 triệu (tiền tool, tài khoản, thời gian chết).</li>
+                <li>80% trường hợp bỏ cuộc vì AI trả lời sai lệch, ảo giác, vi phạm dữ liệu.</li>
+              </ul>
             </div>
             <div style="background:var(--bg-surface); padding:14px; border-radius:10px; border-left:4px solid var(--emerald);">
-              <b style="color:var(--emerald); font-size:14.5px;">Tuần 2: Chạy Thử Nghiệm &amp; Bàn Giao Vận Hành</b>
-              <p style="font-size:13.5px; color:var(--text-secondary); margin:6px 0 0;">Thực hành quy trình 4 bước (Giao việc ➔ Thực thi ➔ Báo cáo ➔ Tư vấn), kiểm thử giật dây Andon và tích hợp báo cáo Zalo/Telegram mỗi sáng.</p>
+              <b style="color:var(--emerald); font-size:14px;">✅ Nhận Chuyển Giao MulaHub (Chìa Khóa Trao Tay)</b>
+              <ul style="margin:8px 0 0; padding-left:18px; font-size:13px; color:var(--text-secondary); line-height:1.6;">
+                <li>Hoàn tất trong đúng <b>14 ngày làm việc</b>, đưa vào vận hành ngay.</li>
+                <li>Kế thừa kho Prompt Master và SOPs đã kiểm chứng thực địa tại Việt Nam.</li>
+                <li>Bảo đảm an toàn pháp lý, bảo mật dữ liệu khách hàng, bàn giao 100% quyền sở hữu.</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div class="step-actions" style="margin-top:24px;">
-          <button class="btn btn-outline" onclick="goStep(3)">⬅ Quay lại Bước 3 (Kiến Trúc 7 Tầng)</button>
-          <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <button class="btn btn-outline" onclick="copyReportMD()">📋 1-Click Copy Báo Cáo Markdown V6</button>
-            <button class="btn btn-emerald" onclick="downloadReportMD()">💾 Tải File Báo Cáo V6 (.md)</button>
-            <button class="btn btn-primary" onclick="window.print()">🖨️ In / Xuất PDF Toàn Diện</button>
+        <!-- 3 Nút Call To Action Chuyển Giao -->
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div style="font-size:13.5px; color:var(--text-secondary);">
+            📞 Cần trao đổi trực tiếp với Chuyên Gia Tư Vấn MulaHub? Hotline/Zalo: <b>0902.999.xxx</b>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="copyProposalHandoff()">
+              📋 Copy Bản Đề Xuất Bàn Giao
+            </button>
+            <button class="btn btn-emerald" onclick="openHandoffConsultationModal()">
+              🚀 Đăng Ký Tư Vấn Chuyển Giao Ngay
+            </button>
           </div>
         </div>
       </section>
-    </div>
 
+      <!-- THANH ĐIỀU HƯỚNG CUỐI BƯỚC 4 -->
+      <div class="step-actions" style="margin-top:24px; padding-top:18px; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <button class="btn btn-outline" onclick="goStep(3)">
+          ⬅ Quay lại Bước 3 (Kiến Trúc 7 Tầng)
+        </button>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="copyReportMD()">
+            📋 1-Click Copy Báo Cáo Markdown V6
+          </button>
+          <button class="btn btn-emerald" onclick="downloadReportMD()">
+            💾 Tải File Báo Cáo V6 (.md)
+          </button>
+          <button class="btn btn-primary" onclick="window.print()">
+            🖨️ In / Xuất PDF Toàn Diện
+          </button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- MODAL FOR DEEP INSPECTION -->
@@ -3416,7 +3603,11 @@ ${lib.aiPromptGuide}
 
     
     // ==================== BƯỚC 4: BỘ CÔNG CỤ TRỢ LÝ AI (AI AGENTS PACK) ====================
+    // ==================== BƯỚC 4: BỘ CÔNG CỤ TRỢ LÝ AI & CHUYỂN GIAO GIẢI PHÁP ====================
+    let currentPackScale = 'solo'; // 'solo' or 'enterprise'
+
     const AI_PACK_SOLO = {
+      scale: 'solo',
       badge: 'CẤP 0 & 1 • MULAHUB SOLO-COPILOT',
       title: 'Gói Trợ Lý Điều Hành Toàn Năng (Executive Co-pilot 1-to-1)',
       desc: '1 Founder làm Chủ tịch — 1 Trợ lý AI toàn năng điều phối trọn vẹn 4 Dòng Chảy kinh doanh & đời sống. Không làm rối bộ máy, tự động hóa 90% sự vụ.',
@@ -3443,58 +3634,80 @@ ${lib.aiPromptGuide}
           tool: 'Webhook n8n / Zapier, Google Drive, Email Resend'
         },
         {
-          name: '💰 Dòng Tiền & Tài Chính',
+          name: '💰 Dòng Tiền Tệ & Pháp Lý',
           color: 'var(--emerald)',
-          roleName: 'Cashflow & Debt Reminder Agent',
-          duty: 'Bắt biến động số dư VietQR, xác nhận tiền về tức thì, nhắc nợ khéo léo, tự động phân bổ tỷ lệ 3 chiếc lọ (60% OpEx, 20% Thuế, 20% Tái đầu tư).',
-          tool: 'VietQR Dynamic API, Sổ Cái Google Sheets / Casso, Script Canh Trần'
+          roleName: 'Cashflow Guard & Legal Shield',
+          duty: 'Theo dõi 3 chiếc lọ tài chính, cảnh báo Runway nếu dưới 6 tháng, đối soát thanh toán VietQR động và rà soát hợp đồng theo Nghị định 13.',
+          tool: 'VietQR Casso/SeAPay, Google Sheet P&L, AI Legal Assistant'
         }
       ],
       agents: [
         {
-          id: 'solo-co-pilot',
-          name: 'Trợ Lý Điều Hành Cá Nhân (Executive Co-pilot)',
-          level: 'Trợ Lý Trực Tiếp Cho Founder',
-          brain: 'Não Mạnh (Claude 3.7 Sonnet / GPT-4o / Gemini 1.5 Pro)',
-          skills: ['Gỡ băng âm thanh', 'Quản trị Bộ Não Thứ 2', 'Tạo mã VietQR', 'Nhắc lịch Zalo'],
-          roleText: 'Tương tác 1-1 với Founder qua Zalo/Telegram. Sáng điểm tin 3 việc quan trọng, chiều tổng hợp số tiền thực thu, tối chuẩn bị tài liệu cho ngày mai.',
-          gatekeeper: 'Mọi giao dịch chuyển tiền và đăng bài công khai đều cần 1 chạm duyệt của Founder.'
+          id: 'solo-executive-copilot',
+          name: 'Trợ Lý Điều Hành Đa Nhiệm (Executive AI Co-pilot)',
+          level: 'Cánh Tay Trợ Thủ Trực Tiếp Cho Founder',
+          brain: 'Não Mạnh (Claude 3.7 Sonnet / GPT-4o)',
+          skills: ['4 Dòng Chảy BMAA', 'Quản trị Tri thức', 'Soạn nháp Báo giá & Hợp đồng', 'Tổng kết ngày & Lập kế hoạch sáng'],
+          roleText: 'Nhận lệnh thoại từ Founder ➔ Chuyển thành văn bản, lịch hẹn, bài viết, hoặc tài liệu đào tạo ➔ Gửi bản nháp về Zalo trước 08h00 mỗi sáng để Founder duyệt 1 chạm.',
+          gatekeeper: 'Tuyệt đối không tự bấm nút gửi tin nhắn cho khách VIP hoặc thanh toán khi Founder chưa bấm xác nhận.',
+          promptSystem: `Bạn là Trợ Lý Điều Hành Toàn Năng (Executive AI Co-pilot) cho Nhà Sáng Lập của doanh nghiệp [TÊN DOANH NGHIỆP].
+Nhiệm vụ cốt lõi:
+1. Quản lý 4 Dòng Chảy (Thông tin, Con người, Sản phẩm, Tiền tệ).
+2. Lắng nghe ghi âm/lời thoại của Founder và đúc kết thành biên bản hành động (Action Items).
+3. Soạn nháp mọi văn bản theo chuẩn Vốn từ Trí tuệ và rào cản 5 Luật (Thuận tự nhiên, Đúng pháp luật, Lương tâm trong sáng).
+Quy tắc: Luôn hoạt động ở chế độ M2 (Người duyệt) — Soạn sẵn mọi thứ để Founder chỉ việc bấm nút duyệt trong 3 giây.`
+        },
+        {
+          id: 'solo-sales-growth',
+          name: 'Trợ Lý Thu Hút & Bán Hàng 24/7 (AI Sales & Outreach Co-pilot)',
+          level: 'Trợ Thủ Doanh Số & CSKH Tự Phục Vụ',
+          brain: 'Não Nhanh (Gemini 2.5 Flash / GPT-4o-mini)',
+          skills: ['Trực chat Fanpage/Zalo', 'Bám đuổi giỏ hàng', 'Tư vấn phễu sản phẩm', 'Chấm điểm khách tiềm năng'],
+          roleText: 'Trực 24/7 đón tiếp khách hàng gửi tin nhắn, giải đáp thắc mắc chuyên môn sơ bộ theo kịch bản SOP, gửi mã VietQR thanh toán và lưu thông tin vào Google Sheet.',
+          gatekeeper: 'Các yêu cầu giảm giá hoặc đòi hỏi ngoài chính sách bắt buộc chuyển tiếp Founder phê duyệt.',
+          promptSystem: `Bạn là Trợ Lý Bán Hàng & Chăm Sóc Khách Hàng cho [TÊN DOANH NGHIỆP].
+Nhiệm vụ cốt lõi:
+1. Tiếp đón khách hàng lịch thiệp, ấm áp, thấu cảm theo chuẩn Vốn từ Trí tuệ.
+2. Trả lời chính xác tính năng sản phẩm dựa trên tài liệu SOP được cung cấp.
+3. Hướng dẫn khách thanh toán qua VietQR động và kích hoạt quy trình tự phục vụ.
+Cấm: Không bịa đặt thông tin ngoài tài liệu, không cam kết giảm giá khi chưa có lệnh.`
         }
       ]
     };
 
     const AI_PACK_ENTERPRISE = {
+      scale: 'enterprise',
       badge: 'CẤP 2, 3 & 4 • MULAHUB ENTERPRISE SWARM',
       title: 'Đội Quân Trợ Lý Tự Trị Đa Chuyên Môn (Enterprise Multi-Agent Crew)',
-      desc: 'Founder làm Chủ tịch — Trợ lý AI Tổng Điều Phối (AI COO) dẫn dắt 4 Tiểu đội Ong Thợ cắm vào 5 khâu chuỗi giá trị. Kiểm soát chất lượng theo chuẩn Jidoka.',
+      desc: 'Founder làm Chủ tịch — Trợ lý AI Tổng Điều Phối (AI COO) dẫn dắt 6 Trợ lý chuyên trách cắm vào 5 khâu chuỗi giá trị. Kiểm soát chất lượng theo chuẩn Jidoka & Andon.',
       streams: [
         {
-          name: '📡 1. Tiểu Đội AI Thu Hút & Tạo Nguồn (Growth Swarm)',
+          name: '📡 1. Tiểu Đội Thu Hút & Tạo Nguồn (Growth Swarm)',
           color: 'var(--brand-primary)',
           roleName: 'Radar & Content Engine',
           duty: 'Quét xu hướng ngành, nghiên cứu đối thủ, viết bài phân tích tình huống chuyển đổi cao BMAA và tự động lên lịch đăng bài đa kênh.',
           tool: 'Radar Scanner, Web Search, AI Content Writer, Auto-Publisher'
         },
         {
-          name: '🎯 2. Tiểu Đội AI Bán Hàng & Chốt Đơn (Sales Swarm)',
+          name: '🎯 2. Tiểu Đội Bán Hàng & Chốt Đơn (Sales Swarm)',
           color: 'var(--purple)',
           roleName: 'Conversion & VietQR Engine',
           duty: 'Trực chat 24/7 trên Fanpage/Zalo OA, giải đáp chuyên môn theo SOP, sinh mã VietQR động theo đơn hàng và bám đuổi giỏ hàng chưa thanh toán.',
           tool: 'Chatbot AI Zalo/Web, VietQR Dynamic Generator, CRM Lead Scoring'
         },
         {
-          name: '⚡ 3. Tiểu Đội AI Cung Ứng & Vận Hành (Ops Swarm)',
+          name: '⚙️ 3. Tiểu Đội Vận Hành & Giao Hàng (Ops Swarm)',
           color: 'var(--amber)',
-          roleName: 'Fulfillment & Jidoka Quality Bot',
-          duty: 'Cấp tài khoản/giao hàng trong 30s, giám sát cam kết SLA, khảo sát mức độ hài lòng NPS 1-click, kích hoạt chuông Andon khi có sự cố.',
-          tool: 'Webhook Dispatcher, SLA Monitor, NPS Survey Bot, Andon 3 Làn'
+          roleName: 'SOP & QA Engine',
+          duty: 'Tự động mở khóa tài khoản/khóa học cho học viên, theo dõi tiến độ hoàn thành dịch vụ, tổng hợp biên bản họp từ transcript ghi âm.',
+          tool: 'LMS Platform, Google Drive API, NotebookLM Workspace, Whisper'
         },
         {
-          name: '🛡️ 4. Tiểu Đội AI Tài Chính & Pháp Chế (Guardian Swarm)',
+          name: '🛡️ 4. Tiểu Đội Pháp Chế & Dòng Tiền (Shield Swarm)',
           color: 'var(--emerald)',
-          roleName: 'Ledger & Legal Co-pilot',
-          duty: 'Tự động khóa sổ đối soát ngân hàng lúc 17h30, canh trần chi phí quỹ lương & Runway, rà soát hợp đồng B2B và quét từ cấm quảng cáo.',
-          tool: 'Bank Ledger Webhook, Runway Calculator, Legal Knowledge Base AI'
+          roleName: 'Legal & Cashflow Guard',
+          duty: 'Thư viện luật ngành, rà soát hợp đồng theo Nghị định 13/2023, phân bổ dòng tiền 3 chiếc lọ và kích hoạt dây dừng Andon tài chính.',
+          tool: 'Digital Legal Vault, ERP Cashflow Dashboard, Andon Alert System'
         }
       ],
       agents: [
@@ -3505,7 +3718,12 @@ ${lib.aiPromptGuide}
           brain: 'Não Mạnh (Claude 3.7 Sonnet / GPT-4o)',
           skills: ['Lập kế hoạch 4 bước', 'Phân bổ việc cho phòng ban', 'Tổng hợp Dashboard sáng', 'Giám sát Andon'],
           roleText: 'Nhận 1 câu mục tiêu từ Founder ➔ chia việc cho các trưởng phòng AI ➔ nhận bài duyệt lần 1 ➔ báo cáo về Zalo của Founder lúc 08h30.',
-          gatekeeper: 'Chi tiêu ngân sách > 5 triệu và thay đổi giá bán bắt buộc trình Founder duyệt.'
+          gatekeeper: 'Chi tiêu ngân sách > 5 triệu và thay đổi giá bán bắt buộc trình Founder duyệt.',
+          promptSystem: `Bạn là AI COO (Tổng Điều Phối Vận Hành) của [TÊN DOANH NGHIỆP].
+Nhiệm vụ:
+1. Tiếp nhận mục tiêu tuần/ngày từ Ban Giám Đốc.
+2. Phân rã mục tiêu thành các đầu việc cho Trợ lý Tăng trưởng, Bán hàng, Vận hành, Pháp chế và Dòng tiền.
+3. Giám sát tiến độ theo chuẩn OPTA (Output - Process - Time - Audit); phát hiện chậm trễ thì giật dây Andon cảnh báo.`
         },
         {
           id: 'agent-growth',
@@ -3514,98 +3732,387 @@ ${lib.aiPromptGuide}
           brain: 'Não Nhanh (Gemini Flash / Claude Haiku / GPT-4o-mini)',
           skills: ['Nghiên cứu đối thủ', 'Viết bài BMAA', 'SEO Copywriting', 'Lên lịch đa kênh'],
           roleText: 'Mỗi tuần sản xuất 5 bài phân tích tình huống thực tế và 10 kịch bản video ngắn, gửi Trưởng phòng duyệt trước khi đăng.',
-          gatekeeper: 'Mọi bài đăng công khai phải qua bộ lọc kiểm tra từ cấm quảng cáo của Legal Co-pilot.'
+          gatekeeper: 'Mọi bài đăng công khai phải qua bộ lọc kiểm tra từ cấm quảng cáo của Legal Co-pilot.',
+          promptSystem: `Bạn là Trợ Lý Tăng Trưởng & Nội Dung của [TÊN DOANH NGHIỆP].
+Nhiệm vụ:
+1. Nghiên cứu nỗi đau khách hàng và xu hướng thị trường Việt Nam.
+2. Soạn thảo các bài viết chia sẻ giá trị, giải quyết vấn đề theo công thức chuyển đổi cao BMAA.
+3. Tôn trọng triệt để nguyên tắc: Mặt tiền 100% ngôn ngữ đời thường, không bê thuật ngữ nội bộ ra công chúng.`
         },
         {
           id: 'agent-sales',
           name: 'Trợ Lý Tư Vấn & Chốt Đơn (AI Sales Consultant)',
           level: 'Trưởng Khâu Chốt Đơn (Khâu 2)',
           brain: 'Não Nhanh (Gemini Flash / GPT-4o-mini)',
-          skills: ['Trực chat 24/7', 'Xử lý từ chối giá', 'Tạo VietQR động', 'Chăm sóc giỏ hàng'],
-          roleText: 'Phản hồi khách trong 15 giây, tư vấn đúng tài liệu kỹ thuật, gửi mã QR thanh toán và tự động báo tiền về tài khoản.',
-          gatekeeper: 'Chiết khấu giảm giá vượt quá 10% bắt buộc chuyển cho Tư vấn viên trưởng (Human).'
+          skills: ['Trực chat 24/7', 'Xử lý từ chối giá', 'Tạo VietQR động', 'Chấm điểm khách tiềm năng'],
+          roleText: 'Đón tiếp khách từ kênh quảng cáo, tư vấn theo phễu giá trị, tạo mã thanh toán VietQR động và tự động nhắc thanh toán sau 2 giờ.',
+          gatekeeper: 'Khi khách hỏi về chính sách chiết khấu ngoài khung chuẩn, tự động chuyển nhân viên tư vấn người thật tiếp quản.',
+          promptSystem: `Bạn là Chuyên Viên Tư Vấn Bán Hàng Số của [TÊN DOANH NGHIỆP].
+Nhiệm vụ:
+1. Lắng nghe sâu nhu cầu khách hàng, xác định đúng gói sản phẩm phù hợp.
+2. Phân tích lợi ích thực tế và chi phí cơ hội để khách hàng tự tin ra quyết định.
+3. Hỗ trợ tạo link thanh toán, xác nhận đơn hàng trong 10 giây.`
         },
         {
           id: 'agent-ops',
-          name: 'Trợ Lý Kiểm Soát Chất Lượng & CSKH (AI Quality & Customer Success)',
-          level: 'Trưởng Khâu Cung Ứng & CSKH (Khâu 3 & 4)',
-          brain: 'Não Nhanh (Claude Haiku / GPT-4o-mini)',
-          skills: ['Cấp quyền tự động', 'Soát lỗi SLA', 'Khảo sát NPS', 'Kích hoạt chuông Andon'],
-          roleText: 'Giao tài liệu số trong 30 giây, gửi khảo sát NPS sau 24h, nếu điểm dưới 7 kích hoạt Làn Andon Cam xử lý trong 4h.',
-          gatekeeper: 'Các khiếu nại mức độ nghiêm trọng lập tức dừng quy trình và báo Founder trong 15 phút.'
+          name: 'Trợ Lý Quy Trình & SOP (AI Operations Engineer)',
+          level: 'Trưởng Khâu Giao Hàng & Nghiệm Thu (Khâu 3)',
+          brain: 'Não Cấu Trúc (Claude Sonnet / GPT-4o)',
+          skills: ['Biên bản họp tự động', 'Soạn Checklist SOP', 'Kiểm soát chất lượng Proof of Work', 'Theo dõi SLA'],
+          roleText: 'Gỡ băng ghi âm cuộc họp, tạo biên bản hành động gửi từng người, kiểm tra bằng chứng vật lý (>0 byte) trước khi đóng việc.',
+          gatekeeper: 'Biên bản nghiệm thu dự án hoặc thanh lý hợp đồng bắt buộc có chữ ký Trưởng phòng vận hành.',
+          promptSystem: `Bạn là Kỹ Sư Vận Hành & SOP của [TÊN DOANH NGHIỆP].
+Nhiệm vụ:
+1. Chuẩn hóa mọi kinh nghiệm làm việc thành tài liệu SOP dạng Checklist ngắn gọn, người mới đọc làm được ngay.
+2. Bóc tách ghi âm cuộc họp, trích xuất: Việc cần làm - Người phụ trách - Hạn chót - Tiêu chuẩn nghiệm thu.
+3. Kiểm tra tính thực chứng (>0 byte) trước khi xác nhận hoàn thành.`
         },
         {
-          id: 'agent-finance-legal',
-          name: 'Trợ Lý Tài Chính & Pháp Chế Nội Bộ (AI Finance & Legal Co-pilot)',
-          level: 'Trưởng Khâu Đối Soát & Kiểm Soát Rủi Ro (Khâu 5)',
-          brain: 'Não Mạnh (Claude Sonnet / GPT-4o / Gemini Pro)',
-          skills: ['Đối soát ngân hàng 17h30', 'Canh trần chi phí', 'Rà soát hợp đồng', 'Tra cứu văn bản luật'],
-          roleText: 'Khóa sổ số dư tài khoản cuối ngày, tính Runway, đối chiếu hợp đồng với quy định pháp luật và thông tư theo ngành.',
-          gatekeeper: 'Xuất hóa đơn thuế và thanh toán nhà cung cấp luôn chờ Kế toán trưởng ký duyệt.'
+          id: 'agent-legal',
+          name: 'Trợ Lý Pháp Chế Số (Digital Legal Assistant)',
+          level: 'Khiên Bảo Vệ 1 • Pháp Lý & Tuân Thủ',
+          brain: 'Não Phân Tích (Claude Sonnet / GPT-4o)',
+          skills: ['Thư viện luật ngành', 'Rà soát hợp đồng', 'Bảo vệ dữ liệu Nghị định 13', 'Cảnh báo rủi ro câu chữ'],
+          roleText: 'Nạp toàn bộ luật và nghị định liên quan đến ngành của công ty làm Ground Truth. Rà soát mọi văn bản hợp tác trước khi ký.',
+          gatekeeper: 'AI chỉ đóng vai trò tham mưu (Chế độ M2). Mọi hợp đồng trên 20 triệu phải qua Luật sư hoặc Giám đốc ký duyệt.',
+          promptSystem: `Bạn là Cố Vấn Pháp Chế Số của [TÊN DOANH NGHIỆP] trong ngành [NGÀNH NGHỀ].
+Nhiệm vụ:
+1. Tra cứu văn bản pháp luật hiện hành của Việt Nam (Luật Doanh nghiệp, Luật Thương mại, Nghị định 13/2023/NĐ-CP).
+2. Rà soát dự thảo hợp đồng, phát hiện các điều khoản mơ hồ hoặc rủi ro pháp lý bất lợi.
+3. Đề xuất câu chữ chỉnh sửa chuẩn xác, bảo vệ quyền lợi doanh nghiệp nhưng giữ tính linh hoạt kinh doanh.`
+        },
+        {
+          id: 'agent-finance',
+          name: 'Trợ Lý Dòng Tiền & Runway (AI Finance Controller)',
+          level: 'Khiên Bảo Vệ 2 • Tài Chính & P&L',
+          brain: 'Não Số Học (GPT-4o / Claude Sonnet)',
+          skills: ['Quản trị 3 Chiếc Lọ', 'Dự báo Runway sinh tồn', 'Đối soát ngân hàng tự động', 'Andon cảnh báo chi tiêu'],
+          roleText: 'Cập nhật dòng tiền thu/chi hàng ngày vào Sheet P&L, tính toán Runway còn lại. Nếu Runway < 3 tháng, giật dây Andon đỏ.',
+          gatekeeper: 'Mọi lệnh giải ngân đều cần phê duyệt từ Chủ P&L. AI tuyệt đối không nắm quyền chuyển tiền.',
+          promptSystem: `Bạn là Kế Toán Trưởng & Quản Trị Dòng Tiền AI của [TÊN DOANH NGHIỆP].
+Nhiệm vụ:
+1. Phân bổ doanh thu vào 3 Chiếc Lọ (Sinh tồn - Dự phòng - Tái đầu tư).
+2. Kiểm soát chặt chẽ chỉ số Runway sinh tồn (số tháng an toàn).
+3. Đối soát công nợ, phát hiện chậm trễ thanh toán để nhắc nhở lịch sự và kiên quyết.`
         }
       ]
     };
 
-    function renderStep4AiPack() {
-      const projName = document.getElementById('inProjName').value.trim() || 'Dự Án Khởi Nghiệp';
-      const isSolo = selectedScale === 'solo';
-      const pack = isSolo ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
-
-      document.getElementById('step4-scale-tag').innerText = `BƯỚC 4 • ĐÓNG GÓI BỘ TRỢ LÝ AI: ${selectedScale.toUpperCase()}`;
-      document.getElementById('step4-title').innerText = `BỘ CÔNG CỤ TRỢ LÝ AI DÀNH RIÊNG CHO: ${projName.toUpperCase()}`;
-      document.getElementById('packBadge').innerText = pack.badge;
-      document.getElementById('packTitle').innerText = pack.title;
-      document.getElementById('packDesc').innerText = pack.desc;
-
-      // 4 Streams
-      document.getElementById('fourStreamsContainer').innerHTML = pack.streams.map(s => `
-        <div class="scale-card" style="cursor:default; border-top:4px solid ${s.color};">
-          <div>
-            <span class="scale-badge" style="background:var(--bg-accent-soft); color:${s.color}; border:1px solid var(--border-color);">${s.roleName}</span>
-            <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin:6px 0;">${s.name}</h4>
-            <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">${s.duty}</p>
-          </div>
-          <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); background:var(--bg-subtle); padding:6px 10px; border-radius:6px;">
-            🛠️ <b>Công cụ kết nối:</b> ${s.tool}
-          </div>
-        </div>
-      `).join('');
-
-      // Agent Cards List
-      document.getElementById('agentCardsList').innerHTML = pack.agents.map(a => `
-        <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:10px;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
-            <div>
-              <span class="scale-badge" style="background:var(--bg-accent-soft); color:var(--brand-primary); margin:0 0 4px;">${a.level}</span>
-              <h4 style="font-size:17.5px; font-weight:800; color:var(--text-primary); margin:0;">🤖 ${a.name}</h4>
-            </div>
-            <span style="font-size:13px; font-weight:700; color:var(--purple); background:var(--purple-bg); padding:4px 10px; border-radius:6px; border:1px solid var(--purple-border);">
-              🧠 Khuyên dùng: ${a.brain}
-            </span>
-          </div>
-          <p style="font-size:14px; color:var(--text-secondary); margin:0; line-height:1.55;">
-            <b>Vai trò &amp; Nhiệm vụ:</b> ${a.roleText}
-          </p>
-          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-            <span style="font-size:12.5px; font-weight:700; color:var(--text-muted);">Kỹ năng (Skills):</span>
-            ${a.skills.map(sk => `<span style="font-size:12px; font-weight:600; background:var(--bg-subtle); padding:3px 8px; border-radius:4px; border:1px solid var(--border-color);">${sk}</span>`).join('')}
-          </div>
-          <div style="padding:10px 12px; border-radius:8px; background:var(--rose-bg); border-left:3px solid var(--rose); font-size:13px; color:var(--rose); font-weight:600;">
-            🛡️ <b>Chốt chặn phê duyệt con người (Human Gatekeeper):</b> ${a.gatekeeper}
-          </div>
-        </div>
-      `).join('');
+    function switchAiPackScale(scaleKey) {
+      currentPackScale = scaleKey;
+      selectedScale = scaleKey;
+      renderStep4AiPack();
     }
 
-    // UPDATE goStep() TO HANDLE 4 STEPS
-    function goStep(stepNum) {
-      if (stepNum === 2) {
-        const ideaVal = document.getElementById('seed-idea').value.trim();
-        if (!ideaVal) {
-          alert('Vui lòng chọn 1 mô hình mẫu hoặc nhập mô tả dự án của anh/chị!');
-          return;
+    function renderStep4AiPack() {
+      // Tự động kiểm tra dữ liệu đầu vào; nếu người dùng bấm thẳng vào bước 4 thì nạp preset mặc định
+      const ideaInput = document.getElementById('seed-idea');
+      if (!ideaInput || !ideaInput.value.trim()) {
+        if (typeof selectIdeaPreset === 'function') {
+          selectIdeaPreset('solo-edu');
         }
       }
+
+      function getValOrText(id, fallback = '') {
+        const el = document.getElementById(id);
+        if (!el) return fallback;
+        if (el.value !== undefined && typeof el.value === 'string') return el.value.trim() || fallback;
+        if (el.innerText !== undefined && typeof el.innerText === 'string') return el.innerText.trim() || fallback;
+        return fallback;
+      }
+
+      const projName = getValOrText('inProjName', 'Dự Án Khởi Nghiệp');
+      const fte = parseInt(getValOrText('inFte', '1'), 10) || 1;
+      const rev = parseFloat(getValOrText('inRev', '50')) || 50;
+      const bottleneck = getValOrText('inBottleneck', 'Chưa có quy trình chuẩn, Founder đang phải tự tay làm từ A-Z');
+      const sector = getValOrText('legalSectorName', 'Dịch vụ & Giáo dục / Chuyên gia');
+
+      // Quyết định gói pack hiển thị
+      const isSolo = (currentPackScale === 'solo') || (selectedScale === 'solo') || (fte <= 2 && currentPackScale !== 'enterprise');
+      currentPackScale = isSolo ? 'solo' : 'enterprise';
+      const pack = isSolo ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
+
+      // Cập nhật Header & Badge
+      const step4ScaleTag = document.getElementById('step4-scale-tag');
+      if (step4ScaleTag) step4ScaleTag.innerText = `BƯỚC 4 • ĐÓNG GÓI BỘ TRỢ LÝ AI: ${currentPackScale.toUpperCase()}`;
+
+      const step4Title = document.getElementById('step4-title');
+      if (step4Title) step4Title.innerText = `BỘ CÔNG CỤ TRỢ LÝ AI DÀNH RIÊNG CHO: ${projName.toUpperCase()}`;
+
+      const packBadge = document.getElementById('packBadge');
+      if (packBadge) packBadge.innerText = pack.badge;
+
+      const packTitle = document.getElementById('packTitle');
+      if (packTitle) packTitle.innerText = pack.title;
+
+      const packDesc = document.getElementById('packDesc');
+      if (packDesc) packDesc.innerText = pack.desc;
+
+      // Cập nhật Nút Toggle Quy Mô
+      const btnSolo = document.getElementById('btnScaleSolo');
+      const btnEnt = document.getElementById('btnScaleEnt');
+      if (btnSolo && btnEnt) {
+        if (isSolo) {
+          btnSolo.className = 'btn btn-primary btn-sm';
+          btnEnt.className = 'btn btn-outline btn-sm';
+        } else {
+          btnSolo.className = 'btn btn-outline btn-sm';
+          btnEnt.className = 'btn btn-primary btn-sm';
+        }
+      }
+
+      // Cập nhật Bảng Chẩn Đoán Thực Địa (Diagnostics)
+      const loadPct = isSolo ? Math.min(88, 65 + Math.round(rev / 10)) : Math.min(92, 55 + Math.round(fte * 3));
+      const wasteHours = isSolo ? 110 : (fte * 32);
+      const wasteCostEst = isSolo ? '18.000.000 – 25.000.000' : `${Math.round(fte * 6.5)}.000.000 – ${Math.round(fte * 9.5)}.000.000`;
+
+      const diagLoadIndex = document.getElementById('diagLoadIndex');
+      if (diagLoadIndex) diagLoadIndex.innerText = `${loadPct}% • ${loadPct > 75 ? 'QUÁ TẢI SỰ VỤ' : 'CẦN TỐI ƯU'}`;
+
+      const diagLoadBar = document.getElementById('diagLoadBar');
+      if (diagLoadBar) {
+        diagLoadBar.style.width = `${loadPct}%`;
+        diagLoadBar.style.background = loadPct > 75 ? 'var(--rose)' : 'var(--amber)';
+      }
+
+      const diagWasteHours = document.getElementById('diagWasteHours');
+      if (diagWasteHours) diagWasteHours.innerText = `~${wasteHours} Giờ / Tháng`;
+
+      const diagWasteCost = document.getElementById('diagWasteCost');
+      if (diagWasteCost) diagWasteCost.innerText = `~${wasteCostEst} đ / Tháng`;
+
+      const diagConclusionText = document.getElementById('diagConclusionText');
+      if (diagConclusionText) {
+        diagConclusionText.innerHTML = `Dự án <b>${projName}</b> hoạt động trong lĩnh vực <b>${sector}</b>, mục tiêu doanh thu <b>${rev} triệu/tháng</b> với quy mô hiện tại là <b>${fte} nhân sự</b>. Điểm nghẽn lớn nhất ghi nhận: <i>"${bottleneck}"</i>.<br/>Nếu tiếp tục vận hành thủ công, đội ngũ sẽ lãng phí khoảng <b>${wasteHours} giờ/tháng</b> cho việc hành chính, nhập liệu và trả lời tin nhắn lặp lại. Cấu hình khuyến nghị tối ưu nhất lúc này là <b>${pack.title}</b> để giải phóng hoàn toàn thời gian của người sáng lập.`;
+      }
+
+      // Render 4 Dòng Chảy
+      const fourStreamsContainer = document.getElementById('fourStreamsContainer');
+      if (fourStreamsContainer) {
+        fourStreamsContainer.innerHTML = pack.streams.map(s => `
+          <div class="scale-card" style="cursor:default; border-top:4px solid ${s.color};">
+            <div>
+              <span class="scale-badge" style="background:var(--bg-accent-soft); color:${s.color}; border:1px solid var(--border-color);">${s.roleName}</span>
+              <h4 style="font-size:16px; font-weight:800; color:var(--text-primary); margin:6px 0;">${s.name}</h4>
+              <p style="font-size:13.5px; color:var(--text-secondary); margin:0 0 10px; line-height:1.5;">${s.duty}</p>
+            </div>
+            <div style="font-size:12.5px; font-weight:700; color:var(--text-muted); background:var(--bg-subtle); padding:6px 10px; border-radius:6px;">
+              🛠️ <b>Công cụ kết nối:</b> ${s.tool}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Render Danh Sách Thẻ Trợ Lý (AI Agent Cards)
+      const agentCardsList = document.getElementById('agentCardsList');
+      if (agentCardsList) {
+        agentCardsList.innerHTML = pack.agents.map((a, idx) => `
+          <div style="background:var(--bg-surface); border:2px solid var(--border-color); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; transition:border-color 0.2s;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+              <div>
+                <span class="scale-badge" style="background:var(--bg-accent-soft); color:var(--brand-primary); margin:0 0 4px;">${a.level}</span>
+                <h4 style="font-size:18px; font-weight:800; color:var(--text-primary); margin:0;">🤖 ${a.name}</h4>
+              </div>
+              <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+                <span style="font-size:13px; font-weight:700; color:var(--purple); background:var(--purple-bg); padding:4px 10px; border-radius:6px; border:1px solid var(--purple-border);">
+                  🧠 Khuyên dùng: ${a.brain}
+                </span>
+                <button class="btn btn-primary btn-sm" onclick="copySingleAgentPrompt('${a.id}')" title="Copy Prompt nạp vào AI">
+                  📋 Copy Prompt Cài Đặt
+                </button>
+                <button class="btn btn-outline btn-sm" onclick="openAgentSopModal('${a.id}')" title="Xem kịch bản chi tiết">
+                  🔍 Xem Kịch Bản & SOP
+                </button>
+              </div>
+            </div>
+
+            <p style="font-size:14px; color:var(--text-secondary); margin:0; line-height:1.55;">
+              <b>Nhiệm vụ thực tế:</b> ${a.roleText}
+            </p>
+
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <span style="font-size:12.5px; font-weight:700; color:var(--text-muted);">Kỹ năng (Skills):</span>
+              ${a.skills.map(sk => `<span style="font-size:12px; font-weight:600; background:var(--bg-subtle); padding:3px 8px; border-radius:4px; border:1px solid var(--border-color);">${sk}</span>`).join('')}
+            </div>
+
+            <div style="padding:10px 12px; border-radius:8px; background:var(--rose-bg); border-left:3px solid var(--rose); font-size:13px; color:var(--rose); font-weight:600;">
+              🛡️ <b>Chốt chặn phê duyệt con người (Human Gatekeeper):</b> ${a.gatekeeper}
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    // TƯƠNG TÁC: COPY PROMPT TỪNG TRỢ LÝ
+    function copySingleAgentPrompt(agentId) {
+      const allAgents = [...AI_PACK_SOLO.agents, ...AI_PACK_ENTERPRISE.agents];
+      const agent = allAgents.find(x => x.id === agentId);
+      if (!agent) return;
+
+      const projName = (document.getElementById('inProjName') && document.getElementById('inProjName').value.trim()) || 'Dự Án Khởi Nghiệp';
+      const sector = (document.getElementById('legalSectorName') ? (document.getElementById('legalSectorName').innerText || document.getElementById('legalSectorName').value || '').trim() : '') || 'Kinh doanh & Dịch vụ';
+
+      let promptText = agent.promptSystem || '';
+      promptText = promptText.replace(/\[TÊN DOANH NGHIỆP\]/g, projName);
+      promptText = promptText.replace(/\[NGÀNH NGHỀ\]/g, sector);
+
+      navigator.clipboard.writeText(promptText).then(() => {
+        alert(`✅ Đã sao chép Prompt Cài Đặt của [${agent.name}]!
+Anh/Chị có thể dán ngay vào ô System Prompt của Claude, ChatGPT hoặc Gemini để bắt đầu sử dụng.`);
+      }).catch(err => {
+        alert('Lỗi sao chép: ' + err);
+      });
+    }
+
+    // TƯƠNG TÁC: MỞ MODAL XEM CHI TIẾT SOP CỦA TRỢ LÝ
+    function openAgentSopModal(agentId) {
+      const allAgents = [...AI_PACK_SOLO.agents, ...AI_PACK_ENTERPRISE.agents];
+      const agent = allAgents.find(x => x.id === agentId);
+      if (!agent) return;
+
+      const projName = (document.getElementById('inProjName') && document.getElementById('inProjName').value.trim()) || 'Dự Án';
+
+      document.getElementById('modalBadge').innerText = agent.level;
+      document.getElementById('modalTitle').innerText = `KỊCH BẢN VẬN HÀNH & SOP: ${agent.name.toUpperCase()}`;
+
+      document.getElementById('modalBody').innerHTML = `
+        <div style="background:var(--bg-subtle); padding:14px; border-radius:10px; border-left:4px solid var(--brand-primary);">
+          <b style="color:var(--brand-primary); font-size:14.5px;">1. Vai Trò & Vị Trí Vận Hành</b>
+          <p style="font-size:13.5px; color:var(--text-secondary); margin:4px 0 0;">${agent.roleText}</p>
+        </div>
+
+        <div>
+          <b style="color:var(--text-primary); font-size:14.5px;">2. Quy Trình 4 Bước Phối Hợp Người × AI:</b>
+          <ol style="margin:8px 0 0; padding-left:20px; font-size:13.5px; color:var(--text-secondary); line-height:1.65;">
+            <li><b>Bước 1 (Lắng nghe):</b> AI tự động thu thập thông tin từ email, Zalo, ghi âm cuộc họp hoặc biểu mẫu khách hàng.</li>
+            <li><b>Bước 2 (Tham mưu):</b> AI tổng hợp, phân loại, soạn thảo văn bản nháp (email, báo giá, bài viết, báo cáo).</li>
+            <li><b>Bước 3 (Người duyệt):</b> Người phụ trách nhận thông báo, kiểm tra nội dung và ký duyệt 1 chạm.</li>
+            <li><b>Bước 4 (Thực thi):</b> AI gửi văn bản đi, lưu hồ sơ vào Google Drive và cập nhật số liệu vào Sheet P&L.</li>
+          </ol>
+        </div>
+
+        <div style="background:var(--rose-bg); padding:12px; border-radius:8px; border-left:3px solid var(--rose);">
+          <b style="color:var(--rose); font-size:13.5px;">🛡️ Ranh Giới Chốt Chặn (Gatekeeper):</b>
+          <p style="font-size:13px; color:var(--rose); margin:4px 0 0;">${agent.gatekeeper}</p>
+        </div>
+
+        <div style="border-top:1px solid var(--border-color); padding-top:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <button class="btn btn-outline btn-sm" onclick="closeModal()">Đóng cửa sổ</button>
+          <button class="btn btn-primary btn-sm" onclick="copySingleAgentPrompt('${agent.id}')">📋 Copy Prompt Nạp Cho AI</button>
+        </div>
+      `;
+
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    // TƯƠNG TÁC: MỞ MODAL ĐĂNG KÝ CHUYỂN GIAO TRỌN GÓI
+    function openHandoffConsultationModal() {
+      const projName = (document.getElementById('inProjName') && document.getElementById('inProjName').value.trim()) || 'Dự Án Khởi Nghiệp';
+      const sector = (document.getElementById('legalSectorName') ? (document.getElementById('legalSectorName').innerText || document.getElementById('legalSectorName').value || '').trim() : '') || 'Chưa chọn';
+      const packName = currentPackScale === 'solo' ? 'Gói Solo Co-pilot (1 Trợ Lý Toàn Năng)' : 'Gói Enterprise Swarm (Biệt Đội 6 Trợ Lý)';
+
+      document.getElementById('modalBadge').innerText = 'CHUYỂN GIAO CHÌA KHÓA TRAO TAY';
+      document.getElementById('modalTitle').innerText = `ĐĂNG KÝ NHẬN CHUYỂN GIAO BỘ TRỢ LÝ AI: ${projName.toUpperCase()}`;
+
+      document.getElementById('modalBody').innerHTML = `
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.55; margin:0 0 14px;">
+          Đội ngũ chuyên gia MulaHub sẽ liên hệ trong <b>2 giờ làm việc</b> để rà soát hiện trạng thực tế, gửi bản đề xuất kỹ thuật chi tiết và lên lịch trình chuyển giao 14 ngày cho doanh nghiệp của anh/chị.
+        </p>
+
+        <div style="background:var(--bg-subtle); padding:14px; border-radius:10px; margin-bottom:14px;">
+          <div style="font-size:13px; color:var(--text-muted); margin-bottom:4px;">GÓI GIẢI PHÁP ĐỀ XUẤT CHO DỰ ÁN:</div>
+          <div style="font-size:16px; font-weight:800; color:var(--brand-primary);">${packName}</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-top:4px;">Lĩnh vực: <b>${sector}</b> • Thời gian triển khai bàn giao: <b>14 ngày</b></div>
+        </div>
+
+        <form id="handoffForm" onsubmit="event.preventDefault(); submitHandoffLead();" style="display:flex; flex-direction:column; gap:12px;">
+          <div>
+            <label style="font-size:13px; font-weight:700; color:var(--text-primary); display:block; margin-bottom:4px;">Họ tên Người đại diện / Founder *</label>
+            <input type="text" id="leadName" class="form-input" placeholder="Ví dụ: Nguyễn Văn A" required style="width:100%;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div>
+              <label style="font-size:13px; font-weight:700; color:var(--text-primary); display:block; margin-bottom:4px;">Số Điện Thoại / Zalo *</label>
+              <input type="tel" id="leadPhone" class="form-input" placeholder="0902xxxxxx" required style="width:100%;">
+            </div>
+            <div>
+              <label style="font-size:13px; font-weight:700; color:var(--text-primary); display:block; margin-bottom:4px;">Email nhận tài liệu</label>
+              <input type="email" id="leadEmail" class="form-input" placeholder="founder@company.com" style="width:100%;">
+            </div>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:700; color:var(--text-primary); display:block; margin-bottom:4px;">Nhu cầu hoặc câu hỏi cụ thể cần giải đáp</label>
+            <textarea id="leadNote" class="form-input" rows="2" placeholder="Ví dụ: Cần tự động hóa khâu trả lời fanpage và rà soát hợp đồng..." style="width:100%;"></textarea>
+          </div>
+          <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:8px;">
+            <button type="button" class="btn btn-outline" onclick="closeModal()">Để xem lại sau</button>
+            <button type="submit" class="btn btn-emerald" style="font-weight:800;">🚀 Gửi Yêu Cầu Chuyển Giao</button>
+          </div>
+        </form>
+      `;
+
+      document.getElementById('detailModal').classList.add('open');
+    }
+
+    function submitHandoffLead() {
+      const name = document.getElementById('leadName').value.trim();
+      const phone = document.getElementById('leadPhone').value.trim();
+      const projName = (document.getElementById('inProjName') && document.getElementById('inProjName').value.trim()) || 'Dự Án';
+
+      alert(`🎉 Cảm ơn anh/chị ${name}!
+MulaHub đã ghi nhận yêu cầu chuyển giao Bộ Trợ Lý AI cho dự án [${projName}].
+Chuyên viên tư vấn sẽ liên hệ qua Zalo/SĐT: ${phone} trong ít phút.`);
+      closeModal();
+    }
+
+    // TƯƠNG TÁC: COPY BẢN ĐỀ XUẤT CHUYỂN GIAO GỬI LÃNH ĐẠO
+    function copyProposalHandoff() {
+      const projName = (document.getElementById('inProjName') && document.getElementById('inProjName').value.trim()) || 'Dự Án Khởi Nghiệp';
+      const sector = (document.getElementById('legalSectorName') ? (document.getElementById('legalSectorName').innerText || document.getElementById('legalSectorName').value || '').trim() : '') || 'Kinh Doanh';
+      const fte = (document.getElementById('inFte') && document.getElementById('inFte').value) || '1';
+      const pack = currentPackScale === 'solo' ? AI_PACK_SOLO : AI_PACK_ENTERPRISE;
+
+      const text = `BẢN ĐỀ XUẤT TRIỂN KHAI BỘ TRỢ LÝ AI DOANH NGHIỆP — MULAHUB TURN-KEY SOLUTION
+Kính gửi: Ban Giám Đốc / Nhà Sáng Lập dự án ${projName.toUpperCase()}
+Lĩnh vực hoạt động: ${sector} | Quy mô hiện tại: ${fte} nhân sự
+
+1. HIỆN TRẠNG & ĐIỂM NGHẼN:
+- Đội ngũ đang dành quá nhiều thời gian cho các công việc sự vụ thủ công lặp lại.
+- Tốc độ phản hồi khách hàng và chốt đơn bị giới hạn bởi thời gian làm việc của con người.
+- Cần một giải pháp gia tốc không làm tăng chi phí cố định quỹ lương.
+
+2. GIẢI PHÁP ĐỀ XUẤT: ${pack.title.toUpperCase()}
+Áp dụng mô hình 4 Dòng Chảy BMAA kết hợp Human × AI:
+- Dòng Thông Tin: Trợ lý Tri thức tự động tổng hợp tài liệu, viết nháp nội dung.
+- Dòng Con Người: Trợ lý CSKH đón tiếp 24/7 và đào tạo nhân sự theo SOP.
+- Dòng Hàng Hóa: Tự động giao dịch vụ, theo dõi tiến độ nghiệm thu.
+- Dòng Tiền Tệ: Rà soát hợp đồng theo Nghị định 13/2023, kiểm soát Runway an toàn.
+
+3. KẾT QUẢ KỲ VỌNG:
+- Tiết kiệm 100 – 160 giờ làm việc thủ công mỗi tháng.
+- Tăng tỷ lệ chuyển đổi khách hàng nhờ tốc độ phản hồi < 30 giây.
+- Bàn giao chìa khóa trao tay trong 14 ngày làm việc.
+
+Đơn vị tư vấn & chuyển giao: MulaHub Enterprise Architecture Team.`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`📋 Đã sao chép Bản Đề Xuất Bàn Giao vào bộ nhớ tạm!
+Anh/Chị có thể gửi trực tiếp qua Zalo hoặc Email cho Ban Lãnh Đạo.`);
+      }).catch(err => {
+        alert('Lỗi: ' + err);
+      });
+    }
+
+    // ĐIỀU HƯỚNG 4 BƯỚC THỐNG NHẤT
+    function goStep(stepNum) {
+      // Nếu bấm vào bước 2, 3, 4 mà chưa có ý tưởng, tự động kích hoạt preset mặc định để người dùng trải nghiệm ngay
+      const ideaInput = document.getElementById('seed-idea');
+      if (stepNum > 1 && (!ideaInput || !ideaInput.value.trim())) {
+        if (typeof selectIdeaPreset === 'function') {
+          selectIdeaPreset('solo-edu');
+        }
+      }
+
       if (stepNum === 3) {
         renderBlueprintV1();
       }
@@ -3681,29 +4188,7 @@ ${lib.aiPromptGuide}
       });
     }
 
-    // STEP NAVIGATION
-    function goStep(stepNum) {
-      if (stepNum === 2) {
-        const ideaVal = document.getElementById('seed-idea').value.trim();
-        if (!ideaVal) {
-          alert('Vui lòng chọn 1 mô hình mẫu hoặc nhập mô tả dự án của anh/chị!');
-          return;
-        }
-      }
-      if (stepNum === 3) {
-        renderBlueprintV1();
-        return;
-      }
-
-      document.getElementById('step-1-view').style.display = stepNum === 1 ? 'block' : 'none';
-      document.getElementById('step-2-view').style.display = stepNum === 2 ? 'block' : 'none';
-      document.getElementById('step-3-view').style.display = stepNum === 3 ? 'block' : 'none';
-
-      [1, 2, 3].forEach(n => {
-        document.getElementById('wiz-' + n).classList.toggle('active', n === stepNum);
-      });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // (Second goStep removed in favor of unified 4-step goStep)
 
     // RENDER STEP 3 (7 TẦNG TỪ TỔNG THỂ ĐẾN HỆ THỐNG)
     function renderBlueprintV1() {
