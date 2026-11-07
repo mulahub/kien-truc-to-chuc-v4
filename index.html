@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BMAA-OS Enterprise Architect v5.0 — Hệ thống thiết kế định hướng kiến trúc tổ chức và vận hành doanh nghiệp thực chiến tại Việt Nam" />
+  <meta name="theme-color" content="#1d4ed8" />
   <title>BMAA-OS Enterprise Architect v5.0 — Hệ Thống Kiến Trúc Tổ Chức & Vận Hành Doanh Nghiệp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1188,9 +1190,12 @@
 
     /* PRINT */
     @media print {
-      .top-bar, .wizard-nav, .step-actions, .view-switcher-bar, .btn { display: none !important; }
-      body { background: #fff; color: #000; }
-      .panel { border: 1px solid #999; box-shadow: none; break-inside: avoid; }
+      .top-bar, .wizard-nav, .step-actions, .view-switcher-bar, .shield-tabs, .concentric-switcher, .btn, .modal-backdrop { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; font-size: 13pt; }
+      .panel { border: 1px solid #cbd5e1 !important; box-shadow: none !important; break-inside: avoid; page-break-inside: avoid; margin-bottom: 20px; }
+      .scale-card, .jar-card, .andon-lane-card { break-inside: avoid; page-break-inside: avoid; }
+      .matrix-wrapper { overflow: visible !important; }
+      .matrix-table { font-size: 11pt !important; }
     }
   </style>
 </head>
@@ -1256,27 +1261,27 @@
 
         <div class="input-grid">
           <div class="field-group">
-            <label>Tên Doanh Nghiệp / Tên Dự Án</label>
+            <label for="inProjName">Tên Doanh Nghiệp / Tên Dự Án</label>
             <input type="text" id="inProjName" value="Dự Án Khởi Nghiệp Của Anh" placeholder="Ví dụ: Công ty Cổ Phần Giải Pháp...">
           </div>
           <div class="field-group">
-            <label>Doanh Thu Mục Tiêu (Triệu VNĐ / Tháng)</label>
+            <label for="inRev">Doanh Thu Mục Tiêu (Triệu VNĐ / Tháng)</label>
             <input type="number" id="inRev" value="1500" step="50" oninput="calcPulseMetrics()">
           </div>
           <div class="field-group">
-            <label>Ngân Sách Trần Quỹ Lương (% Doanh thu)</label>
+            <label for="inCapPct">Ngân Sách Trần Quỹ Lương (% Doanh thu)</label>
             <input type="number" id="inCapPct" value="25" min="5" max="60" oninput="calcPulseMetrics()">
           </div>
           <div class="field-group">
-            <label>Số Nhân Sự Định Biên Cố Định (FTE)</label>
+            <label for="inFte">Số Nhân Sự Định Biên Cố Định (FTE)</label>
             <input type="number" id="inFte" value="12" min="1" max="500" oninput="calcPulseMetrics()">
           </div>
           <div class="field-group">
-            <label>Chi Phí Bình Quân 1 Nhân Sự (Triệu / Tháng)</label>
+            <label for="inSal">Chi Phí Bình Quân 1 Nhân Sự (Triệu / Tháng)</label>
             <input type="number" id="inSal" value="18" min="5" max="100" oninput="calcPulseMetrics()">
           </div>
           <div class="field-group">
-            <label>Điểm Nghẽn Vận Hành Cần Tháo Gỡ Ưu Tiên</label>
+            <label for="inBottleneck">Điểm Nghẽn Vận Hành Cần Tháo Gỡ Ưu Tiên</label>
             <select id="inBottleneck" onchange="calcPulseMetrics()">
               <option value="leadgen">1. Thu hút khách &amp; Tìm kiếm đầu mối kinh doanh</option>
               <option value="closing">2. Chốt hợp đồng &amp; Tỷ lệ chuyển đổi thu tiền</option>
@@ -1301,7 +1306,7 @@
         </div>
 
         <div class="scale-grid">
-          <div class="scale-card" id="sc-solo" onclick="selectScale('solo')">
+          <div class="scale-card" id="sc-solo" onclick="selectScale('solo')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectScale(\'solo\');}">
             <div>
               <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">CẤP 0 • SOLO + AI SWARM</span>
               <h3>Doanh Nghiệp 1 Người (Solo) + AI</h3>
@@ -1314,7 +1319,7 @@
             </div>
           </div>
 
-          <div class="scale-card selected" id="sc-micro" onclick="selectScale('micro')">
+          <div class="scale-card selected" id="sc-micro" onclick="selectScale('micro')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectScale(\'micro\');}">
             <div>
               <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border);">CẤP 1 • MICRO-CELL</span>
               <h3>Tiểu Đội Tự Trị / Hộ KD Số</h3>
@@ -1327,7 +1332,7 @@
             </div>
           </div>
 
-          <div class="scale-card" id="sc-sme" onclick="selectScale('sme')">
+          <div class="scale-card" id="sc-sme" onclick="selectScale('sme')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectScale(\'sme\');}">
             <div>
               <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); border:1px solid var(--border-color);">CẤP 2 • SME / BU</span>
               <h3>Doanh Nghiệp Nhỏ / Đơn Vị BU</h3>
@@ -1340,7 +1345,7 @@
             </div>
           </div>
 
-          <div class="scale-card" id="sc-chain" onclick="selectScale('chain')">
+          <div class="scale-card" id="sc-chain" onclick="selectScale('chain')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectScale(\'chain\');}">
             <div>
               <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border);">CẤP 3 • CHAIN</span>
               <h3>Doanh Nghiệp Vừa / Chuỗi</h3>
@@ -1353,7 +1358,7 @@
             </div>
           </div>
 
-          <div class="scale-card" id="sc-platform" onclick="selectScale('platform')">
+          <div class="scale-card" id="sc-platform" onclick="selectScale('platform')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();selectScale(\'platform\');}">
             <div>
               <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border);">CẤP 4 • PLATFORM</span>
               <h3>Nền Tảng Hệ Sinh Thái Đa Bên</h3>
@@ -1378,7 +1383,7 @@
         </div>
 
         <div class="ideas-grid">
-          <div class="idea-card" id="id-solo_ai" onclick="loadIdea('solo_ai')">
+          <div class="idea-card" id="id-solo_ai" onclick="loadIdea('solo_ai')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'solo_ai\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Solo-Business + AI Swarm</span>
@@ -1389,7 +1394,7 @@
             <div class="idea-meta">1 Founder điều phối 5–8 AI Agents • Tự động hóa 90% vận hành • Biên LN &gt;80%</div>
           </div>
 
-          <div class="idea-card active" id="id-micro_saas" onclick="loadIdea('micro_saas')">
+          <div class="idea-card active" id="id-micro_saas" onclick="loadIdea('micro_saas')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'micro_saas\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">SaaS / Tư vấn số B2B</span>
@@ -1400,7 +1405,7 @@
             <div class="idea-meta">Tự phục vụ 100% • Thu phí mở khóa qua VietQR • Biên LN 90%</div>
           </div>
 
-          <div class="idea-card" id="id-micro_content" onclick="loadIdea('micro_content')">
+          <div class="idea-card" id="id-micro_content" onclick="loadIdea('micro_content')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'micro_content\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Truyền thông &amp; Nội dung AI</span>
@@ -1411,7 +1416,7 @@
             <div class="idea-meta">Biến 1 giờ ghi âm thành 20 ấn phẩm đa kênh • Thu phí gói tháng</div>
           </div>
 
-          <div class="idea-card" id="id-sme_clinic" onclick="loadIdea('sme_clinic')">
+          <div class="idea-card" id="id-sme_clinic" onclick="loadIdea('sme_clinic')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'sme_clinic\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Y tế &amp; Sức khỏe gia đình</span>
@@ -1422,7 +1427,7 @@
             <div class="idea-meta">Gói thuê bao năm chăm sóc người cao tuổi • Đo chỉ số từ xa</div>
           </div>
 
-          <div class="idea-card" id="id-sme_academy" onclick="loadIdea('sme_academy')">
+          <div class="idea-card" id="id-sme_academy" onclick="loadIdea('sme_academy')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'sme_academy\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Giáo dục Quản trị B2B</span>
@@ -1433,7 +1438,7 @@
             <div class="idea-meta">Đào tạo kèm cặp 90 ngày ra quy trình thật • Hợp đồng B2B giá trị cao</div>
           </div>
 
-          <div class="idea-card" id="id-sme_agri_d2c" onclick="loadIdea('sme_agri_d2c')">
+          <div class="idea-card" id="id-sme_agri_d2c" onclick="loadIdea('sme_agri_d2c')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'sme_agri_d2c\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Thực phẩm &amp; Dược liệu Việt</span>
@@ -1444,7 +1449,7 @@
             <div class="idea-meta">Liên kết vùng nguyên liệu • Bán D2C &amp; Quà tặng sức khỏe doanh nghiệp</div>
           </div>
 
-          <div class="idea-card" id="id-chain_wellness" onclick="loadIdea('chain_wellness')">
+          <div class="idea-card" id="id-chain_wellness" onclick="loadIdea('chain_wellness')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'chain_wellness\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Chuỗi dịch vụ Dưỡng sinh</span>
@@ -1455,7 +1460,7 @@
             <div class="idea-meta">Vận hành 5–20 cơ sở • Chuẩn hóa học viện tay nghề &amp; Thẻ thành viên</div>
           </div>
 
-          <div class="idea-card" id="id-plat_telehealth" onclick="loadIdea('plat_telehealth')">
+          <div class="idea-card" id="id-plat_telehealth" onclick="loadIdea('plat_telehealth')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'plat_telehealth\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Nền tảng Y tế số IoMT</span>
@@ -1466,7 +1471,7 @@
             <div class="idea-meta">Đồng bộ dữ liệu máy đo tự động • Kết nối Bác sĩ – Điều dưỡng – Hộ dân</div>
           </div>
 
-          <div class="idea-card" id="id-plat_b2b2c" onclick="loadIdea('plat_b2b2c')">
+          <div class="idea-card" id="id-plat_b2b2c" onclick="loadIdea('plat_b2b2c')" role="button" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();loadIdea(\'plat_b2b2c\');}">
             <div>
               <div class="idea-card-top">
                 <span class="idea-sector">Chuỗi cung ứng 2 đầu</span>
@@ -1479,7 +1484,7 @@
         </div>
 
         <div class="field-group" style="margin-top:16px;">
-          <label>Mô Tả Chi Tiết Ý Tưởng Của Founder (Có thể sửa trực tiếp theo dự án riêng của anh):</label>
+          <label for="seed-idea">Mô Tả Chi Tiết Ý Tưởng Của Founder (Có thể sửa trực tiếp theo dự án riêng của anh):</label>
           <textarea id="seed-idea" rows="3" style="width:100%;"></textarea>
         </div>
 
@@ -1512,17 +1517,17 @@
               <span class="scale-badge" style="background: var(--amber-bg); color: var(--amber); border:1px solid var(--amber-border); margin:0;">VALUE &amp; CASH FLOW</span>
             </div>
             <div class="field-group">
-              <label>1.1. Chân dung khách hàng trả tiền &amp; Nỗi đau cấp bách nhất?</label>
+              <label for="f-q1">1.1. Chân dung khách hàng trả tiền &amp; Nỗi đau cấp bách nhất?</label>
               <span class="field-hint">Ai là người rút ví? Vấn đề nào khiến họ trăn trở nhất lúc này?</span>
               <input type="text" id="f-q1">
             </div>
             <div class="field-group">
-              <label>1.2. Cơ chế thu tiền &amp; Vòng quay dòng tiền?</label>
+              <label for="f-q2">1.2. Cơ chế thu tiền &amp; Vòng quay dòng tiền?</label>
               <span class="field-hint">Thu tiền trước (Subscription/Combo), thu theo giao dịch hay công nợ B2B?</span>
               <input type="text" id="f-q2">
             </div>
             <div class="field-group">
-              <label>1.3. Rào cản bảo vệ (Moat) &amp; Tuân thủ 5 Luật tại Việt Nam?</label>
+              <label for="f-q3">1.3. Rào cản bảo vệ (Moat) &amp; Tuân thủ 5 Luật tại Việt Nam?</label>
               <span class="field-hint">Giấy phép ngành nghề, Thuế, NĐ 13/2023 bảo vệ dữ liệu, Đạo đức nghề?</span>
               <input type="text" id="f-q3">
             </div>
@@ -1535,17 +1540,17 @@
               <span class="scale-badge" style="background: var(--bg-accent-soft); color: var(--brand-primary); border:1px solid var(--border-color); margin:0;">STRATEGY &amp; FOCUS</span>
             </div>
             <div class="field-group">
-              <label>2.1. Đích thực chứng 90 ngày đầu tiên (Cột mốc V1)?</label>
+              <label for="f-q4">2.1. Đích thực chứng 90 ngày đầu tiên (Cột mốc V1)?</label>
               <span class="field-hint">Con số cụ thể nào chứng minh mô hình thành công sau 3 tháng đầu?</span>
               <input type="text" id="f-q4">
             </div>
             <div class="field-group">
-              <label>2.2. Kỷ luật Đánh đổi: Việc gì BẮT BUỘC LÀM &amp; Việc gì CẤM LÀM?</label>
+              <label for="f-q5">2.2. Kỷ luật Đánh đổi: Việc gì BẮT BUỘC LÀM &amp; Việc gì CẤM LÀM?</label>
               <span class="field-hint">Chiến lược là chọn việc KHÔNG LÀM để không dàn trải nguồn lực.</span>
               <input type="text" id="f-q5">
             </div>
             <div class="field-group">
-              <label>2.3. Kênh tiếp cận khách hàng hạt nhân (Go-To-Market)?</label>
+              <label for="f-q6">2.3. Kênh tiếp cận khách hàng hạt nhân (Go-To-Market)?</label>
               <span class="field-hint">Tìm 50-100 khách đầu tiên qua kênh nào để chi phí Marketing thấp nhất?</span>
               <input type="text" id="f-q6">
             </div>
@@ -1558,17 +1563,17 @@
               <span class="scale-badge" style="background: var(--purple-bg); color: var(--purple); border:1px solid var(--purple-border); margin:0;">ORG &amp; DIGITAL</span>
             </div>
             <div class="field-group">
-              <label>3.1. Năng lực lõi sống còn của tổ chức (Core Capability)?</label>
+              <label for="f-q7">3.1. Năng lực lõi sống còn của tổ chức (Core Capability)?</label>
               <span class="field-hint">Tổ chức thắng nhờ Chuyên môn sâu, nhờ Chuỗi cung ứng hay nhờ Công nghệ?</span>
               <input type="text" id="f-q7">
             </div>
             <div class="field-group">
-              <label>3.2. Nút thắt Con người (Human Bottlenecks) không thể thay thế?</label>
+              <label for="f-q8">3.2. Nút thắt Con người (Human Bottlenecks) không thể thay thế?</label>
               <span class="field-hint">Vị trí nào bắt buộc người thật giữ (Chữ ký pháp lý, duyệt chi, khám bệnh, chốt deal lớn)?</span>
               <input type="text" id="f-q8">
             </div>
             <div class="field-group">
-              <label>3.3. Luồng việc giao cho AI Agents &amp; Phần mềm tự động hóa?</label>
+              <label for="f-q9">3.3. Luồng việc giao cho AI Agents &amp; Phần mềm tự động hóa?</label>
               <span class="field-hint">Những việc lặp lại nào giao cho Robot/AI làm 24/7 để giảm nhân sự?</span>
               <input type="text" id="f-q9">
             </div>
@@ -1581,17 +1586,17 @@
               <span class="scale-badge" style="background: var(--emerald-bg); color: var(--emerald); border:1px solid var(--emerald-border); margin:0;">FINANCIAL MODEL</span>
             </div>
             <div class="field-group">
-              <label>4.1. Trần ngân sách đầu tư &amp; Quỹ dự phòng sinh tồn (Runway)?</label>
+              <label for="f-q10">4.1. Trần ngân sách đầu tư &amp; Quỹ dự phòng sinh tồn (Runway)?</label>
               <span class="field-hint">Số tiền tối đa được phép chi và số tháng sống sót nếu doanh thu chậm?</span>
               <input type="text" id="f-q10">
             </div>
             <div class="field-group">
-              <label>4.2. Kinh tế đơn vị (CAC, LTV, Biên lợi nhuận gộp, Điểm hòa vốn)?</label>
+              <label for="f-q11">4.2. Kinh tế đơn vị (CAC, LTV, Biên lợi nhuận gộp, Điểm hòa vốn)?</label>
               <span class="field-hint">Chi phí có 1 khách vs Lợi nhuận thu được từ 1 khách là bao nhiêu?</span>
               <input type="text" id="f-q11">
             </div>
             <div class="field-group">
-              <label>4.3. Cơ chế chia sẻ lợi ích &amp; Khoán hiệu quả cho đội ngũ?</label>
+              <label for="f-q12">4.3. Cơ chế chia sẻ lợi ích &amp; Khoán hiệu quả cho đội ngũ?</label>
               <span class="field-hint">Cơ chế hoa hồng, thưởng theo kết quả thực tế để gắn bó người giỏi?</span>
               <input type="text" id="f-q12">
             </div>
@@ -1743,7 +1748,9 @@
               <span style="display:block; font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase;">
                 💡 Rê chuột hoặc bấm vào từng vòng tròn để soi chi tiết nhiệm vụ và rủi ro:
               </span>
-              <svg viewBox="0 0 620 620" class="concentric-svg" style="width:100%; max-width:520px; height:auto; display:block; margin:auto;" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 620 620" class="concentric-svg" role="img" aria-label="Sơ đồ 5 lớp hạ tầng quản trị đồng tâm và vỏ bọc số hóa BMAA-OS" style="width:100%; max-width:520px; height:auto; display:block; margin:auto;" xmlns="http://www.w3.org/2000/svg">
+  <title>Sơ Đồ 5 Lớp Quản Trị Đồng Tâm và Vỏ Bọc Số Hóa</title>
+  <desc>Mô hình củ hành đồng tâm bảo vệ nhân sự lõi ở tâm điểm</desc>
                 <defs>
                   <radialGradient id="grad-core" cx="50%" cy="50%" r="50%">
                     <stop offset="0%" stop-color="#ef4444" />
@@ -1758,17 +1765,17 @@
                 </defs>
 
                 <!-- Vòng 5: Vỏ bọc AI & Số hóa -->
-                <circle cx="310" cy="310" r="290" fill="#f0fdfa" stroke="#0d9488" stroke-width="3.5" stroke-dasharray="8 5" class="ring-shape" id="svg-ring-5" onclick="inspectRingLayer(5)" onmouseenter="inspectRingLayer(5)" />
+                <circle cx="310" cy="310" r="290" fill="#f0fdfa" stroke="#0d9488" stroke-width="3.5" stroke-dasharray="8 5" class="ring-shape" id="svg-ring-5" role="button" tabindex="0" aria-label="Lớp 5: Vỏ bọc Số hóa và AI Agents" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(5);}" onclick="inspectRingLayer(5)" onmouseenter="inspectRingLayer(5)" />
                 <!-- Vòng 4: Văn Hóa 5 Luật -->
-                <circle cx="310" cy="310" r="242" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5" class="ring-shape" id="svg-ring-4" onclick="inspectRingLayer(4)" onmouseenter="inspectRingLayer(4)" />
+                <circle cx="310" cy="310" r="242" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5" class="ring-shape" id="svg-ring-4" role="button" tabindex="0" aria-label="Lớp 4: Giá trị cốt lõi và Văn hóa 5 Luật" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(4);}" onclick="inspectRingLayer(4)" onmouseenter="inspectRingLayer(4)" />
                 <!-- Vòng 3: Cơ Cấu Tổ Chức & Phân Quyền -->
-                <circle cx="310" cy="310" r="195" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" class="ring-shape" id="svg-ring-3" onclick="inspectRingLayer(3)" onmouseenter="inspectRingLayer(3)" />
+                <circle cx="310" cy="310" r="195" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5" class="ring-shape" id="svg-ring-3" role="button" tabindex="0" aria-label="Lớp 3: Cơ cấu tổ chức và Phân quyền" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(3);}" onclick="inspectRingLayer(3)" onmouseenter="inspectRingLayer(3)" />
                 <!-- Vòng 2: Báo Cáo & Chính Sách -->
-                <circle cx="310" cy="310" r="150" fill="#f0fdf4" stroke="#059669" stroke-width="2.5" class="ring-shape" id="svg-ring-2" onclick="inspectRingLayer(2)" onmouseenter="inspectRingLayer(2)" />
+                <circle cx="310" cy="310" r="150" fill="#f0fdf4" stroke="#059669" stroke-width="2.5" class="ring-shape" id="svg-ring-2" role="button" tabindex="0" aria-label="Lớp 2: Hệ thống báo cáo và Chính sách" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(2);}" onclick="inspectRingLayer(2)" onmouseenter="inspectRingLayer(2)" />
                 <!-- Vòng 1: SOP -->
-                <circle cx="310" cy="310" r="105" fill="#fffbeb" stroke="#d97706" stroke-width="2.5" class="ring-shape" id="svg-ring-1" onclick="inspectRingLayer(1)" onmouseenter="inspectRingLayer(1)" />
+                <circle cx="310" cy="310" r="105" fill="#fffbeb" stroke="#d97706" stroke-width="2.5" class="ring-shape" id="svg-ring-1" role="button" tabindex="0" aria-label="Lớp 1: Quy trình thao tác chuẩn SOP" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(1);}" onclick="inspectRingLayer(1)" onmouseenter="inspectRingLayer(1)" />
                 <!-- Tâm điểm: Core HR -->
-                <circle cx="310" cy="310" r="60" fill="url(#grad-core)" stroke="#991b1b" stroke-width="3" class="ring-shape" id="svg-ring-0" onclick="inspectRingLayer(0)" onmouseenter="inspectRingLayer(0)" />
+                <circle cx="310" cy="310" r="60" fill="url(#grad-core)" stroke="#991b1b" stroke-width="3" class="ring-shape" id="svg-ring-0" role="button" tabindex="0" aria-label="Tâm điểm: Nhân sự thực thi HR Core" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();inspectRingLayer(0);}" onclick="inspectRingLayer(0)" onmouseenter="inspectRingLayer(0)" />
 
                 <!-- Chữ trung tâm: Tâm điểm -->
                 <g onclick="inspectRingLayer(0)" style="cursor:pointer;">
@@ -2049,11 +2056,11 @@
             <h4 style="font-size:16.5px; font-weight:800; color:var(--text-primary); margin-bottom:14px;">🧮 MÁY TÍNH RUNWAY (THỜI GIAN SỐNG BẰNG TIỀN MẶT DỰ PHÒNG):</h4>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; align-items:flex-end;">
               <div class="field-group" style="margin:0;">
-                <label>Tiền Mặt Sẵn Có Hiện Tại (Triệu VNĐ)</label>
+                <label for="inCashReserve">Tiền Mặt Sẵn Có Hiện Tại (Triệu VNĐ)</label>
                 <input type="number" id="inCashReserve" value="300" step="50" oninput="calcRunway()">
               </div>
               <div class="field-group" style="margin:0;">
-                <label>Chi Phí Đốt Hàng Tháng (Burn Rate - Tr/tháng)</label>
+                <label for="inBurnRate">Chi Phí Đốt Hàng Tháng (Burn Rate - Tr/tháng)</label>
                 <input type="number" id="inBurnRate" value="60" step="10" oninput="calcRunway()">
               </div>
               <div style="padding:14px; border-radius:10px; background:var(--bg-surface); border:2px solid var(--border-color); text-align:center;">
